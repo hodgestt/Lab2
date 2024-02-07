@@ -1,4 +1,6 @@
-﻿namespace Lab1Part3.Pages.DataClasses
+﻿//Jessica Shamloo & Thomas Hodges
+
+namespace Lab1Part3.Pages.DataClasses
 {
     public class Employee
     {

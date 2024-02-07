@@ -1,4 +1,6 @@
-﻿using Lab1Part3.Pages.DataClasses;
+﻿//Jessica Shamloo & Thomas Hodges
+
+using Lab1Part3.Pages.DataClasses;
 using System.Data.SqlClient;
 
 namespace Lab1Part3.Pages.DB
