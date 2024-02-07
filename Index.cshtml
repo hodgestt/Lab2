@@ -1,0 +1,46 @@
+﻿@page
+@model Lab1Part3.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h2>Employee View</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Street </th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Username</th>
+            <th>Password</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var emp in Model.EmployeeTable)
+            {
+                        <tr>
+                            <td class="text-danger">@emp.EmployeeID</td>
+                            <td>@emp.FirstName</td>
+                            <td>@emp.LastName</td>
+                            <td>@emp.Email</td>
+                            <td>@emp.Phone</td>
+                            <td>@emp.Street</td>
+                            <td>@emp.City</td>
+                            <td>@emp.State</td>
+                            <td>@emp.Zip</td>
+                            <td>@emp.UserName</td>
+                            <td>@emp.Password</td>
+                            
+                        </tr>
+            }
+        }
+    </tbody>
+</table>
