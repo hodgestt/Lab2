@@ -11,7 +11,7 @@ namespace Lab1Part3.Pages.DB
         // The Connection String finds and connects to DB
         private static readonly String? LABTHREEDBConnString = "Server=Localhost;Database=LABTHREE;Trusted_Connection=True";
 
-        //Basic Product Reader
+        //Basic Employee Reader
         public static SqlDataReader EmployeeReader()
         {
             SqlCommand cmdEmployeeRead = new SqlCommand();
@@ -21,6 +21,20 @@ namespace Lab1Part3.Pages.DB
             cmdEmployeeRead.Connection.Open(); // Open connection here, close in Model!
 
             SqlDataReader tempReader = cmdEmployeeRead.ExecuteReader();
+
+            return tempReader;
+        }
+
+        //Basic KnowledgeItem Reader
+        public static SqlDataReader KnowledgeItemReader()
+        {
+            SqlCommand cmdKnowledgeItemRead = new SqlCommand();
+            cmdKnowledgeItemRead.Connection = LABTHREEDBConnection;
+            cmdKnowledgeItemRead.Connection.ConnectionString = LABTHREEDBConnString;
+            cmdKnowledgeItemRead.CommandText = "SELECT * FROM KnowledgeItem";
+            cmdKnowledgeItemRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdKnowledgeItemRead.ExecuteReader();
 
             return tempReader;
         }
