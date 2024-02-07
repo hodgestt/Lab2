@@ -1,0 +1,36 @@
+﻿@page
+@model Lab1Part3.Pages.KnowledgeItems.IndexModel
+@{
+    ViewData["Title"] = "KnowledgeItems";
+}
+
+<h2>Employee View</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>KnowledgeItemId</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Category</th>
+            <th>Information</th>
+            <th>KnowledgeDateTime </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var kitem in Model.KnowledgeItemsTable)
+            {
+                <tr>
+                    <td class="text-danger">@kitem.KnowledgeItemId</td>
+                    <td>@kitem.Name</td>
+                    <td>@kitem.Subject</td>
+                    <td>@kitem.Category</td>
+                    <td>@kitem.Information</td>
+                    <td>@kitem.KnowledgeDateTime</td>
+                    
+                </tr>
+            }
+        }
+    </tbody>
+</table>
