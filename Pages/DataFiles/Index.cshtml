@@ -1,0 +1,30 @@
+﻿@* Thomas Hodges *@
+@page
+@model Lab1Part3.Pages.DataFiles.IndexModel
+@{
+    ViewData["Title"] = "DataFile";
+}
+<h2>Employee View</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>DataName</th>
+            <th>DataLocation</th>
+            <th>DataDescription</th>
+            <th>EmployeeID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var dta in Model.DataTable)
+            {
+                <tr>
+                    <td class="text-danger">@dta.DataName</td>
+                    <td>@dta.DataLocation</td>
+                    <td>@dta.DataDescription</td>
+                    <td>@dta.EmployeeID</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
