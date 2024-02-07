@@ -38,6 +38,20 @@ namespace Lab1Part3.Pages.DB
 
             return tempReader;
         }
+
+        //Basic DataFile Reader
+        public static SqlDataReader DataFileReader()
+        {
+            SqlCommand cmdDataFileRead = new SqlCommand();
+            cmdDataFileRead.Connection = LABTHREEDBConnection;
+            cmdDataFileRead.Connection.ConnectionString = LABTHREEDBConnString;
+            cmdDataFileRead.CommandText = "SELECT * FROM DataFile";
+            cmdDataFileRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdDataFileRead.ExecuteReader();
+
+            return tempReader;
+        }
     }
 
 }
