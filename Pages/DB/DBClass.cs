@@ -54,6 +54,20 @@ namespace Lab1Part3.Pages.DB
 
             return tempReader;
         }
+
+        //Basic DataCollab Reader
+        public static SqlDataReader DataCollabsReader()
+        {
+            SqlCommand cmdDataCollabRead = new SqlCommand();
+            cmdDataCollabRead.Connection = LABTHREEDBConnection;
+            cmdDataCollabRead.Connection.ConnectionString = LABTHREEDBConnString;
+            cmdDataCollabRead.CommandText = "SELECT * FROM DataCollab";
+            cmdDataCollabRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdDataCollabRead.ExecuteReader();
+
+            return tempReader;
+        }
     }
 
 }
