@@ -30,10 +30,7 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
-
-
-            return tempReader;
-        }
     }
-
 }
+
+
