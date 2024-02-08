@@ -14,6 +14,7 @@ namespace Lab1Part3.Pages.DataClasses
         //I dont think soo?? nothings coming from an intake form.
         public String NotesAndInformation { get; set; }
         
+
     }
 }
 

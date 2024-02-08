@@ -23,7 +23,6 @@ namespace Lab1Part3.Pages.DataCollabs
             {
                 DataCollabsTable.Add(new DataCollab
                 {
-
                     CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
                     DataName = TableReader["DataName"].ToString(),
                 }
@@ -31,7 +30,7 @@ namespace Lab1Part3.Pages.DataCollabs
             }
         
             // Close your connection in DBClass
-            DBClass.LABTHREEDBConnection.Close();
+            DBClass.Lab1DBConnection.Close();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Lab1Part3.Pages.DataFiles
             }
 
             // Close your connection in DBClass
-            DBClass.LABTHREEDBConnection.Close();
+            DBClass.Lab1DBConnection.Close();
         }
     }
 }

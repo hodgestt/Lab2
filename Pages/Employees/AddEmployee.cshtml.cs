@@ -17,7 +17,7 @@ namespace Lab1Part3.Pages.Employees
         public IActionResult OnPost()
         {
             DBClass.InsertEmployee(NewEmployee);
-            DBClass.LABTHREEDBConnection.Close();
+            DBClass.Lab1DBConnection.Close();
             return RedirectToPage("AddEmployee");
 
         }

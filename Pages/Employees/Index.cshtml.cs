@@ -42,7 +42,7 @@ namespace Lab1Part3.Pages.Employees
             }
         
             // Close your connection in DBClass
-            DBClass.LABTHREEDBConnection.Close();
+            DBClass.Lab1DBConnection.Close();
         }
     }
 }

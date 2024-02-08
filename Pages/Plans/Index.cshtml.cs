@@ -29,13 +29,14 @@ namespace Lab1Part3.Pages.Plans
                     PlanConcept = TableReader["PlanConcept"].ToString(),
                     DateCreated = DateTime.Parse(TableReader["DateCreated"].ToString()),
                     AnalysisUsed = TableReader["AnalysisUsed"].ToString(),
-                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                    CollabID = int.Parse(TableReader["CollabID"].ToString()),
+
                 }
             );
             }
         
             // Close your connection in DBClass
-            DBClass.LABTHREEDBConnection.Close();
+            DBClass.Lab1DBConnection.Close();
         }
     }
 }

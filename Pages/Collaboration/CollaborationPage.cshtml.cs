@@ -8,5 +8,14 @@ namespace Lab1Part3.Pages.Collaboration
         public void OnGet()
         {
         }
+        
+        //add any onPost() or IActionHandler method if needed
+
+
+
+
+
+
+        //DBClass.Lab1DBConnection.Close();
     }
 }
