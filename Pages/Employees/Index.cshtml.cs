@@ -18,23 +18,23 @@ namespace Lab1Part3.Pages.Employees
 
         public void OnGet()
         {
-            SqlDataReader employeeReader = DBClass.EmployeeReader();
-            while (employeeReader.Read())
+            SqlDataReader TableReader = DBClass.TableReader();
+            while (TableReader.Read())
             {
                 EmployeeTable.Add(new Employee
                 {
 
-                    EmployeeID = Int32.Parse(employeeReader["EmployeeID"].ToString()),
-                    FirstName = employeeReader["FirstName"].ToString(),
-                    LastName = employeeReader["LastName"].ToString(),
-                    Email = employeeReader["Email"].ToString(),
-                    Phone = employeeReader["Phone"].ToString(),
-                    Street = employeeReader["Street"].ToString(),
-                    City = employeeReader["City"].ToString(),
-                    State = employeeReader["State"].ToString(),
-                    Zip = employeeReader["Zip"].ToString(),
-                    UserName = employeeReader["UserName"].ToString(),
-                    Password = employeeReader["Password"].ToString()
+                    EmployeeID = Int32.Parse(TableReader ["EmployeeID"].ToString()),
+                    FirstName = TableReader["FirstName"].ToString(),
+                    LastName = TableReader["LastName"].ToString(),
+                    Email = TableReader["Email"].ToString(),
+                    Phone = TableReader["Phone"].ToString(),
+                    Street = TableReader["Street"].ToString(),
+                    City = TableReader["City"].ToString(),
+                    State = TableReader["State"].ToString(),
+                    Zip = TableReader["Zip"].ToString(),
+                    UserName = TableReader["UserName"].ToString(),
+                    Password = TableReader["Password"].ToString()
                 }
             );
             }
