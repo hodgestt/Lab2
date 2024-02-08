@@ -18,16 +18,16 @@ namespace Lab1Part3.Pages.DataFiles
 
         public void OnGet()
         {
-            SqlDataReader DataFileReader = DBClass.DataFileReader();
-            while (DataFileReader.Read())
+            SqlDataReader TableReader = DBClass.TableReader();
+            while (TableReader.Read())
             {
                 DataTable.Add(new DataFile
                 {
 
-                    DataName = DataFileReader["DataName"].ToString(),
-                    DataLocation = DataFileReader["DataLocation"].ToString(),
-                    DataDescription = DataFileReader["DataDescription"].ToString(),
-                    //EmployeeID = DataFileReader["EmployeeID"].ToString()
+                    DataName = TableReader["DataName"].ToString(),
+                    DataLocation = TableReader["DataLocation"].ToString(),
+                    DataDescription = TableReader["DataDescription"].ToString(),
+                    //EmployeeID = TableReader["EmployeeID"].ToString()
                     
                 }
             );
