@@ -3,22 +3,6 @@
 @{
 }
 
-<div class="text-left">
     <h1 class="display-4">Team Members</h1>
-    <tbody>
-        @{
-            foreach (var emp in Model.EmployeeTable)
-            {
-                <tr>
-                    <td>@emp.FirstName</td>
-                    <td>@emp.LastName</td>
-                    <td>@emp.Email</td>
-                    <td>@emp.UserName</td>
+    
 
-                </tr>
-            }
-        }
-
-    </tbody>
-
-</div>

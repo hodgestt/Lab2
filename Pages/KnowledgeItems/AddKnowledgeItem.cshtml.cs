@@ -11,7 +11,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
     {
 
         [BindProperty]
-        public KnowledgeItem NewKnowledgeItem{ get; set; }
+        public KnowledgeItem? NewKnowledgeItem { get; set; }
 
 
         public void OnGet()
@@ -21,7 +21,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
         public IActionResult OnPost()
         {
             DBClass.InsertKnowledgeItem(NewKnowledgeItem);
-            DBClass.LABTHREEDBConnection.Close();
+            DBClass.Lab1DBConnection.Close();
             return RedirectToPage("Add Knowledge Item");
 
         }
