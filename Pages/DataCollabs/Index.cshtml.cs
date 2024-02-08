@@ -18,14 +18,14 @@ namespace Lab1Part3.Pages.DataCollabs
 
         public void OnGet()
         {
-            SqlDataReader DataCollabReader = DBClass.DataCollabsReader();
-            while (DataCollabReader.Read())
+            SqlDataReader TableReader = DBClass.TableReader();
+            while (Table.Read())
             {
                 DataCollabTable.Add(new DataCollab
                 {
 
-                    CollabID = Int32.Parse(DataCollabReader["CollabID"].ToString()),
-                    DataName = DataCollabReader["DataName"].ToString(),
+                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                    DataName = TableReader["DataName"].ToString(),
                 }
             );
             }
