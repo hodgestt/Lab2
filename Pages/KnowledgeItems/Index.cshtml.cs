@@ -1,11 +1,8 @@
-//Jessica Shamloo
-
 // "import statements"
 using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
-using System.Globalization;
 
 namespace Lab1Part3.Pages.KnowledgeItems
 {
@@ -20,20 +17,20 @@ namespace Lab1Part3.Pages.KnowledgeItems
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
-            while (TableReader.Read())
+            SqlDataReader knowledgeitemsReader = DBClass.KnowledgeItemReader();
+            while (knowledgeitemsReader.Read())
             {
                 KnowledgeItemsTable.Add(new KnowledgeItem
                 {
 
-                    KnowledgeItemId = Int32.Parse(TableReader["KnowledgeItemID"].ToString()),
-                    Name = TableReader["Name"].ToString(),
-                    Subject = TableReader["Subject"].ToString(),
-                    Category = TableReader["Category"].ToString(),
-                    Information = TableReader["Information"].ToString(),
-                    KnowledgeDateTime = DateTime.Parse(TableReader["KnowledgeDateTime"].ToString())
+                    KnowledgeId = Int32.Parse(knowledgeitemsReader["KnowledgeID"].ToString()),
+                    Name = knowledgeitemsReader["Name"].ToString(),
+                    Subject = knowledgeitemsReader["Subject"].ToString(),
+                    Category = knowledgeitemsReader["Category"].ToString(),
+                    Information = knowledgeitemsReader["Information"].ToString(),
+                    KnowledgeDateTime = DateTime.Parse(knowledgeitemsReader["KnowledgeDateTime"].ToString())
                 }
-                );
+            );
             }
 
             // Close your connection in DBClass
