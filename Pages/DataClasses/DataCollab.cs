@@ -4,9 +4,9 @@
     public class DataCollab
     {
         //? means this data field can contain a blank/null
-        [ForiegnKey("CollabID")]
+        [ForeignKey("CollabID")]
         public Collaboration CollabID { get; set; }
-        [ForiegnKey("DataName")]
+        [ForeignKey("DataName")]
         public DataFile DataName { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Lab1Part3.Pages.KnowledgeItems
 {
@@ -28,9 +29,9 @@ namespace Lab1Part3.Pages.KnowledgeItems
                     Subject = knowledgeitemsReader["Subject"].ToString(),
                     Category = knowledgeitemsReader["Category"].ToString(),
                     Information = knowledgeitemsReader["Information"].ToString(),
-                    KnowledgeDateTime = knowledgeitemsReader["KnowledgeDateTime"].ToString(),
+                    KnowledgeDateTime = DateTime.Parse(knowledgeitemsReader["KnowledgeDateTime"].ToString())
                 }
-            );
+                );
             }
 
             // Close your connection in DBClass
