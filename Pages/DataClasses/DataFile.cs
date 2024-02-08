@@ -1,4 +1,5 @@
 ﻿//Thomas Hodges
+
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lab1Part3.Pages.DataClasses

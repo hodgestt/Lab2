@@ -1,5 +1,9 @@
-﻿namespace Lab1Part3.Pages.DataClasses
-//Nick Patterson
+﻿//Nick Patterson
+
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Lab1Part3.Pages.DataClasses
+
 {
     public class DataCollab
     {
