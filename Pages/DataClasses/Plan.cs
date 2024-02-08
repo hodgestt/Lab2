@@ -10,7 +10,7 @@ namespace Lab1Part3.Pages.DataClasses
         public DateTime? DateCreated { get; set; }
         public String? AnalysisUsed { get; set; }
 
-        [ForiegnKey("CollabID")]
-        public Collaboration CollabID { get; set; }
+        //[ForeignKey("CollabID")]
+        //public Collaboration CollabID { get; set; }
     }
 }

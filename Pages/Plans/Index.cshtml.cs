@@ -29,7 +29,7 @@ namespace Lab1Part3.Pages.Plans
                     PlanConcept = TableReader["PlanConcept"].ToString(),
                     DateCreated = DateTime.Parse(TableReader["DateCreated"].ToString()),
                     AnalysisUsed = TableReader["AnalysisUsed"].ToString(),
-                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                    //CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
                 }
             );
             }

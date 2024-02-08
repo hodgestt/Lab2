@@ -24,8 +24,8 @@ namespace Lab1Part3.Pages.DataCollabs
                 DataCollabsTable.Add(new DataCollab
                 {
 
-                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                    DataName = TableReader["DataName"].ToString(),
+                    //CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                    //DataName = TableReader["DataName"].ToString(),
                 }
             );
             }
