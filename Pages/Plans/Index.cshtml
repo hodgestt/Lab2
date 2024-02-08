@@ -1,0 +1,33 @@
+﻿@*Nick Patterson*@
+@page
+@model Lab1Part3.Pages.Plans.IndexModel
+@{
+    ViewData["Title"] = "Plans";
+}
+
+<h2>Employee View</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>PlanName</th>
+            <th>PlanConcept</th>
+            <th>DateCreated</th>
+            <th>AnalysisUsed</th>
+            <th>CollabID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var emp in Model.PlansTable)
+            {
+            <tr>
+                <td class="text-danger">@emp.PlanName</td>
+                <td>@emp.PlanConcept</td>
+                <td>@emp.DateCreated</td>
+                <td>@emp.AnalysisUsed</td>
+                <td>@emp.CollabID</td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

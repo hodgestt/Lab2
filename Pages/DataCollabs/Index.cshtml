@@ -1,10 +1,11 @@
-﻿@page
+﻿@*Nick Patterson*@
+@page
 @model Lab1Part3.Pages.DataCollabs.IndexModel
 @{
     ViewData["Title"] = "Data Collabs";
 }
 
-<h2>Data Collabs View</h2>
+<h2>Employee View</h2>
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
@@ -14,7 +15,7 @@
     </thead>
     <tbody>
         @{
-            foreach (var emp in Model.DataCollabTable)
+            foreach (var emp in Model.DataCollabsTable)
             {
             <tr>
                 <td class="text-danger">@emp.CollabID</td>

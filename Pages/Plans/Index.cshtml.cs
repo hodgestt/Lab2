@@ -1,19 +1,20 @@
-// Nick Patterson "import statements"
+//Nick Patterson
+// "import statements"
 using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace Lab1Part3.Pages.DataCollabs
+namespace Lab1Part3.Pages.Plans
 {
     public class IndexModel : PageModel
     {
 
-        public List<DataCollab> DataCollabsTable { get; set; }
+        public List<Plan> PlansTable { get; set; }
 
         public IndexModel()
         {
-            DataCollabsTable = new List<DataCollab>();
+            PlansTable = new List<Plan>();
         }
 
         public void OnGet()
@@ -21,11 +22,14 @@ namespace Lab1Part3.Pages.DataCollabs
             SqlDataReader TableReader = DBClass.TableReader();
             while (TableReader.Read())
             {
-                DataCollabsTable.Add(new DataCollab
+                PlansTable.Add(new Plan
                 {
 
+                    PlanName = TableReader["PlanName"].ToString(),
+                    PlanConcept = TableReader["PlanConcept"].ToString(),
+                    DateCreated = DateTime.Parse(TableReader["DateCreated"].ToString()),
+                    AnalysisUsed = TableReader["AnalysisUsed"].ToString(),
                     CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                    DataName = TableReader["DataName"].ToString(),
                 }
             );
             }
