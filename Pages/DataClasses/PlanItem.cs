@@ -9,7 +9,7 @@ namespace Lab1Part3.Pages.DataClasses
         public String? PlanItemDescription { get; set; }
         public String? StepsCompleted { get; set; }
 
-        [ForiegnKey("PlanName")]
+        [ForeignKey("PlanName")]
         public Plan PlanName { get; set; }
     }
 }

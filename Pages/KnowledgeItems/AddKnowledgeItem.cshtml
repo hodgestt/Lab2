@@ -1,0 +1,25 @@
+﻿@page
+@model Lab1Part3.Pages.KnowledgeItems.AddKnowledgeItemModel
+
+<!--Jessica Shamloo-->
+
+@{
+    ViewData["Title"] = "AddKnowledgeItem";
+}
+<form asp-page="AddEmployee">
+    <input type="text" asp-for="NewKnowledgeItem.Name" placeholder="Name" />
+    <br />
+    <input type="text" asp-for="NewKnowledgeItem.Subject" placeholder="Subject" />
+    <br />
+    <input type="text" asp-for="NewKnowledgeItem.Category" placeholder="Category" />
+    <br />
+    <input type="text" asp-for="NewKnowledgeItem.Information" placeholder="Information" />
+    <br />
+    <input type="text" asp-for="NewKnowledgeItem.KnowledgeDateTime" placeholder="Date-Time" />
+    <br />
+    <br />
+    <button type="submit" class="btn btn-secondary">Add Knowledge Item -> </button>
+    <br />
+    <a asp-page="/KnowledgeItems/AddKnowledgeItem">Cancel</a>
+
+</form>

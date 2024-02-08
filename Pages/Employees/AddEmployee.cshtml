@@ -1,0 +1,34 @@
+﻿@page
+@model Lab1Part3.Pages.Employees.AddEmployeeModel
+@{
+
+    ViewData["Title"] = "AddEmployee";
+}
+    <form asp-page="AddEmployee">
+        <input type="text" asp-for="NewEmployee.FirstName" placeholder="First Name" />
+        <br />
+        <input type="text" asp-for="NewEmployee.LastName" placeholder="Last Name" />
+        <br />
+        <input type="text" asp-for="NewEmployee.Email" placeholder="Email" />
+        <br />
+        <input type="text" asp-for="NewEmployee.Phone" placeholder="Phone" />
+        <br />
+        <input type="text" asp-for="NewEmployee.Street" placeholder="Street" />
+        <br />
+        <input type="text" asp-for="NewEmployee.City" placeholder="City" />
+        <br />
+        <input type="text" asp-for="NewEmployee.State" placeholder="State" />
+        <br />
+        <input type="text" asp-for="NewEmployee.Zip" placeholder="Zip" />
+        <br />
+        <input type="text" asp-for="NewEmployee.UserName" placeholder="UserName" />
+        <br />
+        <input type="text" asp-for="NewEmployee.Password" placeholder="Password" />
+        <br />
+        <br />
+        <button type="submit" class="btn btn-secondary">Add Employee -> </button>
+        <br />
+        <a asp-page="/Employees/AddEmployee">Cancel</a>
+
+    </form>
+
