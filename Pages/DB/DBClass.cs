@@ -11,7 +11,7 @@ namespace Lab1Part3.Pages.DB
         public static SqlConnection Lab1DBConnection = new SqlConnection();
 
         // The Connection String finds and connects to DB
-        private static readonly String? Lab1DBConnString = "Server=Localhost;Database=LABTHREE;Trusted_Connection=True";
+        private static readonly String? Lab1DBConnString = "Server=Localhost;Database=Lab1;Trusted_Connection=True";
        
         //Basic Table Reader 
         public static SqlDataReader TableReader()
@@ -22,7 +22,7 @@ namespace Lab1Part3.Pages.DB
             cmdTableRead.CommandText =
                 "SELECT * FROM Employee; SELECT * FROM DataCollab; SELECT * FROM DataFile; SELECT * FROM KnowledgeItem;" +
                 "SELECT * FROM Collaboration; SELECT * FROM EmployeeCollab; SELECT * FROM Chat; " +
-                "SELECT * Plans; SELECT * FROM PlanItem";
+                "SELECT * FROM Plans; SELECT * FROM PlanItem;";
 
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 

@@ -17,18 +17,17 @@ namespace Lab1Part3.Pages.KnowledgeItems
 
         public void OnGet()
         {
-            SqlDataReader knowledgeitemsReader = DBClass.TableReader();
-            while (knowledgeitemsReader.Read())
+            SqlDataReader TableReader = DBClass.TableReader();
+            while (TableReader.Read())
             {
                 KnowledgeItemsTable.Add(new KnowledgeItem
                 {
-
-                    KnowledgeId = Int32.Parse(knowledgeitemsReader["KnowledgeID"].ToString()),
-                    Name = knowledgeitemsReader["Name"].ToString(),
-                    Subject = knowledgeitemsReader["Subject"].ToString(),
-                    Category = knowledgeitemsReader["Category"].ToString(),
-                    Information = knowledgeitemsReader["Information"].ToString(),
-                    KnowledgeDateTime = DateTime.Parse(knowledgeitemsReader["KnowledgeDateTime"].ToString())
+                    KnowledgeId = Int32.Parse(TableReader["KnowledgeID"].ToString()),
+                    Name = TableReader["Name"].ToString(),
+                    Subject = TableReader["Subject"].ToString(),
+                    Category = TableReader["Category"].ToString(),
+                    Information = TableReader["Information"].ToString(),
+                    KnowledgeDateTime = DateTime.Parse(TableReader["KnowledgeDateTime"].ToString())
                 }
             );
             }

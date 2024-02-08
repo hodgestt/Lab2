@@ -27,7 +27,7 @@ namespace Lab1Part3.Pages.DataFiles
                     DataName = TableReader["DataName"].ToString(),
                     DataLocation = TableReader["DataLocation"].ToString(),
                     DataDescription = TableReader["DataDescription"].ToString(),
-                    //EmployeeID = TableReader["EmployeeID"].ToString()
+                    
                     
                 }
             );
