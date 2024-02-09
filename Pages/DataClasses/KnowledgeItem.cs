@@ -16,37 +16,21 @@ namespace Lab1Part3.Pages.DataClasses
         public int KnowledgeId { get; set; }
         [BindProperty]
         [Required]
-        public String? Name { get; set;}
+        public String Name { get; set;}
         [BindProperty]
         [Required]
-        public String? Subject { get; set;}
+        public String Subject { get; set;}
         [BindProperty]
         [Required]
-        public String? Category { get; set;}
+        public String Category { get; set;}
         [BindProperty]
         [Required]
-        public String? Information { get; set;}
+        public String Information { get; set;}
         [BindProperty]
         [Required]
-        public DateTime? KnowledgeDateTime { get; set;} 
+        public String KnowledgeDateTime { get; set;} 
 
     }
 
-    //secondary custom method
-    public IActionResult OnPostPopulateHandler()
-    {
-        ModelState.Clear();
-        Name = "Test Name"; //changing property to show on the UI
-        Subject = "Test Subject";
-        Category = "Test Category";
-
-        return Page();
-
     }
-
-
-
-
-
-}
 

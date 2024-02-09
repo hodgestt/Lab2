@@ -27,7 +27,7 @@ namespace Lab1Part3.Pages.Plans
 
                     PlanName = TableReader["PlanName"].ToString(),
                     PlanConcept = TableReader["PlanConcept"].ToString(),
-                    DateCreated = DateTime.Parse(TableReader["DateCreated"].ToString()),
+                    DateCreated = TableReader["DateCreated"].ToString(),
                     AnalysisUsed = TableReader["AnalysisUsed"].ToString(),
                     CollabID = int.Parse(TableReader["CollabID"].ToString()),
 

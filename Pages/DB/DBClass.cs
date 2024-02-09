@@ -62,14 +62,14 @@ namespace Lab1Part3.Pages.DB
         }
 
         //Inserts one new KnowledgeItem Record into the DB
-        public static void InsertKnowledgeItem(KnowledgeItem e)
+        public static void InsertKnowledgeItem(KnowledgeItem x)
         {
             String sqlQuery = "INSERT INTO KnowledgeItem(Name,Subject,Category,Information,KnowledgeDateTime) VALUES ('";
-            sqlQuery += e.Name + "',";
-            sqlQuery += e.Subject + "',";
-            sqlQuery += e.Category + "',";
-            sqlQuery += e.Information + "',";
-            sqlQuery += e.KnowledgeDateTime + "')";
+            sqlQuery += x.Name + "','";
+            sqlQuery += x.Subject + "','";
+            sqlQuery += x.Category + "','";
+            sqlQuery += x.Information + "','";
+            sqlQuery += x.KnowledgeDateTime + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab1DBConnection;

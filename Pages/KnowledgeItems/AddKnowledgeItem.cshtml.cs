@@ -5,6 +5,7 @@ using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace Lab1Part3.Pages.KnowledgeItems
@@ -13,7 +14,8 @@ namespace Lab1Part3.Pages.KnowledgeItems
     {
 
         [BindProperty]
-        public KnowledgeItem? NewKnowledgeItem { get; set; }
+        [Required]
+        public KnowledgeItem NewKnowledgeItem { get; set; }
 
 
         public void OnGet()
@@ -24,7 +26,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
         {
             DBClass.InsertKnowledgeItem(NewKnowledgeItem);
             DBClass.Lab1DBConnection.Close();
-            return RedirectToPage("KnowledgeItems");
+            return RedirectToPage("Index");
 
         }
         
