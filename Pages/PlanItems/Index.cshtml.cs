@@ -26,8 +26,7 @@ namespace Lab1Part3.Pages.PlanItems
 
                     PlanItemID = Int32.Parse(TableReader["PlanItemID"].ToString()),
                     PlanItemDescription = TableReader["PlanItemDescription"].ToString(),
-                    StepsCompleted = TableReader["StepsCompleted"].ToString(),
-                    PlanName = TableReader["PlanName"].ToString()
+                    StepsCompleted = TableReader["StepsCompleted"].ToString()
 
                 }
             );

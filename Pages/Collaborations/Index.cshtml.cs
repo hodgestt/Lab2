@@ -6,11 +6,11 @@ using System.Data.SqlClient;
 
 namespace Lab1Part3.Pages.Collaborations
 {
-    public class CollaborationsPageModel : PageModel
+    public class IndexModel : PageModel
     {
         public List<Collaboration> CollaborationTable { get; set; }
 
-        public CollaborationsPageModel()
+        public IndexModel()
         {
             CollaborationTable = new List<Collaboration>();
         }
