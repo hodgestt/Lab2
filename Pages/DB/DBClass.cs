@@ -45,7 +45,17 @@ namespace Lab1Part3.Pages.DB
             SqlDataReader tempReader = cmdRead.ExecuteReader();
 
             return tempReader;
+        }
 
+        //General Insert Query for associative tables
+        public static void GeneralInsertQuery(string sqlQuery)
+        {
+            SqlCommand cmdInsert = new SqlCommand();
+            cmdInsert.Connection = Lab1DBConnection;
+            cmdInsert.Connection.ConnectionString = Lab1DBConnString;
+            cmdInsert.CommandText = sqlQuery;
+            cmdInsert.Connection.Open();
+            cmdInsert.ExecuteNonQuery();
         }
 
 
