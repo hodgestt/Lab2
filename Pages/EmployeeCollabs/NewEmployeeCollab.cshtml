@@ -2,3 +2,21 @@
 @model Lab1Part3.Pages.EmployeeCollabs.NewEmployeeCollabModel
 @{
 }
+
+<form asp-action="NewEmployeeCollab">
+    <p>Choose Employee and their Team:</p>
+    <br />
+    <select asp-for="EmployeeID" asp-items="Model.Employees">
+        <option value="">Choose an Employee</option>
+    </select>
+    <br />
+
+
+    <select asp-for="CollabID" asp-items="Model.CollabTeams">
+        <option value="">Choose a Team to Join</option>
+    </select>
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+<p>Quantity is hard-coded as 1</p>
+

@@ -16,7 +16,7 @@
         <tbody>
             @{
                 // @ Symbol for a verbatim / multi-line string
-                string sqlQuery = @"select Collaboration.TeamName, Employee.Username
+                string sqlQuery = @"select Collaboration.TeamName, Employee.UserName
         from Collaboration
         INNER JOIN EmployeeCollab
         on EmployeeCollab.CollabID = Collaboration.CollabID
@@ -30,7 +30,7 @@
                 {
                     <tr>
                         <td>@EmployeeCollabReader["TeamName"]</td>
-                        <td>@EmployeeCollabReader["Username"]</td>
+                        <td>@EmployeeCollabReader["UserName"]</td>
                         
                     </tr>
                 }
@@ -41,7 +41,7 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" asp-page="EmployeeCollab">Record a Purchase -></a>
+    <a class="btn btn-primary" asp-page="NewEmployeeCollab">Create a New Team -></a>
 
 
 }
