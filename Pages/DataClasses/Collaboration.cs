@@ -10,6 +10,7 @@ namespace Lab1Part3.Pages.DataClasses
     {
 
         public int CollabID { get; set; }
+        
         public String TeamName { get; set; }
 
         public String NotesAndInformation { get; set; }

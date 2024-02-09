@@ -13,13 +13,8 @@ namespace Lab1Part3.Pages.DataClasses
       
         public int CollabID { get; set; }
 
-        [ForeignKey("CollabID")]
-        public Collaboration Collaboration { get; set; }
+        public int DataID { get; set; }
 
-        public string DataName { get; set; }
-
-        [ForeignKey("DataName")]
-        public DataFile DataFile { get; set; }
 
     }
 }
