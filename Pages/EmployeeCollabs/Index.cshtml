@@ -1,0 +1,47 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab1Part3.Pages.DB
+@model Lab1Part3.Pages.EmployeeCollabs.IndexModel
+@{
+
+    <h2 class="h2">Employee Collaboration:</h2>
+    <table class="table table-bordered table-responsive table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Collaboration Team:</th>
+                <th>Employee Username:</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                // @ Symbol for a verbatim / multi-line string
+                string sqlQuery = @"select Collaboration.TeamName, Employee.Username
+        from Collaboration
+        INNER JOIN EmployeeCollab
+        on EmployeeCollab.CollabID = Collaboration.CollabID
+        INNER JOIN Employee
+        on Employee.EmployeeID = EmployeeCollab.EmployeeID;
+        ";
+
+                SqlDataReader EmployeeCollabReader = DBClass.GeneralReaderQuery(sqlQuery);
+
+                while (EmployeeCollabReader.Read())
+                {
+                    <tr>
+                        <td>@EmployeeCollabReader["TeamName"]</td>
+                        <td>@EmployeeCollabReader["Username"]</td>
+                        
+                    </tr>
+                }
+
+                DBClass.Lab1DBConnection.Close();
+
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" asp-page="EmployeeCollab">Record a Purchase -></a>
+
+
+}
