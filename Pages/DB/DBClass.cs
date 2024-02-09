@@ -204,7 +204,27 @@ namespace Lab1Part3.Pages.DB
 
         }
 
-        
+        //Inserts one new Plan Record into the DB
+        public static void InsertPlan(Plans p)
+        {
+            String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated,AnalysisUsed) VALUES ('";
+            sqlQuery += p.PlanName + "','";
+            sqlQuery += p.PlanConcept + "','";
+            sqlQuery += p.DateCreated + "','";
+            sqlQuery += p.AnalysisUsed + "')";
+
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
+
+            cmdTableRead.ExecuteNonQuery();
+
+
+        }
+
+
     }
 }
 

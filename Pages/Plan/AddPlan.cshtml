@@ -1,0 +1,27 @@
+﻿@page
+@model Lab1Part3.Pages.Plan.AddPlanModel
+@{
+    ViewData["Title"] = "AddPlan";
+}
+
+<form asp-page="AddKnowledgeItem">
+    <input type="text" asp-for="NewPlan.PlanName" placeholder="Plan Name" />
+    <span asp-validation-for="NewPlan.PlanName" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewPlan.PlanConcept" placeholder="Concept" />
+    <span asp-validation-for="NewPlan.PlanConcept" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewPlan.DateCreated" placeholder="Date Created" />
+    <span asp-validation-for="NewPlan.DateCreated" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewPlan.AnalysisUsed" placeholder="Analysis Used" />
+    <span asp-validation-for="NewPlan.AnalysisUsed" class="text-danger"></span>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-secondary">Save</button>
+    <button asp-page="AddPlan" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <br />
+    <br />
+    <a asp-page="/Plan/AddPlan">Cancel</a>
+
+</form>
