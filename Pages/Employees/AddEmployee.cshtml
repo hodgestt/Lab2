@@ -6,24 +6,34 @@
 }
     <form asp-page="AddEmployee">
         <input type="text" asp-for="NewEmployee.FirstName" placeholder="First Name" />
+        <span asp-validation-for="NewEmployee.FirstName" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.LastName" placeholder="Last Name" />
+    <span asp-validation-for="NewEmployee.LastName" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.Email" placeholder="Email" />
+    <span asp-validation-for="NewEmployee.Email" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.Phone" placeholder="Phone" />
+    <span asp-validation-for="NewEmployee.Phone" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.Street" placeholder="Street" />
+    <span asp-validation-for="NewEmployee.Street" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.City" placeholder="City" />
+    <span asp-validation-for="NewEmployee.City" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.State" placeholder="State" />
+    <span asp-validation-for="NewEmployee.State" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.Zip" placeholder="Zip" />
+    <span asp-validation-for="NewEmployee.Zip" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.UserName" placeholder="UserName" />
+    <span asp-validation-for="NewEmployee.UserName" class="text-danger"></span>
         <br />
         <input type="text" asp-for="NewEmployee.Password" placeholder="Password" />
+    <span asp-validation-for="NewEmployee.Password" class="text-danger"></span>
         <br />
         <br />
         <button type="submit" class="btn btn-success">Save </button>
