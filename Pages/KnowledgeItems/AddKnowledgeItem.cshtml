@@ -8,20 +8,25 @@
 }
 <form asp-page="AddKnowledgeItem">
     <input type="text" asp-for="NewKnowledgeItem.Name" placeholder="Name" />
+    <span asp-validation-for="NewKnowledgeItem.Name" class="text-danger"></span>
     <br />
     <input type="text" asp-for="NewKnowledgeItem.Subject" placeholder="Subject" />
+    <span asp-validation-for="NewKnowledgeItem.Subject" class="text-danger"></span>
     <br />
     <input type="text" asp-for="NewKnowledgeItem.Category" placeholder="Category" />
+    <span asp-validation-for="NewKnowledgeItem.Category" class="text-danger"></span>
     <br />
     <input type="text" asp-for="NewKnowledgeItem.Information" placeholder="Information" />
+    <span asp-validation-for="NewKnowledgeItem.Information" class="text-danger"></span>
     <br />
-    <input type="text" asp-for="NewKnowledgeItem.KnowledgeDateTime" placeholder="DD/MM/YY-00:00" />
-    <br />
-    <br />
-    <button type="submit" class="btn btn-success">Save</button>
-    <button asp-page="AddKnowledgeItem" asp-page-handler="PopulateHandler" class="btn btn-secondary"formnovalidate>Populate</button>
+    <input type="text" asp-for="NewKnowledgeItem.KnowledgeDateTime" placeholder="Date-Time" />
+    <span asp-validation-for="NewKnowledgeItem.KnowledgeDateTime" class="text-danger"></span>
     <br />
     <br />
-    <a asp-page="/KnowledgeItems/Index">Cancel</a>
+    <button type="submit" class="btn btn-secondary">Save</button>
+    <button asp-page="AddKnowledgeItem" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <br />
+    <br />
+    <a asp-page="/KnowledgeItems/AddKnowledgeItem">Cancel</a>
 
 </form>
