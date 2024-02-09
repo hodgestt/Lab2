@@ -1,0 +1,27 @@
+﻿@page
+@model Lab1Part3.Pages.Collaborations.CollaborationsPageModel
+@{
+    ViewData["Title"] = "Collaborations";
+}
+
+<h1 class="display-4">Team Members</h1>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>CollabID</th>
+            <th>NotesAndInformation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var emp in Model.CollaborationTable)
+            {
+                <tr>
+                    <td class="text-danger">@emp.CollabID</td>
+                    <td>@emp.NotesAndInformation</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

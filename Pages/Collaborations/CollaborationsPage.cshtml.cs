@@ -11,9 +11,9 @@ namespace Lab1Part3.Pages.Collaborations
         public List<Collaboration> CollaborationTable { get; set; }
 
         public CollaborationsPageModel()
-          {
+        {
             CollaborationTable = new List<Collaboration>();
-          }
+        }
 
         public void OnGet()
         {
@@ -35,4 +35,3 @@ namespace Lab1Part3.Pages.Collaborations
         }
     }
 }
-

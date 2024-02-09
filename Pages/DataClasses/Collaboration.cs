@@ -1,7 +1,8 @@
-﻿//Jessica Shamloo
-
-
+﻿using Lab1Part3.Pages.DataClasses;
+using Lab1Part3.Pages.DB;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 
 namespace Lab1Part3.Pages.DataClasses
 {
@@ -12,9 +13,10 @@ namespace Lab1Part3.Pages.DataClasses
 
         //add [Required] or [BindProperty]? 
         //I dont think soo?? nothings coming from an intake form.
-        public String NotesAndInformation { get; set; }
-        
+        public int CollabID { get; set; }
+
+        public String? NotesAndInformation { get; set; }
+
 
     }
 }
-
