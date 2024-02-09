@@ -4,7 +4,7 @@
     ViewData["Title"] = "AddPlan";
 }
 
-<form asp-page="AddKnowledgeItem">
+<form asp-page="AddPlan">
     <input type="text" asp-for="NewPlan.PlanName" placeholder="Plan Name" />
     <span asp-validation-for="NewPlan.PlanName" class="text-danger"></span>
     <br />
@@ -22,6 +22,8 @@
     <button asp-page="AddPlan" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
     <br />
     <br />
-    <a asp-page="/Plan/AddPlan">Cancel</a>
+    <a asp-page="/Plan/AddPlan">Clear</a>
+    &nbsp; &nbsp;
+    <a asp-page="/Plan/Index">Cancel</a>
 
 </form>
