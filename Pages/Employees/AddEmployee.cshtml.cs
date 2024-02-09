@@ -19,7 +19,7 @@ namespace Lab1Part3.Pages.Employees
 
         public IActionResult OnPost()
         {
-            if (NewEmployee.FirstName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null)
+            if (NewEmployee.FirstName != null & NewEmployee.LastName != null & NewEmployee.Email != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null)
             {
                 DBClass.InsertEmployee(NewEmployee);
                 DBClass.Lab1DBConnection.Close();
