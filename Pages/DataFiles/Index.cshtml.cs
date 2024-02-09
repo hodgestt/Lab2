@@ -23,7 +23,7 @@ namespace Lab1Part3.Pages.DataFiles
             {
                 DataTable.Add(new DataFile
                 {
-
+                    DataID = Int32.Parse(TableReader["DataID"].ToString()),
                     DataName = TableReader["DataName"].ToString(),
                     DataLocation = TableReader["DataLocation"].ToString(),
                     DataDescription = TableReader["DataDescription"].ToString(),

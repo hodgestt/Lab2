@@ -24,7 +24,7 @@ namespace Lab1Part3.Pages.Plan
             {
                 PlansTable.Add(new Plans
                 {
-
+                    PlanID = Int32.Parse(TableReader["PlanID"].ToString()),
                     PlanName = TableReader["PlanName"].ToString(),
                     PlanConcept = TableReader["PlanConcept"].ToString(),
                     DateCreated = TableReader["DateCreated"].ToString(),

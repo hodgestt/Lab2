@@ -153,6 +153,8 @@ namespace Lab1Part3.Pages.DB
             cmdInsert.Connection.Open();
             cmdInsert.ExecuteNonQuery();
         }
+       
+
 
 
         //Inserts one new Employee Record into the DB

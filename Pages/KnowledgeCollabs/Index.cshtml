@@ -21,8 +21,8 @@
         from Collaboration
         INNER JOIN KnowledgeCollab
         on KnowledgeCollab.CollabID = Collaboration.CollabID
-        INNER JOIN Knowledge
-        on Knowledge.KnowledgeId = KnowledgeCollab.KnowledgeID;
+        LEFT JOIN Knowledge
+        on Knowledge.KnowledgeId = KnowledgeCollab.KnowledgeId;
         ";
 
                 SqlDataReader KnowledgeCollabReader = DBClass.GeneralReaderQuery(sqlQuery);
@@ -42,7 +42,7 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" asp-page="NewEmployeeCollab">Create a New Team -></a>
+    <a class="btn btn-primary" asp-page="NewKnowledgeCollab">Move a Knowledge Item -></a>
 
 
 }
