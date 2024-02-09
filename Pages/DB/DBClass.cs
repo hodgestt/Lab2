@@ -17,15 +17,111 @@ namespace Lab1Part3.Pages.DB
         private static readonly String? Lab1DBConnString = "Server=Localhost;Database=Lab1;Trusted_Connection=True";
        
         //Basic Table Reader 
-        public static SqlDataReader TableReader()
+        public static SqlDataReader EmployeeReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab1DBConnection;
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
             cmdTableRead.CommandText =
-                "SELECT * FROM Employee; SELECT * FROM DataCollab; SELECT * FROM DataFile; SELECT * FROM KnowledgeItem;" +
-                "SELECT * FROM Collaboration; SELECT * FROM EmployeeCollab; SELECT * FROM KnowledgeCollab; SELECT * FROM Chat; " +
-                "SELECT * FROM Plans; SELECT * FROM PlanItem;";
+                "SELECT * FROM Employee;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static SqlDataReader DataCollabReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM DataCollab; ";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static SqlDataReader DataFileReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM DataFile;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+         }
+        public static SqlDataReader EmployeeCollabReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM EmployeeCollab;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static SqlDataReader KnowledgeItemReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM KnowledgeItem;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static SqlDataReader PlanItemReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM PlanItem;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+        public static SqlDataReader PlansReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM Plans;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+
+        public static SqlDataReader CollabReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+
+                "SELECT * FROM Collaboration; ";
 
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 

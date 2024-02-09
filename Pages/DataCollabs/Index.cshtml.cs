@@ -18,7 +18,7 @@ namespace Lab1Part3.Pages.DataCollabs
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.DataCollabReader();
             while (TableReader.Read())
             {
                 DataCollabsTable.Add(new DataCollab

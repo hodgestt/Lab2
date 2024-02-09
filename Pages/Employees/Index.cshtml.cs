@@ -21,7 +21,7 @@ namespace Lab1Part3.Pages.Employees
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.EmployeeReader();
             while (TableReader.Read())
             {
                 EmployeeTable.Add(new Employee

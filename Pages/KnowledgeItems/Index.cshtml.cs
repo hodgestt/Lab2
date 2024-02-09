@@ -21,7 +21,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.KnowledgeItemReader();
             while (TableReader.Read())
             {
                 KnowledgeItemsTable.Add(new KnowledgeItem

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lab1Part3.Pages.DataClasses
 {
-    public class Plan
+    public class Plans
     {
         public int PlanID { get; set; }
         public String PlanName { get; set; }

@@ -18,7 +18,7 @@ namespace Lab1Part3.Pages.DataFiles
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.DataFileReader();
             while (TableReader.Read())
             {
                 DataTable.Add(new DataFile

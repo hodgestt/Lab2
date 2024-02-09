@@ -5,24 +5,24 @@ using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace Lab1Part3.Pages.Plans
+namespace Lab1Part3.Pages.Plan
 {
     public class IndexModel : PageModel
     {
 
-        public List<Plan> PlansTable { get; set; }
+        public List<Plans> PlansTable { get; set; }
 
         public IndexModel()
         {
-            PlansTable = new List<Plan>();
+            PlansTable = new List<Plans>();
         }
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.PlansReader();
             while (TableReader.Read())
             {
-                PlansTable.Add(new Plan
+                PlansTable.Add(new Plans
                 {
 
                     PlanName = TableReader["PlanName"].ToString(),

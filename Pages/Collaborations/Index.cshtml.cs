@@ -17,7 +17,7 @@ namespace Lab1Part3.Pages.Collaborations
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.CollabReader();
             while (TableReader.Read())
             {
                 CollaborationTable.Add(new Collaboration

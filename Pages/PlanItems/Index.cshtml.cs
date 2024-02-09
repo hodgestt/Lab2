@@ -18,7 +18,7 @@ namespace Lab1Part3.Pages.PlanItems
 
         public void OnGet()
         {
-            SqlDataReader TableReader = DBClass.TableReader();
+            SqlDataReader TableReader = DBClass.PlanItemReader();
             while (TableReader.Read())
             {
                 PlanItemsTable.Add(new PlanItem
