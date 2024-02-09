@@ -4,6 +4,8 @@ using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.Xml.Linq;
 
 namespace Lab1Part3.Pages.KnowledgeItems
 {
@@ -25,5 +27,10 @@ namespace Lab1Part3.Pages.KnowledgeItems
             return RedirectToPage("KnowledgeItems");
 
         }
+        
+
+
+
+
     }
 }
