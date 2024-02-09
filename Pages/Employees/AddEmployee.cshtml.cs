@@ -18,8 +18,26 @@ namespace Lab1Part3.Pages.Employees
         {
             DBClass.InsertEmployee(NewEmployee);
             DBClass.Lab1DBConnection.Close();
-            return RedirectToPage("AddEmployee");
+            return RedirectToPage("Index");
 
         }
+        
+        public IActionResult OnPostPopulateHandler()
+        {
+            ModelState.Clear();
+            NewEmployee.FirstName = "Test FirstName";
+            NewEmployee.LastName = "Test LastName";
+            NewEmployee.Email = "Test Email";
+            NewEmployee.Phone = "Test Phone";
+            NewEmployee.Street = "Test Street";
+            NewEmployee.City = "Test City";
+            NewEmployee.State = "Test State";
+            NewEmployee.Zip = "Test Zip";
+            NewEmployee.UserName = "Test UserName";
+            NewEmployee.Password = "Test Password";
+            return Page(); //Page method inherited from Page class
+        }
+
+
     }
 }

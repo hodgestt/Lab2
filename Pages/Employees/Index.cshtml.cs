@@ -3,6 +3,7 @@
 // "import statements"
 using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
@@ -26,7 +27,7 @@ namespace Lab1Part3.Pages.Employees
                 EmployeeTable.Add(new Employee
                 {
 
-                    EmployeeID = Int32.Parse(TableReader ["EmployeeID"].ToString()),
+                    EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString()),
                     FirstName = TableReader["FirstName"].ToString(),
                     LastName = TableReader["LastName"].ToString(),
                     Email = TableReader["Email"].ToString(),
@@ -40,9 +41,15 @@ namespace Lab1Part3.Pages.Employees
                 }
             );
             }
-        
+
             // Close your connection in DBClass
             DBClass.Lab1DBConnection.Close();
         }
+        
+
     }
+
 }
+        
+
+       
