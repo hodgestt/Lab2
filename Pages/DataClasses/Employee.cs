@@ -32,10 +32,10 @@ namespace Lab1Part3.Pages.DataClasses
         public String State { get; set; }
         [BindProperty]
         [Required]
-        public String? Zip { get; set;}
+        public String Zip { get; set;}
         [BindProperty]
         [Required]
-        public String? UserName { get; set; }
+        public String UserName { get; set; }
         [BindProperty]
         [Required]
         public String Password { get; set; }

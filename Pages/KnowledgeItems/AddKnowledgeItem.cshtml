@@ -6,7 +6,7 @@
 @{
     ViewData["Title"] = "AddKnowledgeItem";
 }
-<form asp-page="AddEmployee">
+<form asp-page="AddKnowledgeItem">
     <input type="text" asp-for="NewKnowledgeItem.Name" placeholder="Name" />
     <br />
     <input type="text" asp-for="NewKnowledgeItem.Subject" placeholder="Subject" />
@@ -20,6 +20,7 @@
     <br />
     <button type="submit" class="btn btn-secondary">Save</button>
     <button asp-page="AddKnowledgeItem" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <br />
     <br />
     <a asp-page="/KnowledgeItems/AddKnowledgeItem">Cancel</a>
 
