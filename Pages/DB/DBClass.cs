@@ -38,16 +38,15 @@ namespace Lab1Part3.Pages.DB
         public static void InsertEmployee(Employee e)
         {
             String sqlQuery = "INSERT INTO Employee(FirstName,LastName,Email,Phone,Street,City,State,Zip,UserName,Password) VALUES ('";
-            sqlQuery += e.FirstName + "',";
-            sqlQuery += e.LastName + "',";
-            sqlQuery += e.Email + "',";
-            sqlQuery += e.Phone + "',";
-            sqlQuery += e.Street + "',";
-            sqlQuery += e.City + "',";
-            sqlQuery += e.City + "',";
-            sqlQuery += e.State + "',";
-            sqlQuery += e.Zip+ "',";
-            sqlQuery += e.UserName + "',";
+            sqlQuery += e.FirstName + "','";
+            sqlQuery += e.LastName + "','";
+            sqlQuery += e.Email + "','";
+            sqlQuery += e.Phone + "','";
+            sqlQuery += e.Street + "','";
+            sqlQuery += e.City + "','";
+            sqlQuery += e.State + "','";
+            sqlQuery += e.Zip+ "','";
+            sqlQuery += e.UserName + "','";
             sqlQuery += e.Password + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();

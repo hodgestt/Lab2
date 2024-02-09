@@ -2,13 +2,16 @@ using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lab1Part3.Pages.Employees
 {
     public class AddEmployeeModel : PageModel
     {
         [BindProperty]
+        [Required]
         public Employee NewEmployee { get; set; }
+
 
         public void OnGet()
         {
@@ -16,10 +19,13 @@ namespace Lab1Part3.Pages.Employees
 
         public IActionResult OnPost()
         {
-            DBClass.InsertEmployee(NewEmployee);
-            DBClass.Lab1DBConnection.Close();
-            return RedirectToPage("Index");
-
+            if (NewEmployee.FirstName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null & NewEmployee.LastName != null)
+            {
+                DBClass.InsertEmployee(NewEmployee);
+                DBClass.Lab1DBConnection.Close();
+                return RedirectToPage("Index");
+            }
+            return Page();
         }
         
         public IActionResult OnPostPopulateHandler()
@@ -39,5 +45,14 @@ namespace Lab1Part3.Pages.Employees
         }
 
 
+
     }
 }
+
+//if (Username.Equals("user") && Password.Equals("12345"))
+//{
+//    return RedirectToPage("/Practice/UserLanding", new { username = Username, loginsuccess = true });
+//}
+
+//Message = "Login was unsuccesful";
+//return Page();
