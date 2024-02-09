@@ -24,7 +24,7 @@ namespace Lab1Part3.Pages.DB
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
             cmdTableRead.CommandText =
                 "SELECT * FROM Employee; SELECT * FROM DataCollab; SELECT * FROM DataFile; SELECT * FROM KnowledgeItem;" +
-                "SELECT * FROM Collaboration; SELECT * FROM EmployeeCollab; SELECT * FROM Chat; " +
+                "SELECT * FROM Collaboration; SELECT * FROM EmployeeCollab; SELECT * FROM KnowledgeCollab; SELECT * FROM Chat; " +
                 "SELECT * FROM Plans; SELECT * FROM PlanItem;";
 
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
