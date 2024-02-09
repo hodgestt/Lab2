@@ -1,0 +1,48 @@
+﻿@page
+@using System.Data.SqlClient
+@using Lab1Part3.Pages.DB
+@model Lab1Part3.Pages.KnowledgeCollabs.IndexModel
+@{
+    ViewData["Title"] = "KnowledgeCollabs";
+
+    <h2 class="h2">Knowledge Collaboration:</h2>
+    <table class="table table-bordered table-responsive table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Collaboration Team:</th>
+                <th>Knowledge Name:</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                // @ Symbol for a verbatim / multi-line string
+                string sqlQuery = @"select Collaboration.TeamName, Knowledge.Name
+        from Collaboration
+        INNER JOIN KnowledgeCollab
+        on KnowledgeCollab.CollabID = Collaboration.CollabID
+        INNER JOIN Knowledge
+        on Knowledge.KnowledgeId = KnowledgeCollab.KnowledgeID;
+        ";
+
+                SqlDataReader KnowledgeCollabReader = DBClass.GeneralReaderQuery(sqlQuery);
+
+                while (KnowledgeCollabReader.Read())
+                {
+                    <tr>
+                        <td>@KnowledgeCollabReader["TeamName"]</td>
+                        <td>@KnowledgeCollabReader["Name"]</td>
+
+                    </tr>
+                }
+
+                DBClass.Lab1DBConnection.Close();
+
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" asp-page="NewEmployeeCollab">Create a New Team -></a>
+
+
+}

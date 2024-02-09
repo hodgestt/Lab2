@@ -1,0 +1,20 @@
+﻿@page
+@model Lab1Part3.Pages.KnowledgeCollabs.NewKnowledgeCollabModel
+@{
+    ViewData["Title"] = "KnowledgeCollab";
+}
+
+<form asp-action="NewKnowledgeCollab">
+    <p>Choose Knowledge Item and their Team:</p>
+    <br />
+    <select asp-for="KnowledgeId" asp-items="Model.Knowledges">
+        <option value="">Choose a Knowledge Item</option>
+    </select>
+    <br />
+
+
+    <select asp-for="CollabID" asp-items="Model.CollabTeams">
+        <option value="">Choose a Team to Add</option>
+        </select>
+        <input type="submit" class="btn btn-primary" />
+        </form>
