@@ -9,8 +9,10 @@ namespace Lab1Part3.Pages.DataClasses
     public class Employee
     {
         //? means this data field can contain a blank/null
-        public int EmployeeID { get; set; }
       
+        public int EmployeeID { get; set; }
+
+  
         public String FirstName { get; set; }
         
         public String LastName { get; set; }

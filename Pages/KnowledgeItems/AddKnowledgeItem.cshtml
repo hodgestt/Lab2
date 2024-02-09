@@ -15,13 +15,13 @@
     <br />
     <input type="text" asp-for="NewKnowledgeItem.Information" placeholder="Information" />
     <br />
-    <input type="text" asp-for="NewKnowledgeItem.KnowledgeDateTime" placeholder="Date-Time" />
+    <input type="text" asp-for="NewKnowledgeItem.KnowledgeDateTime" placeholder="DD/MM/YY-00:00" />
     <br />
     <br />
-    <button type="submit" class="btn btn-secondary">Save</button>
-    <button asp-page="AddKnowledgeItem" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <button type="submit" class="btn btn-success">Save</button>
+    <button asp-page="AddKnowledgeItem" asp-page-handler="PopulateHandler" class="btn btn-secondary"formnovalidate>Populate</button>
     <br />
     <br />
-    <a asp-page="/KnowledgeItems/AddKnowledgeItem">Cancel</a>
+    <a asp-page="/KnowledgeItems/Index">Cancel</a>
 
 </form>

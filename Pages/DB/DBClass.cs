@@ -33,6 +33,21 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
+        //General query reader for inner joins + associative tables
+        public static SqlDataReader GeneralReaderQuery(string sqlQuery)
+        {
+
+            SqlCommand cmdRead = new SqlCommand();
+            cmdRead.Connection = Lab1DBConnection;
+            cmdRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdRead.CommandText = sqlQuery;
+            cmdRead.Connection.Open();
+            SqlDataReader tempReader = cmdRead.ExecuteReader();
+
+            return tempReader;
+
+        }
+
 
         //Inserts one new Employee Record into the DB
         public static void InsertEmployee(Employee e)
