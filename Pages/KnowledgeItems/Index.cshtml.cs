@@ -22,7 +22,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
             {
                 KnowledgeItemsTable.Add(new KnowledgeItem
                 {
-                    KnowledgeId = Int32.Parse(TableReader["KnowledgeID"].ToString()),
+                    KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
                     Name = TableReader["Name"].ToString(),
                     Subject = TableReader["Subject"].ToString(),
                     Category = TableReader["Category"].ToString(),

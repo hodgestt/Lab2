@@ -22,7 +22,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
         {
             DBClass.InsertKnowledgeItem(NewKnowledgeItem);
             DBClass.Lab1DBConnection.Close();
-            return RedirectToPage("Add Knowledge Item");
+            return RedirectToPage("KnowledgeItems");
 
         }
     }
