@@ -14,23 +14,18 @@ namespace Lab1Part3.Pages.DataClasses
     public class KnowledgeItem
     {
         public int KnowledgeId { get; set; }
-        [BindProperty]
-        [Required]
+        
         public String Name { get; set;}
-        [BindProperty]
-        [Required]
+        
         public String Subject { get; set;}
-        [BindProperty]
-        [Required]
+        
         public String Category { get; set;}
-        [BindProperty]
-        [Required]
+        
         public String Information { get; set;}
-        [BindProperty]
-        [Required]
+        
         public String KnowledgeDateTime { get; set;} 
 
     }
 
-    }
+}
 
