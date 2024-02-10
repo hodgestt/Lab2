@@ -19,7 +19,7 @@ namespace Lab1Part3.Pages.Employees
 
         public IActionResult OnPost()
         {
-            if (NewEmployee.FirstName != null & NewEmployee.LastName != null & NewEmployee.Email != null & NewEmployee.Phone != null & NewEmployee.Street != null & NewEmployee.City != null & NewEmployee.State != null & NewEmployee.Zip != null & NewEmployee.UserName != null & NewEmployee.Password != null)
+            if (NewEmployee.FirstName != "Test FirstName" & NewEmployee.LastName != null & NewEmployee.Email != null & NewEmployee.Phone != null & NewEmployee.Street != null & NewEmployee.City != null & NewEmployee.State != null & NewEmployee.Zip != null & NewEmployee.UserName != null & NewEmployee.Password != null)
             {
                 DBClass.InsertEmployee(NewEmployee);
                 DBClass.Lab1DBConnection.Close();
@@ -49,10 +49,3 @@ namespace Lab1Part3.Pages.Employees
     }
 }
 
-//if (Username.Equals("user") && Password.Equals("12345"))
-//{
-//    return RedirectToPage("/Practice/UserLanding", new { username = Username, loginsuccess = true });
-//}
-
-//Message = "Login was unsuccesful";
-//return Page();

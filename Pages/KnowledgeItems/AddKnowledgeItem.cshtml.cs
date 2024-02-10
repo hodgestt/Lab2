@@ -24,7 +24,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
 
         public IActionResult OnPost()
         {
-            if (NewKnowledgeItem.Name != null & NewKnowledgeItem.Subject != null & NewKnowledgeItem.Category != null & NewKnowledgeItem.Information != null & NewKnowledgeItem.KnowledgeDateTime != null )
+            if (NewKnowledgeItem.Name != "Test Name" & NewKnowledgeItem.Subject != null & NewKnowledgeItem.Category != null & NewKnowledgeItem.Information != null & NewKnowledgeItem.KnowledgeDateTime != null )
             {
                 DBClass.InsertKnowledgeItem(NewKnowledgeItem);
                 DBClass.Lab1DBConnection.Close();

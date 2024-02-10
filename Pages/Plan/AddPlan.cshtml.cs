@@ -20,7 +20,7 @@ namespace Lab1Part3.Pages.Plan
 
         public IActionResult OnPost()
         {
-            if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null & NewPlan.AnalysisUsed != null) { 
+            if (NewPlan.PlanName != "Test Plan Name" & NewPlan.PlanConcept != null & NewPlan.DateCreated != null & NewPlan.AnalysisUsed != null) { 
                 DBClass.InsertPlan(NewPlan);
                 DBClass.Lab1DBConnection.Close();
                 return RedirectToPage("Index");
