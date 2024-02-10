@@ -31,6 +31,32 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
+
+        public static SqlDataReader SingleKnowledgeReader(int KnowledgeId)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = new SqlConnection();
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = "SELECT Name FROM KnowledgeItem WHERE KnowledgeId = " + KnowledgeId;
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static SqlDataReader SinglePlanReader(int PlanID)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = new SqlConnection();
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = "SELECT PlanName FROM Plans WHERE PlanID = " + PlanID;
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+
         public static SqlDataReader DataCollabReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();

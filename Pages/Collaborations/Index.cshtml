@@ -83,30 +83,4 @@
 
     </thead>
     <tbody>
-        @{
-            // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"select Collaboration.TeamName, Employee.FirstName, Employee.LastName
-        from Collaboration
-        INNER JOIN EmployeeCollab
-        on EmployeeCollab.CollabID = Collaboration.CollabID
-        INNER JOIN Employee
-        on Employee.EmployeeID = EmployeeCollab.EmployeeID;
-        ";
-
-            SqlDataReader EmployeeCollabReader = DBClass.GeneralReaderQuery(sqlQuery);
-
-            while (EmployeeCollabReader.Read())
-            {
-                <tr>
-                    <td>@EmployeeCollabReader["FirstName"]</td>
-                    <td>@EmployeeCollabReader["LastName"]</td>
-                </tr>
-            }
-
-            DBClass.Lab1DBConnection.Close();
-
-        }
-    </tbody>
-</table>
-<br />
-
+       

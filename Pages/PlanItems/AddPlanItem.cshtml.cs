@@ -24,17 +24,17 @@ namespace Lab1Part3.Pages.PlanItems
         public void OnGet()
         {
             // Populate the Plans SELECT control
-            SqlDataReader PlansReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
+        //    SqlDataReader PlansReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
 
-            PlansTable = new List<SelectListItem>();
+        //    PlansTable = new List<SelectListItem>();
 
-            while (PlansReader.Read())
-            {
-                PlansTable.Add(
-                    new SelectListItem(PlansReader["Name"].ToString()));
-            }
+        //    while (PlansReader.Read())
+        //    {
+        //        PlansTable.Add(
+        //            new SelectListItem(PlansReader["Name"].ToString()));
+        //    }
 
-            DBClass.Lab1DBConnection.Close();
+        //    DBClass.Lab1DBConnection.Close();
         }
 
         public IActionResult OnPost()
