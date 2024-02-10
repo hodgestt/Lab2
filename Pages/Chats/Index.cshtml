@@ -1,4 +1,50 @@
-﻿@page
+﻿@* Nick Patterson & Jessica Shamloo *@
+@page
+@using System.Data.SqlClient
+@using Lab1Part3.Pages.DB
 @model Lab1Part3.Pages.Chats.IndexModel
 @{
+    ViewData["Title"] = "Chats";
 }
+<h2>Chats</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Chat ID</th>
+            <th>Chat Message</th>
+            <th>Chat DateTime</th>
+            <th>Collab ID</th>
+            <th>Employee ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            // @ Symbol for a verbatim / multi-line string
+            string sqlQuery = @"select Chat.ChatID, Chat.ChatMessage, Chat.ChatDateTime, Employee.EmployeeID, Collaboration.CollabID
+        from Employee
+        INNER JOIN Chat
+        on Chat.EmployeeID = Employee.EmployeeID
+        LEFT JOIN Collaboration
+        on Collaboration.CollabID = Chat.CollabID;
+        ";
+
+            SqlDataReader ChatReader = DBClass.GeneralReaderQuery(sqlQuery);
+
+            while (ChatReader.Read())
+            {
+                <tr>
+                    <td class="text-danger">@ChatReader["ChatID"]</td>
+                    <td>@ChatReader["ChatMessage"]</td>
+                    <td>@ChatReader["ChatDateTime"]</td>
+                    <td>@ChatReader["CollabID"]</td>
+                    <td>@ChatReader["EmployeeID"]</td>
+                </tr>
+            }
+
+            DBClass.Lab1DBConnection.Close();
+        }
+
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-page="AddChat">Send Chat -></a>
