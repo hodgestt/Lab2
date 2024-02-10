@@ -13,13 +13,13 @@
             <th>Plan ItemID</th>
             <th>Plan Item Description</th>
             <th>Steps Completed</th>
-            <th>Plan ID</th>
+            <th>Plan Name</th>
         </tr>
     </thead>
     <tbody>
         @{
             // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"select PlanItem.PlanItemID, PlanItem.PlanItemDescription, PlanItem.StepsCompleted, Plans.PlanID
+            string sqlQuery = @"select PlanItem.PlanItemID, PlanItem.PlanItemDescription, PlanItem.StepsCompleted, Plans.PlanName
         from Plans
         INNER JOIN PlanItem
         on PlanItem.PlanID = Plans.PlanID;
@@ -33,7 +33,7 @@
                     <td class="text-danger">@PlanItemReader["PlanItemID"]</td>
                     <td>@PlanItemReader["PlanItemDescription"]</td>
                     <td>@PlanItemReader["StepsCompleted"]</td>
-                    <td>@PlanItemReader["PlanID"]</td>
+                    <td>@PlanItemReader["PlanName"]</td>
                 </tr>
             }
 

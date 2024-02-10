@@ -10,6 +10,7 @@ namespace Lab1Part3.Pages.DataClasses
         public String PlanConcept { get; set; }
         public String DateCreated { get; set; }
         public String AnalysisUsed { get; set; }
+        public int CollabID { get; set; }
 
         
     }

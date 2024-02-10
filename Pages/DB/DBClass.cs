@@ -112,8 +112,7 @@ namespace Lab1Part3.Pages.DB
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
-
-
+       
         public static SqlDataReader CollabReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();

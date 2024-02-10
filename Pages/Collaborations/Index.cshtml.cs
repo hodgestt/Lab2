@@ -23,7 +23,7 @@ namespace Lab1Part3.Pages.Collaborations
                 CollaborationTable.Add(new Collaboration
                 {
                     CollabID = int.Parse(TableReader["CollabID"].ToString()),
-                    TeamName = TableReader["NotesAndInformation"].ToString(),
+                    TeamName = TableReader["TeamName"].ToString(),
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 }
                 );

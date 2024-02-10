@@ -3,12 +3,11 @@
 @{
     ViewData["Title"] = "Collaborations";
 }
+<h2 class="h2">Collaboration Spaces</h2>
 
-<h1 class="display-4">Team Members</h1>
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
-            <th>CollabID</th>
             <th>TeamName</th>
             <th>NotesAndInformation</th>
         </tr>
@@ -18,8 +17,8 @@
             foreach (var emp in Model.CollaborationTable)
             {
                 <tr>
-                    <td class="text-danger">@emp.CollabID</td>
-                    <td>@emp.TeamName</td>
+                    
+                    <td class="text-danger">@emp.TeamName</td>
                     <td>@emp.NotesAndInformation</td>
                 </tr>
             }
