@@ -32,12 +32,12 @@ namespace Lab1Part3.Pages.DB
         }
 
 
-        public static SqlDataReader SingleKnowledgeReader(int KnowledgeId)
+        public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
         {
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = new SqlConnection();
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText = "SELECT Name FROM KnowledgeItem WHERE KnowledgeId = " + KnowledgeId;
+            cmdTableRead.CommandText = "SELECT Name FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE EmployeeID = " + EmployeeID;
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
