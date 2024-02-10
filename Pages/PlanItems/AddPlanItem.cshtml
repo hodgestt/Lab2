@@ -1,0 +1,23 @@
+﻿@page
+@model Lab1Part3.Pages.PlanItems.AddPlanItemModel
+@{
+    ViewData["Title"] = "AddPlanItem";
+}
+
+<form asp-page="AddPlanItem">
+    <input type="text" asp-for="NewPlanItem.PlanItemDescription" placeholder="Item Description" />
+    <span asp-validation-for="NewPlanItem.PlanItemDescription" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewPlanItem.StepsCompleted" placeholder="Steps Completed" />
+    <span asp-validation-for="NewPlanItem.StepsCompleted" class="text-danger"></span>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-success">Save</button>
+    <button asp-page="AddPlanItem" asp-page-handler="PopulateHandler" class="btn btn-secondary" formnovalidate>Populate</button>
+    <br />
+    <br />
+    <a asp-page="/PlanItems/AddPlanItem">Clear</a>
+    &nbsp; &nbsp;
+    <a asp-page="/PlanItems/Index">Cancel</a>
+
+</form>

@@ -224,7 +224,26 @@ namespace Lab1Part3.Pages.DB
 
         }
 
-        //Inserts one new Plan Record into the DB
+        //Inserts one new PlanItem Record into the DB
+        public static void InsertPlanItem(PlanItem p)
+        {
+            String sqlQuery = "INSERT INTO PlanItem(PlanItemDescription,StepsCompleted) VALUES ('";
+            sqlQuery += p.PlanItemDescription + "','";
+            sqlQuery += p.StepsCompleted + "')";
+           
+
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
+
+            cmdTableRead.ExecuteNonQuery();
+
+
+        }
+
+        //Inserts a data file into the DB
         public static void InsertDataFile(DataFile d)
         {
             String sqlQuery = "INSERT INTO DataFile(DataName,DataLocation,DataDescription) VALUES ('";

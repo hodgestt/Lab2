@@ -1,28 +1,47 @@
-﻿@* Nick Patterson *@
+﻿@* Nick Patterson & Jessica Shamloo *@
 @page
+@using System.Data.SqlClient
+@using Lab1Part3.Pages.DB
 @model Lab1Part3.Pages.PlanItems.IndexModel
 @{
     ViewData["Title"] = "PlanItems";
 }
-<h2>Employee View</h2>
+<h2>Plan Items</h2>
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
-            <th>PlanItemID</th>
-            <th>PlanItemDescription</th>
-            <th>StepsCompleted</th>
+            <th>Plan ItemID</th>
+            <th>Plan Item Description</th>
+            <th>Steps Completed</th>
+            <th>Plan ID</th>
         </tr>
     </thead>
     <tbody>
         @{
-            foreach (var dta in Model.PlanItemsTable)
+            // @ Symbol for a verbatim / multi-line string
+            string sqlQuery = @"select PlanItem.PlanItemID, PlanItem.PlanItemDescription, PlanItem.StepsCompleted, Plans.PlanID
+        from Plans
+        INNER JOIN PlanItem
+        on PlanItem.PlanID = Plans.PlanID;
+        ";
+            
+            SqlDataReader PlanItemReader = DBClass.GeneralReaderQuery(sqlQuery);
+
+            while (PlanItemReader.Read())
             {
                 <tr>
-                    <td class="text-danger">@dta.PlanItemID</td>
-                    <td>@dta.PlanItemDescription</td>
-                    <td>@dta.StepsCompleted</td>
+                    <td class="text-danger">@PlanItemReader["PlanItemID"]</td>
+                    <td>@PlanItemReader["PlanItemDescription"]</td>
+                    <td>@PlanItemReader["StepsCompleted"]</td>
+                    <td>@PlanItemReader["PlanID"]</td>
                 </tr>
             }
+
+        DBClass.Lab1DBConnection.Close();
         }
+
     </tbody>
 </table>
+
+<a class="btn btn-primary" asp-page="AddPlanItem">Create a New Plan Item -></a>
+

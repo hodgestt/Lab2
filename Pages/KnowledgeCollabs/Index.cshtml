@@ -17,12 +17,12 @@
         <tbody>
             @{
                 // @ Symbol for a verbatim / multi-line string
-                string sqlQuery = @"select Collaboration.TeamName, Knowledge.Name
+                string sqlQuery = @"select Collaboration.TeamName, KnowledgeItem.Name
         from Collaboration
         INNER JOIN KnowledgeCollab
         on KnowledgeCollab.CollabID = Collaboration.CollabID
-        LEFT JOIN Knowledge
-        on Knowledge.KnowledgeId = KnowledgeCollab.KnowledgeId;
+        LEFT JOIN KnowledgeItem
+        on KnowledgeItem.KnowledgeId = KnowledgeCollab.KnowledgeId;
         ";
 
                 SqlDataReader KnowledgeCollabReader = DBClass.GeneralReaderQuery(sqlQuery);

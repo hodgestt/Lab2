@@ -9,9 +9,11 @@ namespace Lab1Part3.Pages.DataClasses
         
         public String ChatMessage { get; set; }
         
-        public String ChatLocation { get; set; }
-        
         public String ChatDateTime { get; set; }
         
+        public int CollabID { get; set; }
+
+        public int EmployeeID { get; set; }
+
     }
 }
