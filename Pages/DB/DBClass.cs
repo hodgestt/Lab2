@@ -224,6 +224,24 @@ namespace Lab1Part3.Pages.DB
 
         }
 
+        //Inserts one new Plan Record into the DB
+        public static void InsertDataFile(DataFile d)
+        {
+            String sqlQuery = "INSERT INTO DataFile(DataName,DataLocation,DataDescription) VALUES ('";
+            sqlQuery += d.DataName + "','";
+            sqlQuery += d.DataLocation + "','";
+            sqlQuery += d.DataDescription + "')";
+
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
+
+            cmdTableRead.ExecuteNonQuery();
+
+
+        }
 
     }
 }

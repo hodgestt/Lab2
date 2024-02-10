@@ -1,0 +1,26 @@
+﻿@page
+@model Lab1Part3.Pages.DataFiles.AddDataFileModel
+@{
+    ViewData["Title"] = "AddDataFile";
+}
+
+<form asp-page="AddDataFile">
+    <input type="text" asp-for="NewDataFile.DataName" placeholder="Data Name" />
+    <span asp-validation-for="NewDataFile.DataName" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewDataFile.DataLocation" placeholder="Location" />
+    <span asp-validation-for="NewDataFile.DataLocation" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewDataFile.DataDescription" placeholder="Description" />
+    <span asp-validation-for="NewDataFile.DataDescription" class="text-danger"></span>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-secondary">Save</button>
+    <button asp-page="AddDataFile" asp-page-handler="PopulateHandler" formnovalidate>Populate</button>
+    <br />
+    <br />
+    <a asp-page="/DataFiles/AddDataFile">Clear</a>
+    &nbsp; &nbsp;
+    <a asp-page="/DataFiles/Index">Cancel</a>
+
+</form>
