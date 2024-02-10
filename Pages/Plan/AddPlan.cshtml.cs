@@ -24,7 +24,7 @@ namespace Lab1Part3.Pages.Plan
             {
                 return RedirectToPage("Index");
             }
-            if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null & NewPlan.AnalysisUsed != null) { 
+            if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null) { 
                 DBClass.InsertPlan(NewPlan);
                 DBClass.Lab1DBConnection.Close();
                 return RedirectToPage("Index");
@@ -39,7 +39,6 @@ namespace Lab1Part3.Pages.Plan
             NewPlan.PlanName = "Test Plan Name";
             NewPlan.PlanConcept = "Test Concept";
             NewPlan.DateCreated = "Test Date";
-            NewPlan.AnalysisUsed = "Test Analysis Used";
             return Page(); //Page method inherited from Page class
         }
 

@@ -14,9 +14,6 @@
     <input type="text" asp-for="NewPlan.DateCreated" placeholder="Date Created" />
     <span asp-validation-for="NewPlan.DateCreated" class="text-danger"></span>
     <br />
-    <input type="text" asp-for="NewPlan.AnalysisUsed" placeholder="Analysis Used" />
-    <span asp-validation-for="NewPlan.AnalysisUsed" class="text-danger"></span>
-    <br />
     <br />
     <button type="submit" class="btn btn-secondary">Save</button>
     <button asp-page="AddPlan" asp-page-handler="PopulateHandler" class="btn btn-secondary" formnovalidate>Populate</button>

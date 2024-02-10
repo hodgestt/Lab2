@@ -209,8 +209,8 @@ namespace Lab1Part3.Pages.DB
             String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated,AnalysisUsed) VALUES ('";
             sqlQuery += p.PlanName + "','";
             sqlQuery += p.PlanConcept + "','";
-            sqlQuery += p.DateCreated + "','";
-            sqlQuery += p.AnalysisUsed + "')";
+            sqlQuery += p.DateCreated + "')";
+           
 
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab1DBConnection;
