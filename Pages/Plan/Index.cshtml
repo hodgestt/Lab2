@@ -13,7 +13,6 @@
             <th>PlanName</th>
             <th>PlanConcept</th>
             <th>DateCreated</th>
-            <th>AnalysisUsed</th>
         </tr>
     </thead>
     <tbody>
@@ -25,8 +24,9 @@
                 <td>@emp.PlanName</td>
                 <td>@emp.PlanConcept</td>
                 <td>@emp.DateCreated</td>
-                <td>@emp.AnalysisUsed</td>
-                
+                <td>
+                <a asp-page="/PlanItems/Index" class="btn btn-outline-primary" asp-route-planitemid="@emp.PlanID">View Plan Items -></a>
+                </td>
             </tr>
             }
         }
