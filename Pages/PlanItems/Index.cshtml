@@ -1,4 +1,6 @@
-﻿@* Nick Patterson & Jessica Shamloo *@
+﻿
+
+@* Nick Patterson & Jessica Shamloo *@
 @page
 @using System.Data.SqlClient
 @using Lab1Part3.Pages.DB
@@ -7,19 +9,20 @@
     ViewData["Title"] = "PlanItems";
 }
 <h2>Plan Items</h2>
+
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
-            <th>Plan ItemID</th>
+            <th>Plan Name</th>
             <th>Plan Item Description</th>
             <th>Steps Completed</th>
-            <th>Plan Name</th>
+            
         </tr>
     </thead>
     <tbody>
         @{
             // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"select PlanItem.PlanItemID, PlanItem.PlanItemDescription, PlanItem.StepsCompleted, Plans.PlanName
+            string sqlQuery = @"select Plans.PlanName, PlanItem.PlanItemDescription, PlanItem.StepsCompleted
         from Plans
         INNER JOIN PlanItem
         on PlanItem.PlanID = Plans.PlanID;
@@ -30,10 +33,10 @@
             while (PlanItemReader.Read())
             {
                 <tr>
-                    <td class="text-danger">@PlanItemReader["PlanItemID"]</td>
+                    <td class="text-danger">@PlanItemReader["PlanName"]</td>
                     <td>@PlanItemReader["PlanItemDescription"]</td>
                     <td>@PlanItemReader["StepsCompleted"]</td>
-                    <td>@PlanItemReader["PlanName"]</td>
+                   
                 </tr>
             }
 
@@ -43,5 +46,5 @@
     </tbody>
 </table>
 
-<a class="btn btn-primary" asp-page="AddPlanItem">Create a New Plan Item -></a>
+<a class="btn btn-primary" asp-page="AddPlanItem">Add a Plan Item -></a>
 

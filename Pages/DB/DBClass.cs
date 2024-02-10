@@ -1,4 +1,4 @@
-﻿//Jessica Shamloo, Thomas Hodges, & Nick Patterson
+﻿//Jessica Shamloo & Thomas Hodges
 
 using Lab1Part3.Pages.DataClasses;
 using Microsoft.AspNetCore.Mvc;
@@ -127,19 +127,6 @@ namespace Lab1Part3.Pages.DB
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
-        public static SqlDataReader ChatReader()
-        {
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText =
-                "SELECT * FROM Chat; ";
-
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
-
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
-            return tempReader;
-        }
 
         //General query reader for inner joins + associative tables
         public static SqlDataReader GeneralReaderQuery(string sqlQuery)
@@ -222,8 +209,8 @@ namespace Lab1Part3.Pages.DB
             String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated,AnalysisUsed) VALUES ('";
             sqlQuery += p.PlanName + "','";
             sqlQuery += p.PlanConcept + "','";
-            sqlQuery += p.DateCreated + "','";
-            //sqlQuery += p.AnalysisUsed + "')";
+            sqlQuery += p.DateCreated + "')";
+           
 
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab1DBConnection;
