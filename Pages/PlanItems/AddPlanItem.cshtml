@@ -19,5 +19,16 @@
     <a asp-page="/PlanItems/AddPlanItem">Clear</a>
     &nbsp; &nbsp;
     <a asp-page="/PlanItems/Index">Cancel</a>
+</form>
 
+<br/>
+<br/>
+
+<form asp-action="AddPlanItem">
+    <p>For which Plan is this Plan Item for? </p>
+    <br />
+    <select asp-for="PlanId" asp-items="Model.PlansTable">
+        <option value="">Choose a Knowledge Item</option>
+    </select>
+    <input type="submit" class="btn btn-primary" />
 </form>

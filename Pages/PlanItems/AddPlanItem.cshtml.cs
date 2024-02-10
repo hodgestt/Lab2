@@ -2,8 +2,10 @@ using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlClient;
 using System.Xml.Linq;
 
 namespace Lab1Part3.Pages.PlanItems
@@ -17,14 +19,27 @@ namespace Lab1Part3.Pages.PlanItems
         [BindProperty]//foreign key
         public int PlanID { get; set; }
 
+        public List<SelectListItem> PlansTable { get; set; }
 
         public void OnGet()
         {
+            // Populate the Plans SELECT control
+            SqlDataReader PlansReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
+
+            PlansTable = new List<SelectListItem>();
+
+            while (PlansReader.Read())
+            {
+                PlansTable.Add(
+                    new SelectListItem(PlansReader["Name"].ToString()));
+            }
+
+            DBClass.Lab1DBConnection.Close();
         }
 
         public IActionResult OnPost()
         {
-            if (NewPlanItem.PlanItemDescription == "Test PlanItem Description")
+            if (NewPlanItem.PlanItemDescription == "Test Description")
             {
                 return RedirectToPage("Index");
             }
@@ -35,14 +50,13 @@ namespace Lab1Part3.Pages.PlanItems
                 return RedirectToPage("Index");
             }
             return Page();
-
         }
 
         public IActionResult OnPostPopulateHandler()
         {
             ModelState.Clear();
-            NewPlanItem.PlanItemDescription = "Test PlanItem Description";
-            NewPlanItem.StepsCompleted= "Test Steps";
+            NewPlanItem.PlanItemDescription = "Test Description";
+            NewPlanItem.StepsCompleted = "Test Steps Completed";
             return Page(); //Page method inherited from Page class
         }
 
