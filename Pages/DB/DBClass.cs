@@ -1,4 +1,4 @@
-﻿//Jessica Shamloo & Thomas Hodges
+﻿//Jessica Shamloo, Thomas Hodges & Nick Patterson
 
 using Lab1Part3.Pages.DataClasses;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +30,32 @@ namespace Lab1Part3.Pages.DB
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
+
+
+        public static SqlDataReader SingleKnowledgeReader(int KnowledgeId)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = new SqlConnection();
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = "SELECT Name FROM KnowledgeItem WHERE KnowledgeId = " + KnowledgeId;
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static SqlDataReader SinglePlanReader(int PlanID)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = new SqlConnection();
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = "SELECT PlanName FROM Plans WHERE PlanID = " + PlanID;
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
 
         public static SqlDataReader DataCollabReader()
         {
@@ -121,6 +147,19 @@ namespace Lab1Part3.Pages.DB
             cmdTableRead.CommandText =
 
                 "SELECT * FROM Collaboration; ";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+        public static SqlDataReader ChatReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM Chat;";
 
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 
