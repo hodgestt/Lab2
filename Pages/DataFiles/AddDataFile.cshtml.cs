@@ -20,7 +20,10 @@ namespace Lab1Part3.Pages.DataFiles
 
         public IActionResult OnPost()
         {
-            if (NewDataFile.DataName != "Test Data Name" & NewDataFile.DataLocation != null & NewDataFile.DataDescription != null)
+            if (NewDataFile.DataName == "Test Data Name"){
+                return RedirectToPage("Index");
+            }
+            if (NewDataFile.DataName != null & NewDataFile.DataLocation != null & NewDataFile.DataDescription != null)
             {
                 DBClass.InsertDataFile(NewDataFile);
                 DBClass.Lab1DBConnection.Close();

@@ -19,21 +19,26 @@ namespace Lab1Part3.Pages.Employees
 
         public IActionResult OnPost()
         {
-            if (NewEmployee.FirstName != "Test FirstName" & NewEmployee.LastName != null & NewEmployee.Email != null & NewEmployee.Phone != null & NewEmployee.Street != null & NewEmployee.City != null & NewEmployee.State != null & NewEmployee.Zip != null & NewEmployee.UserName != null & NewEmployee.Password != null)
+            if (NewEmployee.FirstName == "Test FirstName"){
+                return RedirectToPage("Index");
+                }
+            if (NewEmployee.FirstName != null & NewEmployee.LastName != null & NewEmployee.Email != null & NewEmployee.Phone != null & NewEmployee.Street != null & NewEmployee.City != null & NewEmployee.State != null & NewEmployee.Zip != null & NewEmployee.UserName != null & NewEmployee.Password != null)
             {
                 DBClass.InsertEmployee(NewEmployee);
                 DBClass.Lab1DBConnection.Close();
                 return RedirectToPage("Index");
             }
             return Page();
+            
         }
+
         
         public IActionResult OnPostPopulateHandler()
         {
             ModelState.Clear();
             NewEmployee.FirstName = "Test FirstName";
             NewEmployee.LastName = "Test LastName";
-            NewEmployee.Email = "Test Email";
+            NewEmployee.Email = "Test@Email";
             NewEmployee.Phone = "Test Phone";
             NewEmployee.Street = "Test Street";
             NewEmployee.City = "Test City";
