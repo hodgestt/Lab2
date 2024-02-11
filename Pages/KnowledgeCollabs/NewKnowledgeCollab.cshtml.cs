@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Lab1Part3.Pages.KnowledgeCollabs
 {
-    public class NewKnowledgeCollabModel : PageModel
+    public class  NewKnowledgeCollabModel : PageModel
     {
         [BindProperty]
         public int KnowledgeId { get; set; }

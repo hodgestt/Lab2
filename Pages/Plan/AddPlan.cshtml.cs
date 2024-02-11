@@ -13,7 +13,6 @@ namespace Lab1Part3.Pages.Plan
         [Required]
         public Plans NewPlan { get; set; }
 
-
         public void OnGet()
         {
         }

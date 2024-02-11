@@ -29,10 +29,10 @@ namespace Lab1Part3.Pages.Plan
                     PlanConcept = TableReader["PlanConcept"].ToString(),
                     DateCreated = TableReader["DateCreated"].ToString()
                 }
-                
+
             );
             }
-        
+
             // Close your connection in DBClass
             DBClass.Lab1DBConnection.Close();
         }

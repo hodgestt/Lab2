@@ -44,12 +44,12 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
-        public static SqlDataReader SinglePlanReader(int PlanID)
+        public static SqlDataReader PlanItemReader(int PlanID)
         {
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = new SqlConnection();
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText = "SELECT PlanName FROM Plans WHERE PlanID = " + PlanID;
+            cmdTableRead.CommandText = "SELECT * FROM PlanItem WHERE PlanID = " + PlanID;
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
@@ -245,7 +245,7 @@ namespace Lab1Part3.Pages.DB
         //Inserts one new Plan Record into the DB
         public static void InsertPlan(Plans p)
         {
-            String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated,AnalysisUsed) VALUES ('";
+            String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated) VALUES ('";
             sqlQuery += p.PlanName + "','";
             sqlQuery += p.PlanConcept + "','";
             sqlQuery += p.DateCreated + "')";

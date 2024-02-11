@@ -1,3 +1,5 @@
+//Jessica Shamloo
+
 using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
@@ -12,29 +14,36 @@ namespace Lab1Part3.Pages.PlanItems
 {
     public class AddPlanItemModel : PageModel
     {
+        [BindProperty]//foreign key
+        public int PlanID { get; set; }
+
+        [BindProperty]
+        public String PlanItemDescription { get; set; }
+        [BindProperty] 
+        public String StepsCompleted { get; set; }
+
         [BindProperty]
         [Required]
         public PlanItem NewPlanItem { get; set; }
 
-        [BindProperty]//foreign key
-        public int PlanID { get; set; }
-
-        public List<SelectListItem> PlansTable { get; set; }
+        
+        public List<SelectListItem> PlanOptions { get; set; }
+        
 
         public void OnGet()
         {
-            // Populate the Plans SELECT control
-        //    SqlDataReader PlansReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
+            SqlDataReader PlanReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
+            
+            PlanOptions = new List<SelectListItem>();
 
-        //    PlansTable = new List<SelectListItem>();
+            while (PlanReader.Read())
+            {
+                PlanOptions.Add(
+                    new SelectListItem(
+                        PlanReader["PlanID"].ToString()));
+            }
 
-        //    while (PlansReader.Read())
-        //    {
-        //        PlansTable.Add(
-        //            new SelectListItem(PlansReader["Name"].ToString()));
-        //    }
-
-        //    DBClass.Lab1DBConnection.Close();
+            DBClass.Lab1DBConnection.Close(); 
         }
 
         public IActionResult OnPost()
@@ -43,9 +52,12 @@ namespace Lab1Part3.Pages.PlanItems
             {
                 return RedirectToPage("Index");
             }
-            if (NewPlanItem.PlanItemDescription != null & NewPlanItem.StepsCompleted != null)
+            if (NewPlanItem.PlanItemDescription != null & NewPlanItem.StepsCompleted != null & NewPlanItem.PlanID !=null)
             {
-                DBClass.InsertPlanItem(NewPlanItem);
+
+                string insertQuery = "INSERT INTO PlanItem (PlanID, PlanItemDescription, StepsCompleted) VALUES (";
+                insertQuery += PlanID + "," + PlanItemDescription + "," + StepsCompleted + ")";
+                DBClass.GeneralInsertQuery(insertQuery);
                 DBClass.Lab1DBConnection.Close();
                 return RedirectToPage("Index");
             }
@@ -55,9 +67,10 @@ namespace Lab1Part3.Pages.PlanItems
         public IActionResult OnPostPopulateHandler()
         {
             ModelState.Clear();
+            NewPlanItem.PlanID = 1;
             NewPlanItem.PlanItemDescription = "Test Description";
             NewPlanItem.StepsCompleted = "Test Steps Completed";
-            return Page(); //Page method inherited from Page class
+            return Page(); //will return the page items page without anything
         }
 
 
