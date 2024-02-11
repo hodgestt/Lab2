@@ -7,13 +7,13 @@
 <h2>Add a new Plan Item</h2>
 
 <br/>
-<form asp-action="AddPlanItem">
+<form asp-page-handler="AddPlanItem" method="post">
     <p>Choose a Plan to add to</p>
-    <br/>
     <select asp-for="NewPlanItem.PlanID" asp-items="Model.PlanOptions">
         <option value="">Choose a Plan</option>
+       
     </select>
-
+    <br />
     <input type="text" asp-for="NewPlanItem.PlanItemDescription" placeholder="Item Description" />
     <span asp-validation-for="NewPlanItem.PlanItemDescription" class="text-danger"></span>
     <br />
@@ -27,5 +27,5 @@
     <br />
     <a asp-page="/PlanItems/AddPlanItem">Clear</a>
     &nbsp; &nbsp;
-    <a asp-page="/Plan/Index">Cancel</a> 
+    <a asp-page="/PlanItems/Index">Cancel</a> 
 </form>
