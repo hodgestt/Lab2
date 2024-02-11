@@ -11,18 +11,22 @@ namespace Lab1Part3.Pages.Collaborations
     {
         public List<Collaboration> CollaborationTable { get; set; }
 
-        public List<SelectListItem> Knowledges { get; set; }
+        public List<KnowledgeItem> Knowledges { get; set; }
 
         public List<SelectListItem> EmployeeList { get; set; }
 
-        public int EmployeeID { get; set; }
+        [BindProperty]
+        public KnowledgeItem KnowledgeItemView { get; set; }
+
 
         public IndexModel()
         {
             CollaborationTable = new List<Collaboration>();
+            Knowledges = new List<KnowledgeItem>();
+            KnowledgeItemView = new KnowledgeItem();
         }
 
-        public void OnGet()
+        public void OnGet(int EmployeeID)
         {
             SqlDataReader TableReader = DBClass.CollabReader();
             while (TableReader.Read())
@@ -55,19 +59,33 @@ namespace Lab1Part3.Pages.Collaborations
             DBClass.Lab1DBConnection.Close();
 
 
+            SqlDataReader singleKnowledge = DBClass.SingleKnowledgeReader(EmployeeID);
+
+            while (singleKnowledge.Read())
+            {
+                KnowledgeItemView.EmployeeID = EmployeeID;
+                KnowledgeItemView.Name = singleKnowledge["Name"].ToString();
+            }
+
+            DBClass.Lab1DBConnection.Close();
+
+
+            SqlDataReader KnowledgeName = DBClass.KnowledgeItemReader();
+            while (KnowledgeName.Read())
+            {
+                Knowledges.Add(new KnowledgeItem
+                {
+                    KnowledgeId = int.Parse(KnowledgeName["KnowledgeId"].ToString()),
+                    Name = KnowledgeName["Name"].ToString(),
+                    EmployeeID = int.Parse(KnowledgeName["EmployeeID"].ToString())
+                }
+                );
+            }
 
         }
         public IActionResult OnPost()
         {
-            SqlDataReader KnowledgesReader = DBClass.GeneralReaderQuery("SELECT * FROM KnowledgeItem");
-            
-            while (KnowledgesReader.Read())
-            {
-                Knowledges.Add(
-                    new SelectListItem(
-                        KnowledgesReader["Name"].ToString(),
-                        KnowledgesReader["KnowledgeId"].ToString()));
-            }
+            DBClass.ViewKnowledge(KnowledgeItemView);
 
             DBClass.Lab1DBConnection.Close();
 

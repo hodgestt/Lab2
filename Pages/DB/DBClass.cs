@@ -37,7 +37,7 @@ namespace Lab1Part3.Pages.DB
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = new SqlConnection();
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText = "SELECT Name FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE EmployeeID = " + EmployeeID;
+            cmdTableRead.CommandText = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE EmployeeID = " + EmployeeID;
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
@@ -191,7 +191,19 @@ namespace Lab1Part3.Pages.DB
             cmdInsert.Connection.Open();
             cmdInsert.ExecuteNonQuery();
         }
-       
+
+        public static void ViewKnowledge(KnowledgeItem k)
+        {
+            String sqlQuery = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID";
+            sqlQuery += "Name='" + k.Name + "'," + "' WHERE EmployeeID=" + k.EmployeeID;
+            SqlCommand cmdProductRead = new SqlCommand();
+            cmdProductRead.Connection = Lab1DBConnection;
+            cmdProductRead.Connection.ConnectionString =
+            Lab1DBConnString;
+            cmdProductRead.CommandText = sqlQuery;
+            cmdProductRead.Connection.Open();
+            cmdProductRead.ExecuteNonQuery();
+        }
 
 
 

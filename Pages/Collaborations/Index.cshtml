@@ -64,7 +64,7 @@
 
 
     <h4 class="h4">Knowledge Library:</h4>
-    <form asp-action="NewKnowledgeCollab">
+    @*<form asp-action="NewKnowledgeCollab">
     <p>Choose Employee to View Their Knowledge Items:</p>
     <br />
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
@@ -72,15 +72,13 @@
     </select>
     <input type="submit" class="btn btn-primary" />
     </form>
-    <br />@* 
-<table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th></th>
-        </tr>
+    <br />*@
 
-    </thead>
-    <tbody>
-        *@
+    <form asp-page="Collaborations">
+    <input type="hidden" asp-for="@Model.KnowledgeItemView.EmployeeID" />
+    <label asp-for="@Model.KnowledgeItemView.Name /label>
+    <input type="text" asp-for="@Model.KnowledgeItemView.Name>
+    <br />
+    <input type="submit" class="btn btn-success" asp-page="Index"></label>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

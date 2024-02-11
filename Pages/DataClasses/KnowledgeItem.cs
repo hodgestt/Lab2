@@ -23,7 +23,9 @@ namespace Lab1Part3.Pages.DataClasses
         
         public String Information { get; set;}
         
-        public String KnowledgeDateTime { get; set;} 
+        public String KnowledgeDateTime { get; set;}
+
+        public int EmployeeID { get; set; }
 
     }
 
