@@ -30,21 +30,21 @@ namespace Lab1Part3.Pages.PlanItems
         public List<SelectListItem> PlanOptions { get; set; }
         
 
-        public void OnGet()
-        {
-            SqlDataReader PlanReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
+        //public void OnGet()
+        //{
+        //    SqlDataReader PlanReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
             
-            PlanOptions = new List<SelectListItem>();
+        //    PlanOptions = new List<SelectListItem>();
 
-            while (PlanReader.Read())
-            {
-                PlanOptions.Add(
-                    new SelectListItem(
-                        PlanReader["PlanID"].ToString()));
-            }
+        //    while (PlanReader.Read())
+        //    {
+        //        PlanOptions.Add(
+        //            new SelectListItem(
+        //                PlanReader["PlanID"].ToString()));
+        //    }
 
-            DBClass.Lab1DBConnection.Close(); 
-        }
+        //    DBClass.Lab1DBConnection.Close(); 
+        //}
 
         public IActionResult OnPost()
         {

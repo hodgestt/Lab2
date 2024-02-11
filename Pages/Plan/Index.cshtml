@@ -25,10 +25,6 @@
                 <td>@emp.PlanName</td>
                 <td>@emp.PlanConcept</td>
                 <td>@emp.DateCreated</td>
-                <td>
-                <a asp-page="/PlanItems/Index" class="btn btn-primary" asp-route-planid="@emp.PlanID">View Plan Items</a>
-                        <a asp-page="/PlanItems/AddPlanItems" asp-route-planid="@emp.PlanID"></a>
-                </td>
             </tr>
             }
         }
@@ -38,3 +34,5 @@
 <a asp-page="/Plan/AddPlan" class="btn btn-outline-success">Add a New Plan</a>
 
 <br/>
+<a asp-page="/PlanItems/Index" class="btn btn-primary">View Plan Items</a>
+@* <a asp-page="/PlanItems/Index" class="btn btn-primary" asp-route-planid="@emp.PlanID">View Plan Items</a> *@
