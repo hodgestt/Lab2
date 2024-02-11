@@ -74,11 +74,22 @@
     </form>
     <br />*@
 
-    <form asp-page="Collaborations">
-    <input type="hidden" asp-for="@Model.KnowledgeItemView.EmployeeID" />
-    <label asp-for="@Model.KnowledgeItemView.Name /label>
-    <input type="text" asp-for="@Model.KnowledgeItemView.Name>
+<form method="post">
+    <label>Select Employee:</label>
+    <select asp-for="KnowledgeItemView.EmployeeID" asp-items="Model.EmployeeList">
+        <option value="">Select Employee</option>
+    </select>
     <br />
-    <input type="submit" class="btn btn-success" asp-page="Index"></label>
-    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    <input type="submit" class="btn btn-success" value="Submit" />
 </form>
+@if (Model.EmployeeList is not null)
+{
+    <h4 class="h4">Knowledge Item Names for Selected Employee:</h4>
+    <ul>
+        @foreach (var name in Model.EmployeeList)
+        {
+            <li>@name</li>
+        }
+    </ul>
+}
+
