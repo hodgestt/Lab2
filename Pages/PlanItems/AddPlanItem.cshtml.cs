@@ -26,13 +26,13 @@ namespace Lab1Part3.Pages.PlanItems
         [Required]
         public PlanItem NewPlanItem { get; set; }
 
-        
+        //[BindProperty]
         public List<SelectListItem> PlanOptions { get; set; }
 
 
         //public void OnGet()
         //{
-        //    SqlDataReader PlanReader = DBClass.GeneralReaderQuery("SELECT * FROM Plans");
+        //    SqlDataReader PlanReader = DBClass.GeneralReaderQuery("SELECT PlanID FROM PlanItem");
 
         //    PlanOptions = new List<SelectListItem>();
 
@@ -40,7 +40,7 @@ namespace Lab1Part3.Pages.PlanItems
         //    {
         //        PlanOptions.Add(
         //            new SelectListItem(
-        //                PlanReader["PlanID"].ToString()));
+        //                PlanID = int.Parse(PlanReader["PlanID"].ToString())));
         //    }
 
         //    DBClass.Lab1DBConnection.Close();
