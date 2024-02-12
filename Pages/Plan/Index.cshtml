@@ -8,9 +8,8 @@
 
 <h2>Plans</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead>
+    <thead class="table-dark">
         <tr>
-            <th>PlanID</th>
             <th>PlanName</th>
             <th>PlanConcept</th>
             <th>DateCreated</th>
@@ -21,7 +20,6 @@
             foreach (var emp in Model.PlansTable)
             {
             <tr>
-                <td class="text-danger">@emp.PlanID</td>
                 <td>@emp.PlanName</td>
                 <td>@emp.PlanConcept</td>
                 <td>@emp.DateCreated</td>

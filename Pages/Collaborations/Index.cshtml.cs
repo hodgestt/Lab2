@@ -25,6 +25,8 @@ namespace Lab1Part3.Pages.Collaborations
         [BindProperty]
         public int EmployeeID { get; set; }
 
+        public List<DataFile> DataTable { get; set; }
+
         public IndexModel()
         {
             CollaborationTable = new List<Collaboration>();
@@ -32,6 +34,7 @@ namespace Lab1Part3.Pages.Collaborations
             KnowledgeItemView = new KnowledgeItem();
             KnowledgeNames = new List<KnowledgeItem>();
             PlansTable = new List<Plans>();
+            DataTable = new List<DataFile>();
         }
 
         public void OnGet(int EmployeeID)
@@ -65,7 +68,69 @@ namespace Lab1Part3.Pages.Collaborations
             {
                 PlansTable.Add(new Plans
                 {
-                    PlanID = Int32.Parse(PlanReader["PlanID"].ToString()),
+                    
+                    PlanName = PlanReader["PlanName"].ToString(),
+                    PlanConcept = PlanReader["PlanConcept"].ToString(),
+                    DateCreated = PlanReader["DateCreated"].ToString()
+                }
+
+            );
+            }
+
+            // Close your connection in DBClass
+            DBClass.Lab1DBConnection.Close();
+            
+            SqlDataReader dataReader = DBClass.DataFileReader();
+            while (dataReader.Read())
+            {
+                DataTable.Add(new DataFile
+                {
+                    DataID = Int32.Parse(dataReader["DataID"].ToString()),
+                    DataName = dataReader["DataName"].ToString(),
+                    DataLocation = dataReader["DataLocation"].ToString(),
+                    DataDescription = dataReader["DataDescription"].ToString(),
+
+
+                }
+            );
+            }
+            DBClass.Lab1DBConnection.Close();   
+
+
+        }
+
+        public IActionResult OnPost()
+        {
+            SqlDataReader TableReader = DBClass.CollabReader();
+            while (TableReader.Read())
+            {
+                CollaborationTable.Add(new Collaboration
+                {
+                    CollabID = Convert.ToInt32(TableReader["CollabID"]),
+                    TeamName = TableReader["TeamName"].ToString(),
+                    NotesAndInformation = TableReader["NotesAndInformation"].ToString()
+                });
+            }
+            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+
+            SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
+            EmployeeList = new List<SelectListItem>();
+            while (EmployeeReader.Read())
+            {
+                EmployeeList.Add(new SelectListItem
+                {
+                    Text = EmployeeReader["Name"].ToString(),
+                    Value = EmployeeReader["EmployeeID"].ToString()
+                });
+            }
+            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+
+            SqlDataReader PlanReader = DBClass.PlansReader();
+            while (PlanReader.Read())
+            {
+                PlansTable.Add(new Plans
+                {
+
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
                     DateCreated = PlanReader["DateCreated"].ToString()
@@ -77,12 +142,22 @@ namespace Lab1Part3.Pages.Collaborations
             // Close your connection in DBClass
             DBClass.Lab1DBConnection.Close();
 
+            SqlDataReader dataReader = DBClass.DataFileReader();
+            while (dataReader.Read())
+            {
+                DataTable.Add(new DataFile
+                {
+                    DataID = Int32.Parse(dataReader["DataID"].ToString()),
+                    DataName = dataReader["DataName"].ToString(),
+                    DataLocation = dataReader["DataLocation"].ToString(),
+                    DataDescription = dataReader["DataDescription"].ToString(),
 
 
-        }
+                }
+            );
+            }
+            DBClass.Lab1DBConnection.Close();
 
-        public IActionResult OnPost()
-        {
 
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
             while (knowledgeItemReader.Read())
@@ -95,8 +170,9 @@ namespace Lab1Part3.Pages.Collaborations
                 
             }
 
-            DBClass.Lab1DBConnection.Close();
+            knowledgeItemReader.Close();
             return Page();
+            
         }
     }
 }

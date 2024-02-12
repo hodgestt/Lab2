@@ -66,7 +66,7 @@ namespace Lab1Part3.Pages.KnowledgeCollabs
 
             DBClass.Lab1DBConnection.Close();
 
-            return RedirectToPage("Index");
+            return Page();
         }
     }
 }
