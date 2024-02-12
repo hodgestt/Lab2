@@ -13,7 +13,7 @@
             <th>Category</th>
             <th>Information</th>
             <th>KnowledgeDateTime </th>
-           
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +26,9 @@
                     <td>@kitem.Category</td>
                     <td>@kitem.Information</td>
                     <td>@kitem.KnowledgeDateTime</td>
-                    
+                    <td>
+                    <a asp-page="EditKnowledgeItem" class="btn btn-outline-primary" asp-route-knowledgeid="@kitem.KnowledgeId">Edit -></a>
+                    </td>
                 </tr>
             }
         }

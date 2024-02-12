@@ -1,0 +1,42 @@
+﻿@page
+@* Jessica Shamloo *@
+@model Lab1Part3.Pages.Employees.EditEmployeesModel
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<form asp-page="EditEmployees">
+    <input type="hidden" asp-for="@Model.EmployeeToUpdate.EmployeeID" />
+    <label asp-for="@Model.EmployeeToUpdate.FirstName"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.FirstName" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.LastName"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.LastName" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.Email"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.Email" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.Phone"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.Phone" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.Street"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.Street" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.City"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.City" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.State"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.State" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.Zip"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.Zip" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.UserName"></label>
+    <input type="text" asp-for="@Model.EmployeeToUpdate.UserName" />
+    <br />
+    <label asp-for="@Model.EmployeeToUpdate.Password"></label>
+    <input type="hidden" asp-for="@Model.EmployeeToUpdate.Password" />
+    <br /><br />
+    <input type="submit" class="btn btn-success" asp-page="EditEmployees" />
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

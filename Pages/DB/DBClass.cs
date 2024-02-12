@@ -32,6 +32,42 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
+        public static SqlDataReader SingleEmployeeReader(int EmployeeID)
+        {
+            SqlCommand cmdProductRead = new SqlCommand();
+            cmdProductRead.Connection = Lab1DBConnection;
+            cmdProductRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdProductRead.CommandText = "SELECT * FROM Employee WHERE EmployeeID = " + EmployeeID;
+            cmdProductRead.Connection.Open();
+
+            SqlDataReader tempReader = cmdProductRead.ExecuteReader();
+
+            return tempReader;
+        }
+
+        public static void UpdateEmployee(Employee e)
+        {
+            String sqlQuery = "UPDATE Employee SET ";
+            sqlQuery += "FirstName='" + e.FirstName + "',";
+            sqlQuery += "LastName='" + e.LastName + "',";
+            sqlQuery += "Email='" + e.Email + "',";
+            sqlQuery += "Phone='" + e.Phone + "',";
+            sqlQuery += "Street='" + e.Street + "',";
+            sqlQuery += "City='" + e.City + "',";
+            sqlQuery += "State='" + e.State + "',";
+            sqlQuery += "Zip='" + e.Zip + "',";
+            sqlQuery += "UserName='" + e.UserName + "',";
+            sqlQuery += "Password='" + e.Password + "' WHERE EmployeeID=" + e.EmployeeID;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Lab1DBConnection;
+            cmd.Connection.ConnectionString = Lab1DBConnString;
+            cmd.CommandText = sqlQuery;
+            cmd.Connection.Open();
+
+            cmd.ExecuteNonQuery();
+        }
+
 
         public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
         {
@@ -46,7 +82,7 @@ namespace Lab1Part3.Pages.DB
             return reader;
         }
 
-        
+
         public static void InsertPlanStep(PlanStep p)
         {
             string sqlQuery = "INSERT INTO PlanStep(PlanID,StepDescription,Status) VALUES (";
@@ -292,21 +328,6 @@ namespace Lab1Part3.Pages.DB
 
 
         }
-
-        //not in use currently
-        //public static SqlDataReader PlanItemReader()
-        //{
-        //    SqlCommand cmdTableRead = new SqlCommand();
-        //    cmdTableRead.Connection = Lab1DBConnection;
-        //    cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-        //    cmdTableRead.CommandText =
-        //        "SELECT * FROM PlanItem;";
-
-        //    cmdTableRead.Connection.Open(); // Open connection here, close in Model!
-
-        //    SqlDataReader tempReader = cmdTableRead.ExecuteReader();
-        //    return tempReader;
-        //}
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿@page
+@* Jessica Shamloo *@
 @model Lab1Part3.Pages.Employees.IndexModel
 @{
     ViewData["Title"] = "Employees";
@@ -17,6 +18,7 @@
             <th>State</th>
             <th>Zip</th>
             <th>Username</th>
+            <th> </th>
             
         </tr>
     </thead>
@@ -34,7 +36,9 @@
                 <td>@emp.State</td>
                 <td>@emp.Zip</td>
                 <td>@emp.UserName</td>
-                
+                <td>
+                <a asp-page="EditEmployees" class="btn btn-outline-primary" asp-route-employeeid="@emp.EmployeeID">Edit -></a>
+                </td>
             </tr>
             }
         }
