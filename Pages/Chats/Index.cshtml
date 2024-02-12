@@ -10,17 +10,17 @@
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
-            <th>Chat ID</th>
             <th>Chat Message</th>
             <th>Chat DateTime</th>
-            <th>Collab ID</th>
-            <th>Employee ID</th>
+            <th>Employee Username</th>
+            <th>Team Name</th>
         </tr>
     </thead>
     <tbody>
         @{
+            //SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee
             // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"select Chat.ChatID, Chat.ChatMessage, Chat.ChatDateTime, Employee.EmployeeID, Collaboration.CollabID
+            string sqlQuery = @"select Chat.ChatMessage, Chat.ChatDateTime, Collaboration.TeamName, Employee.UserName
         from Employee
         INNER JOIN Chat
         on Chat.EmployeeID = Employee.EmployeeID
@@ -33,11 +33,10 @@
             while (ChatReader.Read())
             {
                 <tr>
-                    <td class="text-danger">@ChatReader["ChatID"]</td>
                     <td>@ChatReader["ChatMessage"]</td>
                     <td>@ChatReader["ChatDateTime"]</td>
-                    <td>@ChatReader["CollabID"]</td>
-                    <td>@ChatReader["EmployeeID"]</td>
+                    <td>@ChatReader["UserName"]</td>
+                    <td>@ChatReader["TeamName"]</td>
                 </tr>
             }
 
@@ -47,4 +46,14 @@
     </tbody>
 </table>
 
-<a class="btn btn-primary" asp-page="/Chats/AddChat">Send Chat -></a>
+<form asp-page="AddChat">
+    <input type="text" asp-for="NewChat.EmployeeID" size="50" placeholder="Employee Username" />
+    <br />
+    <input type="text" asp-for="NewChat.ChatMessage" size="50" placeholder="Message" />
+    <span asp-validation-for="NewChat.ChatMessage" class="text-danger"></span>
+    <br />
+    <button type="submit" class="btn btn-secondary">Send Chat</button>
+    <br />
+</form>
+
+@* <a class="btn btn-primary" asp-page="/Chats/AddChat">Send Chat -></a> *@
