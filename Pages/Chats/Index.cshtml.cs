@@ -4,6 +4,7 @@ using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace Lab1Part3.Pages.Chats
 {
@@ -23,7 +24,6 @@ namespace Lab1Part3.Pages.Chats
             {
                 ChatsTable.Add(new Chat
                 {
-                    ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
                     ChatDateTime = TableReader["ChatDateTime"].ToString(),
                     CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
