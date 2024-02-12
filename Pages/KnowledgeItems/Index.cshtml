@@ -6,9 +6,8 @@
 
 <h2>Knowledge Items</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead>
+    <thead class="table-dark">
         <tr>
-            <th>KnowledgeId</th>
             <th>Name</th>
             <th>Subject</th>
             <th>Category</th>
@@ -22,7 +21,6 @@
             foreach (var kitem in Model.KnowledgeItemsTable)
             {
                 <tr>
-                    <td class="text-danger">@kitem.KnowledgeId</td>
                     <td>@kitem.Name</td>
                     <td>@kitem.Subject</td>
                     <td>@kitem.Category</td>

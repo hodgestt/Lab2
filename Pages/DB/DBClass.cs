@@ -145,15 +145,12 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader ChatReader()
         {
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText =
-                "SELECT * FROM Chat;";
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Chat", connection);
 
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+            connection.Open();
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
 
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
 
@@ -268,6 +265,22 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += d.DataName + "','";
             sqlQuery += d.DataLocation + "','";
             sqlQuery += d.DataDescription + "')";
+
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
+
+            cmdTableRead.ExecuteNonQuery();
+
+
+        }
+        public static void InsertChat(Chat c)
+        {
+            String sqlQuery = "INSERT INTO Chat(EmployeeID,ChatMessage) VALUES ('";
+            sqlQuery += c.EmployeeID + "','";
+            sqlQuery += c.ChatMessage + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab1DBConnection;

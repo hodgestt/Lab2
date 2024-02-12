@@ -6,9 +6,8 @@
 }
 <h2>Data Files</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead>
+    <thead class="table-dark">
         <tr>
-            <th>DataID</th>
             <th>DataName</th>
             <th>DataLocation</th>
             <th>DataDescription</th>
@@ -19,7 +18,6 @@
             foreach (var dta in Model.DataTable)
             {
                 <tr>
-                    <td class="text-danger">@dta.DataID</td>
                     <td>@dta.DataName</td>
                     <td>@dta.DataLocation</td>
                     <td>@dta.DataDescription</td>

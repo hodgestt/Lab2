@@ -31,7 +31,7 @@
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th></th>
+            
         </tr>
 
     </thead>
@@ -65,13 +65,14 @@
 
 
     <h4 class="h4">Knowledge Library:</h4>
-    <form asp-action="NewKnowledgeCollab" >
+    <form asp-action="Collaborations" >
     <p>Choose Employee to View Their Knowledge Items:</p>
     <br />
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
         <option value="">Choose an Employee</option>
     </select>
-    <input type="submit" class="btn btn-primary" />
+    <input type="submit" class="btn btn-primary" asp-page ="/Collaborations/Index"/>
+
     </form>
     <br />
 
@@ -79,7 +80,7 @@
 
 @if (Model.KnowledgeNames != null)
 {
-    <h4 class="h4">Knowledge Item Names for Selected Employee:</h4>
+    <h5 class="h5">Knowledge Item Names for Selected Employee:</h5>
     <p>
         @foreach (var name in Model.KnowledgeNames)
         {
@@ -93,9 +94,8 @@
 
 <h2>Plans</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead>
+    <thead class="table-dark">
         <tr>
-            <th>PlanID</th>
             <th>PlanName</th>
             <th>PlanConcept</th>
             <th>DateCreated</th>
@@ -106,7 +106,7 @@
             foreach (var emp in Model.PlansTable)
             {
                 <tr>
-                    <td class="text-danger">@emp.PlanID</td>
+              
                     <td>@emp.PlanName</td>
                     <td>@emp.PlanConcept</td>
                     <td>@emp.DateCreated</td>
@@ -121,3 +121,32 @@
 <br />
 <a asp-page="/PlanSteps/Index" class="btn btn-primary">View Plan Steps</a>
 
+
+<br/>
+<br/>
+
+<h2>Data Files</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead class="table-dark">
+        <tr>
+            
+            <th>DataName</th>
+            <th>DataLocation</th>
+            <th>DataDescription</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var dta in Model.DataTable)
+            {
+                <tr>
+                    
+                    <td>@dta.DataName</td>
+                    <td>@dta.DataLocation</td>
+                    <td>@dta.DataDescription</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a asp-page="/DataFiles/AddDataFile" class="btn btn-outline-success">Add a New Data File</a>
