@@ -35,5 +35,12 @@ namespace Lab1Part3.Pages.KnowledgeItems
             DBClass.Lab1DBConnection.Close();
 
         }
+
+        public IActionResult OnPost()
+        {
+            DBClass.UpdateKnowledgeItem(KnowledgeItemToUpdate);
+            DBClass.Lab1DBConnection.Close();
+            return RedirectToPage("Index");
+        }
     }
 }

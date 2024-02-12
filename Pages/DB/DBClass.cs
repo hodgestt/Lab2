@@ -71,6 +71,26 @@ namespace Lab1Part3.Pages.DB
             return reader;
         }
 
+        public static void UpdateKnowledgeItem(KnowledgeItem k)
+        {
+            String sqlQuery = "UPDATE KnowledgeItem SET ";
+            sqlQuery += "Name='" + k.Name + "',";
+            sqlQuery += "Subject='" + k.Subject + "',";
+            sqlQuery += "Category='" + k.Category + "',";
+            sqlQuery += "Information='" + k.Information + "',";
+            sqlQuery += "KnowledgeDateTime='" + k.KnowledgeDateTime + "',";
+            sqlQuery += "EmployeeID=" + k.EmployeeID + " WHERE EmployeeID=" + k.EmployeeID; ;
+            
+            
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Lab1DBConnection;
+            cmd.Connection.ConnectionString = Lab1DBConnString;
+            cmd.CommandText = sqlQuery;
+            cmd.Connection.Open();
+
+            cmd.ExecuteNonQuery();
+        }
+
         public static void UpdateEmployee(Employee e)
         {
             String sqlQuery = "UPDATE Employee SET ";
