@@ -18,28 +18,21 @@ namespace Lab1Part3.Pages.KnowledgeItems
         }
 
 
-        public void OnGet(int KnowledgeId)
+        public void OnGet(int knowledgeid)
         {
-            //SqlDataReader singleKnowledgeItem = DBClass.SingleKnowledgeReader(knowledgeid);
-            //while (singleEmployee.Read())
-            //{
-            //    EmployeeToUpdate.EmployeeID = employeeid;
-            //    EmployeeToUpdate.FirstName = singleEmployee["FirstName"].ToString();
-            //    EmployeeToUpdate.LastName = singleEmployee["LastName"].ToString();
-            //    EmployeeToUpdate.Email = singleEmployee["Email"].ToString();
-            //    EmployeeToUpdate.Phone = singleEmployee["Phone"].ToString();
-            //    EmployeeToUpdate.Street = singleEmployee["Street"].ToString();
-            //    EmployeeToUpdate.City = singleEmployee["City"].ToString();
-            //    EmployeeToUpdate.State = singleEmployee["State"].ToString();
-            //    EmployeeToUpdate.Zip = singleEmployee["Zip"].ToString();
-            //    EmployeeToUpdate.UserName = singleEmployee["UserName"].ToString();
-            //    EmployeeToUpdate.Password = singleEmployee["Password"].ToString();
-            //}
-            //DBClass.Lab1DBConnection.Close();
-
-
-
-
+            SqlDataReader singleKnowledgeItem = DBClass.EditSingleKnowledge(knowledgeid);
+            while (singleKnowledgeItem.Read())
+            {
+                KnowledgeItemToUpdate.KnowledgeId = knowledgeid;
+                KnowledgeItemToUpdate.Name = singleKnowledgeItem["Name"].ToString();
+                KnowledgeItemToUpdate.Subject  = singleKnowledgeItem["Subject"].ToString();
+                KnowledgeItemToUpdate.Category = singleKnowledgeItem["Category"].ToString();
+                KnowledgeItemToUpdate.Information = singleKnowledgeItem["Information"].ToString();
+                KnowledgeItemToUpdate.KnowledgeDateTime = singleKnowledgeItem["KnowledgeDateTime"].ToString();
+                KnowledgeItemToUpdate.EmployeeID = Int32.Parse(singleKnowledgeItem["EmployeeID"].ToString());
+                
+            }
+            DBClass.Lab1DBConnection.Close();
 
         }
     }

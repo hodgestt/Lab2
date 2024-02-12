@@ -5,40 +5,27 @@
     ViewData["Title"] = "Edit KnowledgeItem";
 }
 
-@* 
+
 <form asp-page="EditKnowledgeItem">
-    <input type="hidden" asp-for="@Model.EmployeeToUpdate.EmployeeID" />
-    <label asp-for="@Model.EmployeeToUpdate.FirstName"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.FirstName" />
+    <input type="hidden" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeId" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.Name"></label>
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Name" />
     <br />
-    <label asp-for="@Model.EmployeeToUpdate.LastName"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.LastName" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.Subject"></label>
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Subject" />
     <br />
-    <label asp-for="@Model.EmployeeToUpdate.Email"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.Email" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.Category"></label>
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Category" />
     <br />
-    <label asp-for="@Model.EmployeeToUpdate.Phone"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.Phone" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.Information"></label>
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Information" />
     <br />
-    <label asp-for="@Model.EmployeeToUpdate.Street"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.Street" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime"></label>
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime" />
     <br />
-    <label asp-for="@Model.EmployeeToUpdate.City"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.City" />
-    <br />
-    <label asp-for="@Model.EmployeeToUpdate.State"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.State" />
-    <br />
-    <label asp-for="@Model.EmployeeToUpdate.Zip"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.Zip" />
-    <br />
-    <label asp-for="@Model.EmployeeToUpdate.UserName"></label>
-    <input type="text" asp-for="@Model.EmployeeToUpdate.UserName" />
-    <br />
-    <label asp-for="@Model.EmployeeToUpdate.Password"></label>
-    <input type="hidden" asp-for="@Model.EmployeeToUpdate.Password" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.EmployeeID"></label>
+    <input type="number" asp-for="@Model.KnowledgeItemToUpdate.EmployeeID" />
     <br /><br />
     <input type="submit" class="btn btn-success" asp-page="EditEmployees" />
     <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>
- *@
