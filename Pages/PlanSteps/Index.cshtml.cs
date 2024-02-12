@@ -16,7 +16,6 @@ namespace Lab1Part3.Pages.PlanSteps{
 
         public List<PlanStep> PlanStepsTable { get; set; }
 
-
         public IndexModel()
         {
             PlanStepsTable = new List<PlanStep>();

@@ -64,7 +64,7 @@
 
 
     <h4 class="h4">Knowledge Library:</h4>
-    <form asp-action="NewKnowledgeCollab">
+    <form asp-action="NewKnowledgeCollab" method="post" >
     <p>Choose Employee to View Their Knowledge Items:</p>
     <br />
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
@@ -87,7 +87,7 @@
             DBClass.Lab1DBConnection.Close();
             } *@
 
-@if (Model.KnowledgeNames is not null)
+@if (Model.KnowledgeNames != null)
 {
     <h4 class="h4">Knowledge Item Names for Selected Employee:</h4>
     <p>

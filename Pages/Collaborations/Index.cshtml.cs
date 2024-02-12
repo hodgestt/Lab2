@@ -13,7 +13,7 @@ namespace Lab1Part3.Pages.Collaborations
     {
         public List<Collaboration> CollaborationTable { get; set; }
         public List<KnowledgeItem> Knowledges { get; set; }
-        public List<SelectListItem> EmployeeList { get; set; }
+        public List<SelectListItem> EmployeeList { get; set; } = new();
 
         public List<KnowledgeItem> KnowledgeNames { get; set; }
 
@@ -83,9 +83,11 @@ namespace Lab1Part3.Pages.Collaborations
                     Name = knowledgeItemReader["Name"].ToString()
                 }
                 );
-                DBClass.Lab1DBConnection.Close();
+                
             }
-            return RedirectToPage("Index");
+
+            DBClass.Lab1DBConnection.Close();
+            return Page();
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Lab1Part3.Pages.DB
             cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
 
             connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            SqlDataReader reader = cmd.ExecuteReader();
 
             return reader;
         }
