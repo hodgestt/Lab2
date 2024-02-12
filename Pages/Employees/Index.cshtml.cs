@@ -1,4 +1,4 @@
-//Jessica Shamloo
+//Jessica Shamloo & Thomas Hodges
 
 // "import statements"
 using Lab1Part3.Pages.DataClasses;
