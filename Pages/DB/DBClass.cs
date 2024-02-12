@@ -182,12 +182,14 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader ChatReader()
         {
             SqlConnection connection = new SqlConnection(Lab1DBConnString);
-            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Chat", connection);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Chat INNER JOIN Employee ON Chat.EmployeeID = Employee.EmployeeID", connection);
 
             connection.Open();
             SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
 
             return tempReader;
+
+
         }
 
         //General query reader for inner joins + associative tables
@@ -314,10 +316,10 @@ namespace Lab1Part3.Pages.DB
         }
         public static void InsertChat(Chat c)
         {
-            String sqlQuery = "INSERT INTO Chat(EmployeeID,ChatMessage) VALUES ('";
-            sqlQuery += c.EmployeeID + "','";
-            sqlQuery += c.ChatMessage + "')";
-
+            String sqlQuery = "INSERT INTO Chat (ChatMessage,ChatDateTime,EmployeeID) VALUES ('";
+            sqlQuery += c.ChatMessage + "','";
+            sqlQuery += c.ChatDateTime + "','";
+            sqlQuery += c.EmployeeID + "')";
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab1DBConnection;
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
