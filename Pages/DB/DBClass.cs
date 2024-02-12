@@ -35,6 +35,7 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
         {
+            
             SqlConnection connection = new SqlConnection(Lab1DBConnString);
             SqlCommand cmd = new SqlCommand("SELECT Name FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
             cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);

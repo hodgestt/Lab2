@@ -1,4 +1,4 @@
-//Nick Patterson & Jessica Shamloo
+//Jessica Shamloo & Nick Patterson
 
 // "import statements"
 using System.Data.SqlClient;
