@@ -82,7 +82,7 @@ namespace Lab1Part3.Pages.DB
             return reader;
         }
 
-        
+
         public static void InsertPlanStep(PlanStep p)
         {
             string sqlQuery = "INSERT INTO PlanStep(PlanID,StepDescription,Status) VALUES (";
