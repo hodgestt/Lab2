@@ -180,16 +180,15 @@ namespace Lab1Part3.Pages.DB
             cmdInsert.ExecuteNonQuery();
         }
 
-        public static void ViewKnowledge(KnowledgeItem k)
+        public static SqlDataReader ViewKnowledge(KnowledgeItem k)
         {
-            string sqlQuery = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE KnowledgeItem.EmployeeID = " +k.EmployeeID;
-            SqlCommand cmdProductRead = new SqlCommand();
-            cmdProductRead.Connection = Lab1DBConnection;
-            cmdProductRead.Connection.ConnectionString =
-            Lab1DBConnString;
-            cmdProductRead.CommandText = sqlQuery;
-            cmdProductRead.Connection.Open();
-            cmdProductRead.ExecuteNonQuery();
+            string sqlQuery = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE Employee.EmployeeID = " +k.EmployeeID;
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlCommand cmdRead = new SqlCommand(sqlQuery, connection);
+            connection.Open();
+            SqlDataReader tempReader = cmdRead.ExecuteReader();
+
+            return tempReader;
         }
 
 

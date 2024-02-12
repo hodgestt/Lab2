@@ -15,6 +15,8 @@ namespace Lab1Part3.Pages.Collaborations
         public List<KnowledgeItem> Knowledges { get; set; }
         public List<SelectListItem> EmployeeList { get; set; }
 
+        public List<KnowledgeItem> KnowledgeNames { get; set; }
+
         [BindProperty]
         public KnowledgeItem KnowledgeItemView { get; set; }
 
@@ -26,6 +28,7 @@ namespace Lab1Part3.Pages.Collaborations
             CollaborationTable = new List<Collaboration>();
             Knowledges = new List<KnowledgeItem>();
             KnowledgeItemView = new KnowledgeItem();
+            KnowledgeNames = new List<KnowledgeItem>();
         }
 
         public void OnGet(int EmployeeID)
@@ -64,22 +67,24 @@ namespace Lab1Part3.Pages.Collaborations
                     EmployeeID = Convert.ToInt32(KnowledgeName["EmployeeID"])
                 });
             }
-            KnowledgeName.Close(); // Close the reader after use
+            DBClass.Lab1DBConnection.Close(); // Close the reader after use
 
-            SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
-            List<string> knowledgeItemNames = new List<string>();
-
-            while (knowledgeItemReader.Read())
-            {
-                knowledgeItemNames.Add(knowledgeItemReader["Name"].ToString());
-            }
-            knowledgeItemReader.Close();
+            
         }
 
         public IActionResult OnPost()
         {
-            String sqlreader = "SELECT Name FROM KnowledgeItem INNER JOIN KnowledgeItem.EmployeeID = Employee.EmployeeID";
-            DBClass.ViewKnowledge(KnowledgeItemView);
+
+            SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
+            while (knowledgeItemReader.Read())
+            {
+                KnowledgeNames.Add(new KnowledgeItem
+                {
+                    Name = knowledgeItemReader["Name"].ToString()
+                }
+                );
+                DBClass.Lab1DBConnection.Close();
+            }
             return RedirectToPage("Index");
         }
     }

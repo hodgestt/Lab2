@@ -64,7 +64,7 @@
 
 
     <h4 class="h4">Knowledge Library:</h4>
-    @*<form asp-action="NewKnowledgeCollab">
+    <form asp-action="NewKnowledgeCollab">
     <p>Choose Employee to View Their Knowledge Items:</p>
     <br />
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
@@ -72,24 +72,29 @@
     </select>
     <input type="submit" class="btn btn-primary" />
     </form>
-    <br />*@
-
-<form method="post">
-    <label>Select Employee:</label>
-    <select asp-for="KnowledgeItemView.EmployeeID" asp-items="Model.EmployeeList">
-        <option value="">Select Employee</option>
-    </select>
     <br />
-    <input type="submit" class="btn btn-success" value="Submit" />
-</form>
-@if (Model.EmployeeList is not null)
+
+    @* @{
+        SqlDataReader KnowledgeItem = DBClass.KnowledgeItemReader();
+
+            while (KnowledgeItem.Read())
+            {
+            <tr>
+                <td>@KnowledgeItem["Name"]</td>
+            </tr>
+            }
+
+            DBClass.Lab1DBConnection.Close();
+            } *@
+
+@if (Model.KnowledgeNames is not null)
 {
     <h4 class="h4">Knowledge Item Names for Selected Employee:</h4>
-    <ul>
-        @foreach (var name in Model.EmployeeList)
+    <p>
+        @foreach (var name in Model.KnowledgeNames)
         {
-            <li>@name</li>
+            <li>@name.Name</li>
         }
-    </ul>
+    </p>
 }
 
