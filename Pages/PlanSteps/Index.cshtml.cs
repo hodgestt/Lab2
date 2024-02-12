@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Lab1Part3.Pages.PlanItems
-{
+namespace Lab1Part3.Pages.PlanSteps{
+    
     public class IndexModel : PageModel
     {
 
