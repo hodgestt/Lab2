@@ -1,3 +1,4 @@
+//Jessica Shamloo, Thomas Hodges & Nick Patterson
 using Lab1Part3.Pages.DataClasses;
 using Lab1Part3.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
@@ -189,18 +190,7 @@ namespace Lab1Part3.Pages.Collaborations
             }
             DBClass.Lab1DBConnection.Close();
 
-            SqlDataReader chatstablereader = DBClass.ChatReader();
-            while (TableReader.Read())
-            {
-                NewChat.Add(new Chat
-                {
-                    ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
-                    ChatMessage = chatstablereader["ChatMessage"].ToString(),
-                    ChatDateTime = chatstablereader["ChatDateTime"].ToString(),
-                    EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
-                }
-            );
-            }
+            
 
             DBClass.Lab1DBConnection.Close();
 
@@ -217,10 +207,21 @@ namespace Lab1Part3.Pages.Collaborations
 
             DBClass.Lab1DBConnection.Close();
 
-            
+            SqlDataReader chatstablereader = DBClass.ChatReader();
+            while (TableReader.Read())
+            {
+                NewChat.Add(new Chat
+                {
+                    ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
+                    ChatMessage = chatstablereader["ChatMessage"].ToString(),
+                    ChatDateTime = chatstablereader["ChatDateTime"].ToString(),
+                    EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
+                }
+            );
+            }
 
             return Page();
-            
+
         }
 
         public IActionResult OnPostChatPost()
@@ -287,7 +288,6 @@ namespace Lab1Part3.Pages.Collaborations
             }
             DBClass.Lab1DBConnection.Close();
             
-            
             SqlDataReader chatstablereader = DBClass.ChatReader();
             while (TableReader.Read())
             {
@@ -316,9 +316,7 @@ namespace Lab1Part3.Pages.Collaborations
 
             DBClass.Lab1DBConnection.Close();
 
-            
-
-            return Page();
+            return RedirectToPage("/Collaborations/Index");
         }
     }
 }
