@@ -13,47 +13,35 @@
             <th>Chat Message</th>
             <th>Chat DateTime</th>
             <th>Employee Username</th>
-            <th>Team Name</th>
         </tr>
     </thead>
     <tbody>
-        @{
-            //SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee
-            // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"select Chat.ChatMessage, Chat.ChatDateTime, Collaboration.TeamName, Employee.UserName
-        from Employee
-        INNER JOIN Chat
-        on Chat.EmployeeID = Employee.EmployeeID
-        LEFT JOIN Collaboration
-        on Collaboration.CollabID = Chat.CollabID;
-        ";
-
-            SqlDataReader ChatReader = DBClass.GeneralReaderQuery(sqlQuery);
-
-            while (ChatReader.Read())
-            {
-                <tr>
-                    <td>@ChatReader["ChatMessage"]</td>
-                    <td>@ChatReader["ChatDateTime"]</td>
-                    <td>@ChatReader["UserName"]</td>
-                    <td>@ChatReader["TeamName"]</td>
-                </tr>
-            }
-
-            DBClass.Lab1DBConnection.Close();
+        @foreach (var chat in Model.NewChat)
+        {
+            <tr>
+                <td>@chat.ChatMessage</td>
+                <td>@chat.ChatDateTime</td>
+                <td>@chat.EmployeeID</td>
+            </tr>
         }
 
     </tbody>
 </table>
 
-<form asp-page="AddChat">
-    <input type="text" asp-for="NewChat.EmployeeID" size="50" placeholder="Employee Username" />
-    <br />
-    <input type="text" asp-for="NewChat.ChatMessage" size="50" placeholder="Message" />
-    <span asp-validation-for="NewChat.ChatMessage" class="text-danger"></span>
-    <br />
-    <button type="submit" class="btn btn-secondary">Send Chat</button>
-    <br />
+<form method="post">
+    <div class="form-group">
+        <label for="EmployeeID">Employee ID:</label>
+        <input type="text" class="form-control" id="EmployeeID" name="NewChats.EmployeeID" required>
+    </div>
+    <div class="form-group">
+        <label for="ChatMessage">Chat Message:</label>
+        <textarea class="form-control" id="ChatMessage" name="NewChats.ChatMessage" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="ChatDateTime">Chat DateTime:</label>
+        <textarea class="form-control" id="ChatDateTime" name="NewChats.ChatDateTime" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Chat</button>
 </form>
 
 @* <a class="btn btn-primary" asp-page="/Chats/AddChat">Send Chat -></a> *@
