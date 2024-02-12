@@ -1,4 +1,5 @@
-//Nick Patterson
+//Nick Patterson & Jessica Shamloo
+
 // "import statements"
 using System.Data.SqlClient;
 using System.Numerics;
@@ -13,12 +14,12 @@ namespace Lab1Part3.Pages.PlanItems
     public class IndexModel : PageModel
     {
 
-        public List<PlanItem> PlanItemsTable { get; set; }
+        public List<PlanStep> PlanStepsTable { get; set; }
 
 
         public IndexModel()
         {
-            PlanItemsTable = new List<PlanItem>();
+            PlanStepsTable = new List<PlanStep>();
         }
 
         public void OnGet()

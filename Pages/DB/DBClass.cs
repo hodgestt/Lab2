@@ -44,18 +44,23 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
-        public static SqlDataReader PlanItemReader(int PlanID)
+        
+        public static void InsertPlanStep(PlanStep p)
         {
+            string sqlQuery = "INSERT INTO PlanStep(PlanID,StepDescription,Status) VALUES (";
+            sqlQuery += p.PlanID +  ",'";
+            sqlQuery += p.StepDescription + "','";
+            sqlQuery += p.Status + "')";
+
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = new SqlConnection();
+            cmdTableRead.Connection = Lab1DBConnection;
             cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText = "SELECT * FROM PlanItem WHERE PlanID = " + PlanID;
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
 
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
-            return tempReader;
+            cmdTableRead.ExecuteNonQuery();
+
         }
-
 
         public static SqlDataReader DataCollabReader()
         {
@@ -112,19 +117,7 @@ namespace Lab1Part3.Pages.DB
             return tempReader;
         }
 
-        public static SqlDataReader PlanItemReader()
-        {
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText =
-                "SELECT * FROM PlanItem;";
 
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
-
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
-            return tempReader;
-        }
         public static SqlDataReader PlansReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
@@ -274,24 +267,6 @@ namespace Lab1Part3.Pages.DB
 
         }
 
-        //Inserts one new PlanItem Record into the DB
-        public static void InsertPlanItem(PlanItem p)
-        {
-            String sqlQuery = "INSERT INTO PlanItem(PlanItemDescription,StepsCompleted) VALUES ('";
-            sqlQuery += p.PlanItemDescription + "','";
-            sqlQuery += p.StepsCompleted + "')";
-           
-
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText = sqlQuery;
-            cmdTableRead.Connection.Open();
-
-            cmdTableRead.ExecuteNonQuery();
-
-
-        }
 
         //Inserts a data file into the DB
         public static void InsertDataFile(DataFile d)
@@ -311,6 +286,21 @@ namespace Lab1Part3.Pages.DB
 
 
         }
+
+        //not in use currently
+        //public static SqlDataReader PlanItemReader()
+        //{
+        //    SqlCommand cmdTableRead = new SqlCommand();
+        //    cmdTableRead.Connection = Lab1DBConnection;
+        //    cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+        //    cmdTableRead.CommandText =
+        //        "SELECT * FROM PlanItem;";
+
+        //    cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+        //    SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+        //    return tempReader;
+        //}
 
     }
 }

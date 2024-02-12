@@ -1,10 +1,11 @@
 ﻿@* Nick Patterson & Jessica Shamloo *@
+
 @page 
 @using System.Data.SqlClient
 @using Lab1Part3.Pages.DB
 @model Lab1Part3.Pages.PlanItems.IndexModel
 @{
-    ViewData["Title"] = "PlanItems";
+    ViewData["Title"] = "PlanSteps";
 }
 
 <h2 class="h2">Plan Items</h2>
@@ -13,18 +14,20 @@
     <thead>
         <tr>
             <th>Plan Name:</th>
-            <th>Plan Item Description:</th>
-            <th>Steps Completed:</th>
+            <th>Step Description:</th>
+            <th>Status:</th>
             
         </tr>
     </thead>
     <tbody>
         @{
             // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"SELECT Plans.PlanName, PlanItem.PlanItemDescription, PlanItem.StepsCompleted
+            string sqlQuery = @"SELECT Plans.PlanName, PlanStep.StepDescription, PlanStep.Status
         from Plans
-        INNER JOIN PlanItem
-        on PlanItem.PlanID =Plans.PlanID;";
+        INNER JOIN PlanStep
+        on PlanStep.PlanID =Plans.PlanID
+        GROUP BY Plans.PlanName, PlanStep.StepDescription, PlanStep.Status
+        ORDER BY Plans.PlanName;";
 
             SqlDataReader QueryResults = DBClass.GeneralReaderQuery(sqlQuery);
 
@@ -32,8 +35,8 @@
             {
                 <tr>
                     <td>@QueryResults["PlanName"]</td>
-                    <td>@QueryResults["PlanItemDescription"]</td>
-                    <td>@QueryResults["StepsCompleted"]</td>
+                    <td>@QueryResults["StepDescription"]</td>
+                    <td>@QueryResults["Status"]</td>
                 </tr>
             }
 
@@ -43,4 +46,6 @@
     </tbody>
 </table>
 
-<a asp-page="AddPlanItem" class="btn btn-primary">Add a Plan Item -></a>
+<a asp-page="AddPlanStep" class="btn btn-primary">Add a Plan Step -></a>
+
+       
