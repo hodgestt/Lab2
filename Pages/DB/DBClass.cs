@@ -34,15 +34,41 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader SingleEmployeeReader(int EmployeeID)
         {
-            SqlCommand cmdProductRead = new SqlCommand();
-            cmdProductRead.Connection = Lab1DBConnection;
-            cmdProductRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdProductRead.CommandText = "SELECT * FROM Employee WHERE EmployeeID = " + EmployeeID;
-            cmdProductRead.Connection.Open();
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = "SELECT * FROM Employee WHERE EmployeeID = " + EmployeeID;
+            cmdTableRead.Connection.Open();
 
-            SqlDataReader tempReader = cmdProductRead.ExecuteReader();
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
 
             return tempReader;
+        }
+
+        public static SqlDataReader EditSingleKnowledge(int KnowledgeId)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab1DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.CommandText = "SELECT * FROM KnowledgeItem WHERE KnowledgeId = " + KnowledgeId;
+            cmdTableRead.Connection.Open();
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+
+            return tempReader;
+        }
+        
+        public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
+        {
+
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlCommand cmd = new SqlCommand("SELECT Name FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
+            cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            return reader;
         }
 
         public static void UpdateEmployee(Employee e)
@@ -66,20 +92,6 @@ namespace Lab1Part3.Pages.DB
             cmd.Connection.Open();
 
             cmd.ExecuteNonQuery();
-        }
-
-
-        public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
-        {
-            
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
-            SqlCommand cmd = new SqlCommand("SELECT Name FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
-            cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
-
-            connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            return reader;
         }
 
 
