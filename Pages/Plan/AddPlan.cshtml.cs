@@ -21,12 +21,12 @@ namespace Lab1Part3.Pages.Plan
         {
             if (NewPlan.PlanName == "Test Plan Name")
             {
-                return RedirectToPage("Index");
+                return RedirectToPage("/Collaborations/Index");
             }
             if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null) { 
                 DBClass.InsertPlan(NewPlan);
                 DBClass.Lab1DBConnection.Close();
-                return RedirectToPage("Index");
+                return RedirectToPage("/Collaborations/Index");
             }
             return Page();
 

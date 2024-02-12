@@ -14,7 +14,9 @@ namespace Lab1Part3.Pages.Collaborations
         public List<Collaboration> CollaborationTable { get; set; }
         public List<KnowledgeItem> Knowledges { get; set; }
         public List<SelectListItem> EmployeeList { get; set; } = new();
+        public List<Plans> PlansTable { get; set; }
 
+        [BindProperty]
         public List<KnowledgeItem> KnowledgeNames { get; set; }
 
         [BindProperty]
@@ -29,6 +31,7 @@ namespace Lab1Part3.Pages.Collaborations
             Knowledges = new List<KnowledgeItem>();
             KnowledgeItemView = new KnowledgeItem();
             KnowledgeNames = new List<KnowledgeItem>();
+            PlansTable = new List<Plans>();
         }
 
         public void OnGet(int EmployeeID)
@@ -43,7 +46,7 @@ namespace Lab1Part3.Pages.Collaborations
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 });
             }
-            TableReader.Close(); // Close the reader after use
+            DBClass.Lab1DBConnection.Close(); // Close the reader after use
 
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
@@ -55,21 +58,27 @@ namespace Lab1Part3.Pages.Collaborations
                     Value = EmployeeReader["EmployeeID"].ToString()
                 });
             }
-            EmployeeReader.Close(); // Close the reader after use
-
-            SqlDataReader KnowledgeName = DBClass.KnowledgeItemReader();
-            while (KnowledgeName.Read())
-            {
-                Knowledges.Add(new KnowledgeItem
-                {
-                    KnowledgeId = Convert.ToInt32(KnowledgeName["KnowledgeId"]),
-                    Name = KnowledgeName["Name"].ToString(),
-                    EmployeeID = Convert.ToInt32(KnowledgeName["EmployeeID"])
-                });
-            }
             DBClass.Lab1DBConnection.Close(); // Close the reader after use
 
-            
+            SqlDataReader PlanReader = DBClass.PlansReader();
+            while (PlanReader.Read())
+            {
+                PlansTable.Add(new Plans
+                {
+                    PlanID = Int32.Parse(PlanReader["PlanID"].ToString()),
+                    PlanName = PlanReader["PlanName"].ToString(),
+                    PlanConcept = PlanReader["PlanConcept"].ToString(),
+                    DateCreated = PlanReader["DateCreated"].ToString()
+                }
+
+            );
+            }
+
+            // Close your connection in DBClass
+            DBClass.Lab1DBConnection.Close();
+
+
+
         }
 
         public IActionResult OnPost()

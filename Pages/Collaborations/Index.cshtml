@@ -23,6 +23,7 @@
 
 <br/>
 
+
 <h4 class="h4">Collaborators</h4>
 
 <table class="table table-bordered table-responsive table-hover">
@@ -64,7 +65,7 @@
 
 
     <h4 class="h4">Knowledge Library:</h4>
-    <form asp-action="NewKnowledgeCollab" method="post" >
+    <form asp-action="NewKnowledgeCollab" >
     <p>Choose Employee to View Their Knowledge Items:</p>
     <br />
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
@@ -74,18 +75,7 @@
     </form>
     <br />
 
-    @* @{
-        SqlDataReader KnowledgeItem = DBClass.KnowledgeItemReader();
-
-            while (KnowledgeItem.Read())
-            {
-            <tr>
-                <td>@KnowledgeItem["Name"]</td>
-            </tr>
-            }
-
-            DBClass.Lab1DBConnection.Close();
-            } *@
+    
 
 @if (Model.KnowledgeNames != null)
 {
@@ -97,4 +87,37 @@
         }
     </p>
 }
+
+<br/>
+
+
+<h2>Plans</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>PlanID</th>
+            <th>PlanName</th>
+            <th>PlanConcept</th>
+            <th>DateCreated</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var emp in Model.PlansTable)
+            {
+                <tr>
+                    <td class="text-danger">@emp.PlanID</td>
+                    <td>@emp.PlanName</td>
+                    <td>@emp.PlanConcept</td>
+                    <td>@emp.DateCreated</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Plan/AddPlan" class="btn btn-outline-success">Add a New Plan</a>
+
+<br />
+<a asp-page="/PlanSteps/Index" class="btn btn-primary">View Plan Steps</a>
 
