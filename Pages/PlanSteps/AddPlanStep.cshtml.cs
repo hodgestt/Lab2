@@ -28,11 +28,11 @@ namespace Lab1Part3.Pages.PlanSteps
 
         public IActionResult OnPost()
         {
-            if (NewPlanStep.StepDescription == "Test Description")
+            if (NewPlanStep.PlanID == 1000)
             {
                 return RedirectToPage("Index");
             }
-            if (NewPlanStep.PlanID!=null & NewPlanStep.StepDescription != null & NewPlanStep.Status != null)
+            if (NewPlanStep.PlanID != null & NewPlanStep.StepDescription != null & NewPlanStep.Status != null)
             {
                 DBClass.InsertPlanStep(NewPlanStep);
 
@@ -46,7 +46,7 @@ namespace Lab1Part3.Pages.PlanSteps
         public IActionResult OnPostPopulateHandler()
         {
             ModelState.Clear();
-            NewPlanStep.PlanID = 1;
+            NewPlanStep.PlanID = 1000;
             NewPlanStep.StepDescription = "Test Description";
             NewPlanStep.Status = "Test Status";
             return Page(); //will return the plan steps page without anything
