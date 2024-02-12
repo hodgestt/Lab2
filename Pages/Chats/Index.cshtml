@@ -47,9 +47,10 @@
 </table>
 
 <form asp-page="AddChat">
-    <input type="text" size="50" placeholder="Employee Username" />
+    <input type="text" asp-for="NewChat.EmployeeID" size="50" placeholder="Employee Username" />
     <br />
-    <input type="text" size="50" placeholder="Message" />
+    <input type="text" asp-for="NewChat.ChatMessage" size="50" placeholder="Message" />
+    <span asp-validation-for="NewChat.ChatMessage" class="text-danger"></span>
     <br />
     <button type="submit" class="btn btn-secondary">Send Chat</button>
     <br />
