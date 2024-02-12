@@ -150,3 +150,42 @@
     </tbody>
 </table>
 <a asp-page="/DataFiles/AddDataFile" class="btn btn-outline-success">Add a New Data File</a>
+
+
+<h2>Chats</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Chat Message</th>
+            <th>Chat DateTime</th>
+            <th>Employee ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var chat in Model.NewChat)
+        {
+            <tr>
+                <td>@chat.ChatMessage</td>
+                <td>@chat.ChatDateTime</td>
+                <td>@chat.EmployeeID</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<form method="post">
+    <div class="form-group">
+        <label for="EmployeeID">Employee ID:</label>
+        <input type="text" class="form-control" id="EmployeeID" name="NewChats.EmployeeID" required>
+    </div>
+    <div class="form-group">
+        <label for="ChatMessage">Chat Message:</label>
+        <textarea class="form-control" id="ChatMessage" name="NewChats.ChatMessage" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="ChatDateTime">Chat DateTime:</label>
+        <textarea class="form-control" id="ChatDateTime" name="NewChats.ChatDateTime" required></textarea>
+    </div>
+    <button asp-page="/Collaborations/Index"  asp-page-handler="ChatPost" class="btn btn-primary">Send Chat</button>
+</form>

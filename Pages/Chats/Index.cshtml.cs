@@ -60,8 +60,7 @@ namespace Lab1Part3.Pages.Chats
         public IActionResult OnPost()
         {
             
-            // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            
 
             DBClass.InsertChat(NewChats);
 
