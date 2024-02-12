@@ -3,6 +3,7 @@
 using Lab1Part3.Pages.DataClasses;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 
@@ -34,14 +35,14 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
         {
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = new SqlConnection();
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE EmployeeID = " + EmployeeID;
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlCommand cmd = new SqlCommand("SELECT Name FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
+            cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
 
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
-            return tempReader;
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            return reader;
         }
 
         
@@ -105,15 +106,13 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader KnowledgeItemReader()
         {
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText =
-                "SELECT * FROM KnowledgeItem;";
-
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
-
+            cmdTableRead.Connection = connection;
+            cmdTableRead.CommandText = "SELECT * FROM KnowledgeItem;";
+            connection.Open();
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+     
             return tempReader;
         }
 
@@ -131,21 +130,18 @@ namespace Lab1Part3.Pages.DB
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
-       
+
         public static SqlDataReader CollabReader()
         {
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdTableRead.CommandText =
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Collaboration", connection);
 
-                "SELECT * FROM Collaboration; ";
+            connection.Open();
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
 
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
-
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
+
         public static SqlDataReader ChatReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
@@ -164,11 +160,9 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader GeneralReaderQuery(string sqlQuery)
         {
 
-            SqlCommand cmdRead = new SqlCommand();
-            cmdRead.Connection = Lab1DBConnection;
-            cmdRead.Connection.ConnectionString = Lab1DBConnString;
-            cmdRead.CommandText = sqlQuery;
-            cmdRead.Connection.Open();
+            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlCommand cmdRead = new SqlCommand(sqlQuery, connection);
+            connection.Open();
             SqlDataReader tempReader = cmdRead.ExecuteReader();
 
             return tempReader;
@@ -187,8 +181,7 @@ namespace Lab1Part3.Pages.DB
 
         public static void ViewKnowledge(KnowledgeItem k)
         {
-            String sqlQuery = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID";
-            sqlQuery += "Name='" + k.Name + "'," + "' WHERE EmployeeID=" + k.EmployeeID;
+            string sqlQuery = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE KnowledgeItem.EmployeeID = " +k.EmployeeID;
             SqlCommand cmdProductRead = new SqlCommand();
             cmdProductRead.Connection = Lab1DBConnection;
             cmdProductRead.Connection.ConnectionString =
