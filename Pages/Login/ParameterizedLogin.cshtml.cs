@@ -36,5 +36,11 @@ namespace Lab2.Pages.Login
             return Page();
 
         }
+
+        public IActionResult OnPostLogoutHandler()
+        {
+            HttpContext.Session.Clear();
+            return Page();
+        }
     }
 }
