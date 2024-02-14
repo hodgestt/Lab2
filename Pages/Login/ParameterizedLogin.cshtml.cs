@@ -24,6 +24,7 @@ namespace Lab2.Pages.Login
             {
                 HttpContext.Session.SetString("UserName", UserName);
                 ViewData["LoginMessage"] = "Login Successful!";
+                
             }
             else
             {

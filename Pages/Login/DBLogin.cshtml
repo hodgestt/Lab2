@@ -1,6 +1,7 @@
 ﻿@page
 @model Lab2.Pages.Login.DBLoginModel
 @{
+    ViewData["Title"] = "Login";
 }
 
 
@@ -12,9 +13,9 @@
 }
 
 @{
-    if (HttpContext.Session.GetString("username") != null)
+    if (HttpContext.Session.GetString("UserName") != null)
     {
-        <p>@HttpContext.Session.GetString("username") logged in</p>
+        <p>@HttpContext.Session.GetString("UserName") logged in</p>
         // Log out here
         <form asp-page="DBLogin" asp-page-handler="LogoutHandler">
             <input type="submit" class="btn btn-danger" value="Logout">

@@ -382,17 +382,17 @@ namespace Lab2.Pages.DB
             return rowCount;
         }
 
-        public static int SecureLogin(string Username, string Password)
+        public static int SecureLogin(string UserName, string Password)
         {
             string loginQuery =
-                "SELECT COUNT(*) FROM Credentials where Username = @Username and Password = @Password";
+                "SELECT COUNT(*) FROM Employee where UserName = @UserName and Password = @Password";
 
             SqlCommand cmdLogin = new SqlCommand();
             cmdLogin.Connection = Lab2DBConnection;
             cmdLogin.Connection.ConnectionString = Lab2DBConnString;
 
             cmdLogin.CommandText = loginQuery;
-            cmdLogin.Parameters.AddWithValue("@Username", Username);
+            cmdLogin.Parameters.AddWithValue("@UserName", UserName);
             cmdLogin.Parameters.AddWithValue("@Password", Password);
 
             cmdLogin.Connection.Open();

@@ -26,7 +26,7 @@ namespace Lab2.Pages.Login
 
         public IActionResult OnPost()
         {
-            string loginQuery = "SELECT COUNT(*) FROM Credentials where UserName = '";
+            string loginQuery = "SELECT COUNT(*) FROM Employee where UserName = '";
             loginQuery += UserName + "' and Password='" + Password + "'";
 
             if (DBClass.LoginQuery(loginQuery) > 0)
