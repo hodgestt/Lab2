@@ -1,0 +1,14 @@
+﻿@page
+@model Lab2.Pages.Login.SecureLoginLandingModel
+@{
+}
+
+
+@{
+    if (@ViewData["LoginMessage"] != null)
+    {
+        <p>@ViewData["LoginMessage"]</p>
+        <a asp-page="DBLogin" asp-route-logout="true">Logout of application -></a>
+    }
+
+}

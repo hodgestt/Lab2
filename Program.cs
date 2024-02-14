@@ -3,7 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSession();
+builder.Services.AddSession(); //enabling session state
 
 var app = builder.Build();
 
@@ -14,7 +14,8 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
-app.UseSession();
+app.UseSession(); //middle-ware pipeline change - enabling session state
+
 
 app.UseRouting();
 

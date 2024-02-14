@@ -363,6 +363,50 @@ namespace Lab2.Pages.DB
 
         }
 
+        public static int LoginQuery(string loginQuery)
+        {
+            // This method expects to receive an SQL SELECT
+            // query that uses the COUNT command.
+
+            SqlCommand cmdLogin = new SqlCommand();
+            cmdLogin.Connection = Lab2DBConnection;
+            cmdLogin.Connection.ConnectionString = Lab2DBConnString;
+            cmdLogin.CommandText = loginQuery;
+            cmdLogin.Connection.Open();
+
+            // ExecuteScalar() returns back data type Object
+            // Use a typecast to convert this to an int.
+            // Method returns first column of first row.
+            int rowCount = (int)cmdLogin.ExecuteScalar();
+
+            return rowCount;
+        }
+
+        public static int SecureLogin(string UserName, string Password)
+        {
+            string loginQuery =
+                "SELECT COUNT(*) FROM Employee where UserName = @UserName and Password = @Password";
+
+            SqlCommand cmdLogin = new SqlCommand();
+            cmdLogin.Connection = Lab2DBConnection;
+            cmdLogin.Connection.ConnectionString = Lab2DBConnString;
+
+            cmdLogin.CommandText = loginQuery;
+            cmdLogin.Parameters.AddWithValue("@UserName", UserName);
+            cmdLogin.Parameters.AddWithValue("@Password", Password);
+
+            cmdLogin.Connection.Open();
+
+            // ExecuteScalar() returns back data type Object
+            // Use a typecast to convert this to an int.
+            // Method returns first column of first row.
+            int rowCount = (int)cmdLogin.ExecuteScalar();
+
+            return rowCount;
+        }
+
+
+
     }
 }
 
