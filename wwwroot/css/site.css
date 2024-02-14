@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+h1 {
+    style = -webkit-text-fill-color: rebeccapurple;
+}
+
+h2 {
+    -webkit-text-fill-color: #663399;
+}
