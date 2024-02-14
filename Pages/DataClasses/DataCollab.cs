@@ -1,10 +1,10 @@
 ﻿//Nick Patterson
 
 using System.ComponentModel.DataAnnotations.Schema;
-using Lab1Part3.Pages.DB;
-using Lab1Part3.Pages.DataClasses;
+using Lab2.Pages.DB;
+using Lab2.Pages.DataClasses;
 
-namespace Lab1Part3.Pages.DataClasses
+namespace Lab2.Pages.DataClasses
 
 {
     public class DataCollab

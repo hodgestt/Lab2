@@ -1,8 +1,8 @@
 ﻿@* Jessica Shamloo, Thomas Hodges & Nick Patterson *@
 @page
 @using System.Data.SqlClient
-@using Lab1Part3.Pages.DB
-@model Lab1Part3.Pages.Collaborations.IndexModel
+@using Lab2.Pages.DB
+@model Lab2.Pages.Collaborations.IndexModel
 @{
     ViewData["Title"] = "Collaborations";
 }
@@ -57,7 +57,7 @@
                 </tr>
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
         }
     </tbody>

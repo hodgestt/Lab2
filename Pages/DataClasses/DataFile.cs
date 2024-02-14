@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Lab1Part3.Pages.DataClasses
+namespace Lab2.Pages.DataClasses
 {
     public class DataFile
     {

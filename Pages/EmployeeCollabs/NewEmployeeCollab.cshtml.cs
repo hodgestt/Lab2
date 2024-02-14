@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Lab1Part3.Pages.EmployeeCollabs
+namespace Lab2.Pages.EmployeeCollabs
 {
     public class NewEmployeeCollabModel : PageModel
     {
@@ -37,7 +37,7 @@ namespace Lab1Part3.Pages.EmployeeCollabs
                         EmployeeCollabReader["EmployeeID"].ToString()));
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             // Populate the Collaboration SELECT control
             SqlDataReader CollabReader = DBClass.GeneralReaderQuery("SELECT * FROM Collaboration");
@@ -52,7 +52,7 @@ namespace Lab1Part3.Pages.EmployeeCollabs
                         CollabReader["CollabID"].ToString()));
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
         }
 
@@ -63,7 +63,7 @@ namespace Lab1Part3.Pages.EmployeeCollabs
 
             DBClass.GeneralInsertQuery(insertQuery);
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             return Page();
         }

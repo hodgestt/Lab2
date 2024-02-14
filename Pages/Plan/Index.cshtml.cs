@@ -1,11 +1,11 @@
 //Nick Patterson
 // "import statements"
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace Lab1Part3.Pages.Plan
+namespace Lab2.Pages.Plan
 {
     public class IndexModel : PageModel
     {
@@ -34,7 +34,7 @@ namespace Lab1Part3.Pages.Plan
             }
 
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
         }
     }
 }

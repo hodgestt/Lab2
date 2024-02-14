@@ -1,12 +1,12 @@
 //Jessica Shamloo
 
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace Lab1Part3.Pages.Employees
+namespace Lab2.Pages.Employees
 {
     public class EditEmployeesModel : PageModel
     {
@@ -37,13 +37,13 @@ namespace Lab1Part3.Pages.Employees
                 EmployeeToUpdate.UserName = singleEmployee["UserName"].ToString();
                 EmployeeToUpdate.Password = singleEmployee["Password"].ToString();
             }
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
         }
 
         public IActionResult OnPost()
         {
             DBClass.UpdateEmployee(EmployeeToUpdate);
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
             return RedirectToPage("Index");
         }
     }

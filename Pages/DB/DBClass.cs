@@ -1,28 +1,28 @@
 ﻿//Jessica Shamloo, Thomas Hodges & Nick Patterson
 
-using Lab1Part3.Pages.DataClasses;
+using Lab2.Pages.DataClasses;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 
-namespace Lab1Part3.Pages.DB
+namespace Lab2.Pages.DB
 {
     public class DBClass
     {
         // The Connection Object at Data Field Level
-        public static SqlConnection Lab1DBConnection = new SqlConnection();
+        public static SqlConnection Lab2DBConnection = new SqlConnection();
 
         // The Connection String finds and connects to DB
-        private static readonly String? Lab1DBConnString = "Server=Localhost;Database=Lab1;Trusted_Connection=True";
+        private static readonly String? Lab2DBConnString = "Server=Localhost;Database=Lab2;Trusted_Connection=True";
        
         //Basic Table Reader 
         public static SqlDataReader EmployeeReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText =
                 "SELECT * FROM Employee;";
 
@@ -35,8 +35,8 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader SingleEmployeeReader(int EmployeeID)
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = "SELECT * FROM Employee WHERE EmployeeID = " + EmployeeID;
             cmdTableRead.Connection.Open();
 
@@ -48,8 +48,8 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader EditSingleKnowledge(int KnowledgeId)
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = "SELECT * FROM KnowledgeItem WHERE KnowledgeId = " + KnowledgeId;
             cmdTableRead.Connection.Open();
 
@@ -61,7 +61,7 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
         {
 
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmd = new SqlCommand("SELECT Name FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
             cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
 
@@ -83,8 +83,8 @@ namespace Lab1Part3.Pages.DB
             
             
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = Lab1DBConnection;
-            cmd.Connection.ConnectionString = Lab1DBConnString;
+            cmd.Connection = Lab2DBConnection;
+            cmd.Connection.ConnectionString = Lab2DBConnString;
             cmd.CommandText = sqlQuery;
             cmd.Connection.Open();
 
@@ -106,8 +106,8 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += "Password='" + e.Password + "' WHERE EmployeeID=" + e.EmployeeID;
 
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = Lab1DBConnection;
-            cmd.Connection.ConnectionString = Lab1DBConnString;
+            cmd.Connection = Lab2DBConnection;
+            cmd.Connection.ConnectionString = Lab2DBConnString;
             cmd.CommandText = sqlQuery;
             cmd.Connection.Open();
 
@@ -123,8 +123,8 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += p.Status + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
             cmdTableRead.Connection.Open();
 
@@ -135,8 +135,8 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader DataCollabReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText =
                 "SELECT * FROM DataCollab; ";
 
@@ -149,8 +149,8 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader DataFileReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText =
                 "SELECT * FROM DataFile;";
 
@@ -162,8 +162,8 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader EmployeeCollabReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText =
                 "SELECT * FROM EmployeeCollab;";
 
@@ -175,7 +175,7 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader KnowledgeItemReader()
         {
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = connection;
             cmdTableRead.CommandText = "SELECT * FROM KnowledgeItem;";
@@ -189,8 +189,8 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader PlansReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText =
                 "SELECT * FROM Plans;";
 
@@ -202,7 +202,7 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader CollabReader()
         {
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Collaboration", connection);
 
             connection.Open();
@@ -213,7 +213,7 @@ namespace Lab1Part3.Pages.DB
 
         public static SqlDataReader ChatReader()
         {
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Chat INNER JOIN Employee ON Chat.EmployeeID = Employee.EmployeeID", connection);
 
             connection.Open();
@@ -228,7 +228,7 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader GeneralReaderQuery(string sqlQuery)
         {
 
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdRead = new SqlCommand(sqlQuery, connection);
             connection.Open();
             SqlDataReader tempReader = cmdRead.ExecuteReader();
@@ -240,8 +240,8 @@ namespace Lab1Part3.Pages.DB
         public static void GeneralInsertQuery(string sqlQuery)
         {
             SqlCommand cmdInsert = new SqlCommand();
-            cmdInsert.Connection = Lab1DBConnection;
-            cmdInsert.Connection.ConnectionString = Lab1DBConnString;
+            cmdInsert.Connection = Lab2DBConnection;
+            cmdInsert.Connection.ConnectionString = Lab2DBConnString;
             cmdInsert.CommandText = sqlQuery;
             cmdInsert.Connection.Open();
             cmdInsert.ExecuteNonQuery();
@@ -250,7 +250,7 @@ namespace Lab1Part3.Pages.DB
         public static SqlDataReader ViewKnowledge(KnowledgeItem k)
         {
             string sqlQuery = "SELECT * FROM KnowledgeItem INNER JOIN Employee ON KnowledgeItem.EmployeeID = Employee.EmployeeID WHERE Employee.EmployeeID = " +k.EmployeeID;
-            SqlConnection connection = new SqlConnection(Lab1DBConnString);
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdRead = new SqlCommand(sqlQuery, connection);
             connection.Open();
             SqlDataReader tempReader = cmdRead.ExecuteReader();
@@ -276,8 +276,8 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += e.Password + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
             cmdTableRead.Connection.Open();
 
@@ -297,8 +297,8 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += x.KnowledgeDateTime + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
             cmdTableRead.Connection.Open();
 
@@ -317,8 +317,8 @@ namespace Lab1Part3.Pages.DB
            
 
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
             cmdTableRead.Connection.Open();
 
@@ -337,8 +337,8 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += d.DataDescription + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
             cmdTableRead.Connection.Open();
 
@@ -353,8 +353,8 @@ namespace Lab1Part3.Pages.DB
             sqlQuery += c.ChatDateTime + "','";
             sqlQuery += c.EmployeeID + "')";
             SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab1DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab1DBConnString;
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
             cmdTableRead.Connection.Open();
 

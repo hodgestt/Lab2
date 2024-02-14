@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Lab1Part3.Pages.KnowledgeCollabs
+namespace Lab2.Pages.KnowledgeCollabs
 {
     public class IndexModel : PageModel
     {

@@ -1,7 +1,7 @@
 //Jessica Shamloo
 
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 
-namespace Lab1Part3.Pages.PlanSteps
+namespace Lab2.Pages.PlanSteps
 {
     public class AddPlanStepModel : PageModel
     {
@@ -36,7 +36,7 @@ namespace Lab1Part3.Pages.PlanSteps
             {
                 DBClass.InsertPlanStep(NewPlanStep);
 
-                DBClass.Lab1DBConnection.Close();
+                DBClass.Lab2DBConnection.Close();
 
                 return RedirectToPage("Index");
             }

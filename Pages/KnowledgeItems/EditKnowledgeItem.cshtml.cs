@@ -1,10 +1,10 @@
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
-namespace Lab1Part3.Pages.KnowledgeItems
+namespace Lab2.Pages.KnowledgeItems
 {
     public class EditKnowledgeItemModel : PageModel
     {
@@ -32,14 +32,14 @@ namespace Lab1Part3.Pages.KnowledgeItems
                 KnowledgeItemToUpdate.EmployeeID = Int32.Parse(singleKnowledgeItem["EmployeeID"].ToString());
                 
             }
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
         }
 
         public IActionResult OnPost()
         {
             DBClass.UpdateKnowledgeItem(KnowledgeItemToUpdate);
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
             return RedirectToPage("Index");
         }
     }

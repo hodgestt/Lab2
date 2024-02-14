@@ -1,6 +1,6 @@
 // "import statements"
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lab1Part3.Pages.KnowledgeItems
+namespace Lab2.Pages.KnowledgeItems
 {
     public class IndexModel : PageModel
     {
@@ -37,7 +37,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
             }
 
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
         }
 
         

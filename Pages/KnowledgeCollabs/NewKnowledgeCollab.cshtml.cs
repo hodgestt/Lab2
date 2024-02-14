@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Lab1Part3.Pages.KnowledgeCollabs
+namespace Lab2.Pages.KnowledgeCollabs
 {
     public class  NewKnowledgeCollabModel : PageModel
     {
@@ -38,7 +38,7 @@ namespace Lab1Part3.Pages.KnowledgeCollabs
                         KnowledgeReader["KnowledgeId"].ToString()));
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             // Populate the Collaboration SELECT control
             SqlDataReader CollabReader = DBClass.GeneralReaderQuery("SELECT * FROM Collaboration");
@@ -53,7 +53,7 @@ namespace Lab1Part3.Pages.KnowledgeCollabs
                         CollabReader["CollabID"].ToString()));
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
         }
 
@@ -64,7 +64,7 @@ namespace Lab1Part3.Pages.KnowledgeCollabs
 
             DBClass.GeneralInsertQuery(insertQuery);
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             return Page();
         }

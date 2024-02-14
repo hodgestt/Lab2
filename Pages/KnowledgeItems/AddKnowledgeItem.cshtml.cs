@@ -1,14 +1,14 @@
 //Jessica Shamloo
 
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace Lab1Part3.Pages.KnowledgeItems
+namespace Lab2.Pages.KnowledgeItems
 {
     public class AddKnowledgeItemModel : PageModel
     {
@@ -31,7 +31,7 @@ namespace Lab1Part3.Pages.KnowledgeItems
             if (NewKnowledgeItem.Name != null & NewKnowledgeItem.Subject != null & NewKnowledgeItem.Category != null & NewKnowledgeItem.Information != null & NewKnowledgeItem.KnowledgeDateTime != null )
             {
                 DBClass.InsertKnowledgeItem(NewKnowledgeItem);
-                DBClass.Lab1DBConnection.Close();
+                DBClass.Lab2DBConnection.Close();
                 return RedirectToPage("Index");
             }
             return Page();

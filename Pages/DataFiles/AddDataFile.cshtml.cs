@@ -1,13 +1,13 @@
 //Thomas Hodges
 
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
-namespace Lab1Part3.Pages.DataFiles
+namespace Lab2.Pages.DataFiles
 {
     public class AddDataFileModel : PageModel
     {
@@ -28,7 +28,7 @@ namespace Lab1Part3.Pages.DataFiles
             if (NewDataFile.DataName != null & NewDataFile.DataLocation != null & NewDataFile.DataDescription != null)
             {
                 DBClass.InsertDataFile(NewDataFile);
-                DBClass.Lab1DBConnection.Close();
+                DBClass.Lab2DBConnection.Close();
                 return RedirectToPage("/Collaborations/Index");
             }
             return Page();

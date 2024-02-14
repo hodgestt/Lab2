@@ -1,12 +1,12 @@
 //Jessica Shamloo
 
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lab1Part3.Pages.Employees
+namespace Lab2.Pages.Employees
 {
     public class AddEmployeeModel : PageModel
     {
@@ -27,7 +27,7 @@ namespace Lab1Part3.Pages.Employees
             if (NewEmployee.FirstName != null & NewEmployee.LastName != null & NewEmployee.Email != null & NewEmployee.Phone != null & NewEmployee.Street != null & NewEmployee.City != null & NewEmployee.State != null & NewEmployee.Zip != null & NewEmployee.UserName != null & NewEmployee.Password != null)
             {
                 DBClass.InsertEmployee(NewEmployee);
-                DBClass.Lab1DBConnection.Close();
+                DBClass.Lab2DBConnection.Close();
                 return RedirectToPage("Index");
             }
             return Page();

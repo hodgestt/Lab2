@@ -2,8 +2,8 @@
 
 @page 
 @using System.Data.SqlClient
-@using Lab1Part3.Pages.DB
-@model Lab1Part3.Pages.PlanSteps.IndexModel
+@using Lab2.Pages.DB
+@model Lab2.Pages.PlanSteps.IndexModel
 @{
     ViewData["Title"] = "PlanSteps";
 }
@@ -40,13 +40,12 @@
                 </tr>
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
         }
+        
 
     </tbody>
 </table>
 
 <a asp-page="AddPlanStep" class="btn btn-primary">Add a Plan Step -></a>
 <a asp-page="/Collaborations/Index" class="btn btn-link">Return to Collaboration</a>
-
-       

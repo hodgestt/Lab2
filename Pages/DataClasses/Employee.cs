@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lab1Part3.Pages.DataClasses
+namespace Lab2.Pages.DataClasses
 {
     public class Employee
     {

@@ -1,14 +1,14 @@
 //Nick Patterson
 // "import statements"
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 
-namespace Lab1Part3.Pages.Chats
+namespace Lab2.Pages.Chats
 {
     public class IndexModel : PageModel
     {
@@ -54,7 +54,7 @@ namespace Lab1Part3.Pages.Chats
             );
             }
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
         }
 
         public IActionResult OnPost()
@@ -65,7 +65,7 @@ namespace Lab1Part3.Pages.Chats
             DBClass.InsertChat(NewChats);
 
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
 
             SqlDataReader TableReader = DBClass.ChatReader();

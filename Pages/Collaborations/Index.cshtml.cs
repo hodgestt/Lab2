@@ -1,6 +1,6 @@
 //Jessica Shamloo, Thomas Hodges & Nick Patterson
-using Lab1Part3.Pages.DataClasses;
-using Lab1Part3.Pages.DB;
+using Lab2.Pages.DataClasses;
+using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
-namespace Lab1Part3.Pages.Collaborations
+namespace Lab2.Pages.Collaborations
 {
     public class IndexModel : PageModel
     {
@@ -68,7 +68,7 @@ namespace Lab1Part3.Pages.Collaborations
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 });
             }
-            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
@@ -80,7 +80,7 @@ namespace Lab1Part3.Pages.Collaborations
                     Value = EmployeeReader["EmployeeID"].ToString()
                 });
             }
-            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader PlanReader = DBClass.PlansReader();
             while (PlanReader.Read())
@@ -97,7 +97,7 @@ namespace Lab1Part3.Pages.Collaborations
             }
 
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
             
             SqlDataReader dataReader = DBClass.DataFileReader();
             while (dataReader.Read())
@@ -113,7 +113,7 @@ namespace Lab1Part3.Pages.Collaborations
                 }
             );
             }
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader chattablereader = DBClass.ChatReader();
             while (chattablereader.Read())
@@ -128,7 +128,7 @@ namespace Lab1Part3.Pages.Collaborations
             );
             }
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
         }
 
         public IActionResult OnPost()
@@ -143,7 +143,7 @@ namespace Lab1Part3.Pages.Collaborations
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 });
             }
-            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
@@ -155,7 +155,7 @@ namespace Lab1Part3.Pages.Collaborations
                     Value = EmployeeReader["EmployeeID"].ToString()
                 });
             }
-            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader PlanReader = DBClass.PlansReader();
             while (PlanReader.Read())
@@ -172,7 +172,7 @@ namespace Lab1Part3.Pages.Collaborations
             }
 
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader dataReader = DBClass.DataFileReader();
             while (dataReader.Read())
@@ -188,11 +188,11 @@ namespace Lab1Part3.Pages.Collaborations
                 }
             );
             }
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
             while (knowledgeItemReader.Read())
@@ -205,7 +205,7 @@ namespace Lab1Part3.Pages.Collaborations
                 
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader chatstablereader = DBClass.ChatReader();
             while (TableReader.Read())
@@ -229,7 +229,7 @@ namespace Lab1Part3.Pages.Collaborations
 
             DBClass.InsertChat(NewChats);
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader TableReader = DBClass.CollabReader();
             while (TableReader.Read())
@@ -241,7 +241,7 @@ namespace Lab1Part3.Pages.Collaborations
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 });
             }
-            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
@@ -253,7 +253,7 @@ namespace Lab1Part3.Pages.Collaborations
                     Value = EmployeeReader["EmployeeID"].ToString()
                 });
             }
-            DBClass.Lab1DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader PlanReader = DBClass.PlansReader();
             while (PlanReader.Read())
@@ -270,7 +270,7 @@ namespace Lab1Part3.Pages.Collaborations
             }
 
             // Close your connection in DBClass
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader dataReader = DBClass.DataFileReader();
             while (dataReader.Read())
@@ -286,7 +286,7 @@ namespace Lab1Part3.Pages.Collaborations
                 }
             );
             }
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
             
             SqlDataReader chatstablereader = DBClass.ChatReader();
             while (TableReader.Read())
@@ -301,7 +301,7 @@ namespace Lab1Part3.Pages.Collaborations
             );
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
             while (knowledgeItemReader.Read())
@@ -314,7 +314,7 @@ namespace Lab1Part3.Pages.Collaborations
 
             }
 
-            DBClass.Lab1DBConnection.Close();
+            DBClass.Lab2DBConnection.Close();
 
             return RedirectToPage("/Collaborations/Index");
         }

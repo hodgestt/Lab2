@@ -1,7 +1,7 @@
 ﻿@page
 @using System.Data.SqlClient
-@using Lab1Part3.Pages.DB
-@model Lab1Part3.Pages.KnowledgeCollabs.IndexModel
+@using Lab2.Pages.DB
+@model Lab2.Pages.KnowledgeCollabs.IndexModel
 @{
     ViewData["Title"] = "KnowledgeCollabs";
 
@@ -36,7 +36,7 @@
                     </tr>
                 }
 
-                DBClass.Lab1DBConnection.Close();
+                DBClass.Lab2DBConnection.Close();
 
             }
         </tbody>
