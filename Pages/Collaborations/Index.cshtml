@@ -22,13 +22,10 @@
     }
 }
 
-<br/>
-
-
 <h4 class="h4">Collaborators</h4>
 
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
@@ -62,6 +59,7 @@
         }
     </tbody>
 </table>
+
 <br/>
 
 
@@ -72,7 +70,7 @@
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
         <option value="">Choose an Employee</option>
     </select>
-    <input type="submit" class="btn btn-primary" asp-page ="/Collaborations/Index"/>
+    <button asp-page ="/Collaborations/Index">Submit</button>
 
     </form>
     <br />
@@ -95,7 +93,7 @@
 
 <h2>Plans</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead >
         <tr>
             <th>PlanName</th>
             <th>PlanConcept</th>
@@ -117,10 +115,12 @@
     </tbody>
 </table>
 
-<a asp-page="/Plan/AddPlan" class="btn btn-outline-success">Add a New Plan</a>
+<a asp-page="/Plan/AddPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Add a New Plan</a>
 
 <br />
-<a asp-page="/PlanSteps/Index" class="btn btn-primary">View Plan Steps</a>
+<br/>
+
+<a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">View Plan Steps</a>
 
 
 <br/>
@@ -128,7 +128,7 @@
 
 <h2>Data Files</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead >
         <tr>
             
             <th>DataName</th>
@@ -150,14 +150,15 @@
         }
     </tbody>
 </table>
-<a asp-page="/DataFiles/AddDataFile" class="btn btn-outline-success">Add a New Data File</a>
+<a asp-page="/DataFiles/AddDataFile" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Add a New Data File</a>
 
+</br>
 </br>
 </br>
 
 <h2>Chats</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead >
         <tr>
             <th>Chat Message</th>
             <th>Chat DateTime</th>
@@ -190,5 +191,6 @@
         <label for="ChatDateTime">Chat DateTime:</label>
         <textarea class="form-control" id="ChatDateTime" name="NewChats.ChatDateTime" required></textarea>
     </div>
-    <button asp-page="/Collaborations/Index"  asp-page-handler="ChatPost" class="btn btn-primary">Send Chat</button>
+    <br/>
+    <button asp-page="/Collaborations/Index"  asp-page-handler="ChatPost">Send Chat</button>
 </form>

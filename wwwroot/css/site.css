@@ -14,13 +14,45 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    -webkit-text-fill-color: #663399;
 }
 
 h1 {
-    style = -webkit-text-fill-color: rebeccapurple;
+    -webkit-text-fill-color: #663399;
 }
 
 h2 {
     -webkit-text-fill-color: #663399;
+}
+
+h4 {
+    -webkit-text-fill-color: #663399;
+}
+
+tbody {
+    background-color: white ;
+}
+
+thead{
+    -webkit-text-fill-color: white;
+    background-color: rebeccapurple;
+}
+
+footer {
+    -webkit-text-fill-color: white;
+}
+
+button {
+    background-color: rebeccapurple;
+    -webkit-text-fill-color: white;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+input {
+    background-color: rebeccapurple;
+    -webkit-text-fill-color: white;
+    padding: 5px 10px;
+    display: inline-block;
 }
