@@ -48,9 +48,16 @@ button {
     -webkit-text-fill-color: white;
     padding: 5px 10px;
     display: inline-block;
+    
 }
 
-input {
+
+button:hover {       
+    background-color: white;
+    -webkit-text-fill-color: rebeccapurple;
+}
+
+input: {
     background-color: rebeccapurple;
     -webkit-text-fill-color: white;
     padding: 5px 10px;

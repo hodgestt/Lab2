@@ -6,7 +6,7 @@
 
 <h2>Knowledge Items</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>Name</th>
             <th>Subject</th>
@@ -27,7 +27,7 @@
                     <td>@kitem.Information</td>
                     <td>@kitem.KnowledgeDateTime</td>
                     <td>
-                    <a asp-page="EditKnowledgeItem" class="btn btn-outline-primary" asp-route-knowledgeid="@kitem.KnowledgeId">Edit -></a>
+                        <a asp-page="EditKnowledgeItem" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-knowledgeid="@kitem.KnowledgeId">Edit -></a>
                     </td>
                 </tr>
             }
@@ -35,4 +35,4 @@
     </tbody>
 </table>
 
-<a asp-page="/KnowledgeItems/AddKnowledgeItem" class="btn btn-outline-success">Add a New Knowledge Item</a>
+<a asp-page="/KnowledgeItems/AddKnowledgeItem" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New Knowledge Item</a>
