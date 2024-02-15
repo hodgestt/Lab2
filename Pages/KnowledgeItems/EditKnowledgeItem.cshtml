@@ -8,24 +8,24 @@
 
 <form asp-page="EditKnowledgeItem">
     <input type="hidden" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeId" />
-    <label asp-for="@Model.KnowledgeItemToUpdate.Name"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Name" />
+    <label asp-for="@Model.KnowledgeItemToUpdate.Name" ></label>
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Name" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
     <br />
     <label asp-for="@Model.KnowledgeItemToUpdate.Subject"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Subject" />
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Subject" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
     <br />
     <label asp-for="@Model.KnowledgeItemToUpdate.Category"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Category" />
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Category" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
     <br />
     <label asp-for="@Model.KnowledgeItemToUpdate.Information"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Information" />
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Information" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
     <br />
     <label asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime" />
+    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
     <br />
     <label asp-for="@Model.KnowledgeItemToUpdate.EmployeeID"></label>
-    <input type="number" asp-for="@Model.KnowledgeItemToUpdate.EmployeeID" />
+    <input type="number" asp-for="@Model.KnowledgeItemToUpdate.EmployeeID" style=" background:white; -webkit-text-fill-color:rebeccapurple;"/>
     <br /><br />
-    <input type="submit" class="btn btn-success" asp-page="EditKnowledgeItem" />
-    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    <input type="submit" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-page="EditKnowledgeItem" />
+    <a asp-page="Index" style=" -webkit-text-fill-color:rebeccapurple; padding:5px 15px; box-shadow; display:inline-block;">Cancel</a>
 </form>
