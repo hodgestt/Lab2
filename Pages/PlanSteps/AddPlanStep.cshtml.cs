@@ -23,6 +23,12 @@ namespace Lab2.Pages.PlanSteps
         [Required]
         public PlanStep NewPlanStep { get; set; }
 
+        public AddPlanStepModel()
+        {
+
+            NewPlanStep = new PlanStep();//instantiates the object, car in driveway before you reference. new PlanStep()
+        }
+
 
         public void OnGet(int planid)
         {

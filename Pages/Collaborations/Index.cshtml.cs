@@ -208,7 +208,7 @@ namespace Lab2.Pages.Collaborations
             DBClass.Lab2DBConnection.Close();
 
             SqlDataReader chatstablereader = DBClass.ChatReader();
-            while (TableReader.Read())
+            while (chatstablereader.Read())
             {
                 NewChat.Add(new Chat
                 {
