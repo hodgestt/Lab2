@@ -9,22 +9,20 @@
 
 <br/>
 <form asp-page="AddPlanStep">
-    
-    <input type="number" asp-for="NewPlanStep.PlanID" placeholder="Plan ID" />
-    <span asp-validation-for="NewPlanStep.PlanID" class="text-danger"></span>
-    <br/>
-    <input type="text" asp-for="NewPlanStep.StepDescription" placeholder="Description" />
-    <span asp-validation-for="NewPlanStep.StepDescription" class="text-danger"></span>
+    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" />
     <br />
-    <input type="text" asp-for="NewPlanStep.Status" placeholder="Status" />
-    <span asp-validation-for="NewPlanStep.Status" class="text-danger"></span>
+    <input type="text" asp-for="@Model.NewPlanStep.StepDescription" placeholder="Description" />
+    <span asp-validation-for="@Model.NewPlanStep.StepDescription" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="@Model.NewPlanStep.Status" placeholder="Status" />
+    <span asp-validation-for="@Model.NewPlanStep.Status" class="text-danger"></span>
     <br />
     <br />
-    <button type="submit" class="btn btn-success">Save</button>
-    <button asp-page="AddPlanStep" asp-page-handler="PopulateHandler" class="btn btn-secondary" formnovalidate>Populate</button>
+    <button type="submit" class="btn">Save</button>
+    <button asp-page="AddPlanStep" asp-page-handler="PopulateHandler" class="btn" formnovalidate>Populate</button>
     <br />
     <br />
-    <a asp-page="/PlanSteps/AddPlanStep">Clear</a>
-    &nbsp; &nbsp;
-    <a asp-page="/PlanSteps/Index">Cancel</a> 
+    @* <a asp-page="/PlanSteps/AddPlanStep">Clear</a>
+    &nbsp; &nbsp; *@
+    <a asp-page="/Plans/Index">Cancel</a> 
 </form>
