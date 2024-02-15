@@ -15,7 +15,7 @@ namespace Lab2.Pages.PlanSteps
 {
     public class AddPlanStepModel : PageModel
     {
-        [Required]
+        
         [BindProperty]//foreign key
         public int PlanID { get; set; }
 
@@ -26,15 +26,15 @@ namespace Lab2.Pages.PlanSteps
 
         public void OnGet(int planid)
         {
-            //might need to read
-
+            
             SqlDataReader reader = DBClass.PlanStepReader(planid);
             while (reader.Read())
             {
-                NewPlanStep.StepID = Int32.Parse(reader["StepID"].ToString());
+
                 NewPlanStep.PlanID = planid;
-                NewPlanStep.StepDescription = reader["StepDescription"].ToString();
-                NewPlanStep.Status = reader["Status"].ToString();
+                //NewPlanStep.StepID = Int32.Parse(reader["StepID"].ToString());
+                //NewPlanStep.StepDescription = reader["StepDescription"].ToString();
+                //NewPlanStep.Status = reader["Status"].ToString();
             }
             DBClass.Lab2DBConnection.Close();
         }

@@ -117,8 +117,7 @@ namespace Lab2.Pages.DB
 
         public static void InsertPlanStep(PlanStep p)
         {
-            string sqlQuery = "INSERT INTO PlanStep(StepID, PlanID, StepDescription,Status) VALUES (";
-            sqlQuery += p.StepID + ",";
+            string sqlQuery = "INSERT INTO PlanStep(PlanID, StepDescription,Status) VALUES (";
             sqlQuery += p.PlanID + ",'";
             sqlQuery += p.StepDescription + "','";
             sqlQuery += p.Status + "')";
