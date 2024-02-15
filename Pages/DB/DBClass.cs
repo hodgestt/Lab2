@@ -117,8 +117,9 @@ namespace Lab2.Pages.DB
 
         public static void InsertPlanStep(PlanStep p)
         {
-            string sqlQuery = "INSERT INTO PlanStep(PlanID,StepDescription,Status) VALUES (";
-            sqlQuery += p.PlanID +  ",'";
+            string sqlQuery = "INSERT INTO PlanStep(StepID, PlanID, StepDescription,Status) VALUES (";
+            sqlQuery += p.StepID + ",";
+            sqlQuery += p.PlanID + ",'";
             sqlQuery += p.StepDescription + "','";
             sqlQuery += p.Status + "')";
 
@@ -130,6 +131,19 @@ namespace Lab2.Pages.DB
 
             cmdTableRead.ExecuteNonQuery();
 
+        }
+
+        public static SqlDataReader PlanStepReader(int PlanID)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+            cmdTableRead.CommandText = "SELECT * FROM PlanStep WHERE PlanID = " + PlanID;
+            cmdTableRead.Connection.Open();
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+
+            return tempReader;
         }
 
         public static SqlDataReader DataCollabReader()

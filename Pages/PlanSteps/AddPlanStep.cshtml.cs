@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 using System.Xml.Linq;
 
 namespace Lab2.Pages.PlanSteps
 {
     public class AddPlanStepModel : PageModel
     {
+        [Required]
         [BindProperty]//foreign key
         public int PlanID { get; set; }
 
@@ -21,24 +23,35 @@ namespace Lab2.Pages.PlanSteps
         [Required]
         public PlanStep NewPlanStep { get; set; }
 
-        
-        public void OnGet() 
-        { }
-       
+
+        public void OnGet(int planid)
+        {
+            //might need to read
+
+            SqlDataReader reader = DBClass.PlanStepReader(planid);
+            while (reader.Read())
+            {
+                NewPlanStep.StepID = Int32.Parse(reader["StepID"].ToString());
+                NewPlanStep.PlanID = planid;
+                NewPlanStep.StepDescription = reader["StepDescription"].ToString();
+                NewPlanStep.Status = reader["Status"].ToString();
+            }
+            DBClass.Lab2DBConnection.Close();
+        }
 
         public IActionResult OnPost()
         {
-            if (NewPlanStep.PlanID == 1000)
+            if (NewPlanStep.StepDescription == "Test Description")
             {
                 return RedirectToPage("Index");
             }
-            if (NewPlanStep.PlanID != null & NewPlanStep.StepDescription != null & NewPlanStep.Status != null)
+            if (NewPlanStep.StepDescription != null & NewPlanStep.Status != null)
             {
                 DBClass.InsertPlanStep(NewPlanStep);
 
                 DBClass.Lab2DBConnection.Close();
 
-                return RedirectToPage("Index");
+                return RedirectToPage("/Plan/Index");
             }
             return Page();
         }
@@ -46,7 +59,6 @@ namespace Lab2.Pages.PlanSteps
         public IActionResult OnPostPopulateHandler()
         {
             ModelState.Clear();
-            NewPlanStep.PlanID = 1000;
             NewPlanStep.StepDescription = "Test Description";
             NewPlanStep.Status = "Test Status";
             return Page(); //will return the plan steps page without anything
