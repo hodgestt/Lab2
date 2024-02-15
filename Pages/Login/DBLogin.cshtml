@@ -22,12 +22,13 @@
         </form>
 
     }
+    //uses the LoginError key and prints its value  
     else if (HttpContext.Session.GetString("LoginError") != null)
     {
         <p class="text-danger">@HttpContext.Session.GetString("LoginError")</p>
 
 
-                // Let the user try login again.
+        // Let the user try login again.
         <form asp-page="DBLogin">
             <input asp-for="UserName" class="form-control" placeholder="Enter Username" />
             <br />
@@ -41,7 +42,7 @@
     }
     else
     {
-                // First time loading the page
+        // First time loading the page. Username and LoginError are both null. 
 
         <form asp-page="DBLogin">
             <input asp-for="UserName" class="form-control" placeholder="Enter UserName" />

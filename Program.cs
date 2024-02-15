@@ -14,12 +14,12 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
-app.UseSession(); //middle-ware pipeline change - enabling session state
-
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession(); //middle-ware pipeline change - enabling session state
 
 app.MapRazorPages();
 

@@ -363,6 +363,7 @@ namespace Lab2.Pages.DB
 
         }
 
+        //used with DB login
         public static int LoginQuery(string loginQuery)
         {
             // This method expects to receive an SQL SELECT
@@ -382,6 +383,7 @@ namespace Lab2.Pages.DB
             return rowCount;
         }
 
+        //used with Parameterized Login
         public static int SecureLogin(string UserName, string Password)
         {
             string loginQuery =
@@ -394,6 +396,7 @@ namespace Lab2.Pages.DB
             cmdLogin.CommandText = loginQuery;
             cmdLogin.Parameters.AddWithValue("@UserName", UserName);
             cmdLogin.Parameters.AddWithValue("@Password", Password);
+            //sends query with the inputted values from the user to compare in the DB
 
             cmdLogin.Connection.Open();
 

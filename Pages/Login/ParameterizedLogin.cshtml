@@ -5,7 +5,19 @@
 }
 
 
-@* Logging in for the first time *@
+@{
+    if (HttpContext.Session.GetString("UserName") != null)
+    {
+        <p class="text-success">@ViewData["LoginMessage"]</p>
+    }
+    else
+    {
+        <p class="text-danger">@ViewData["LoginMessage"]</p>
+    }
+}
+
+
+@* Logging in for the first time. Accepts values for UserName and Password and strings *@
 <form asp-page="ParameterizedLogin">
     <input asp-for="UserName" class="form-control" placeholder="Enter Username" />
     <br />
@@ -17,13 +29,6 @@
 <br />
 
 
-@{
-    if (HttpContext.Session.GetString("UserName") != null)
-    {
-        <p class="text-success">@ViewData["LoginMessage"]</p>
-    }
-    else
-    {
-        <p class="text-danger">@ViewData["LoginMessage"]</p>
-    }
-}
+
+
+
