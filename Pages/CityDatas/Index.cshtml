@@ -1,0 +1,31 @@
+﻿@*Nick Patterson*@
+@page
+@using System.Data.SqlClient
+@using Lab2.Pages.DB
+@model Lab2.Pages.CityDatas.IndexModel
+@{
+    ViewData["Title"] = "CityDatas";
+}
+<h2>CityDatas</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>City Name</th>
+            <th>State Name</th>
+            <th>City Population</th>
+            <th>City Income Tax</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var citydata in Model.NewCityData)
+        {
+            <tr>
+                <td>@citydata.CityName</td>
+                <td>@citydata.StateName</td>
+                <td>@citydata.CityPopulation</td>
+                <td>@citydata.CityIncomeTax</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
