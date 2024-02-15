@@ -237,6 +237,19 @@ namespace Lab2.Pages.DB
 
         }
 
+        public static SqlDataReader CityDataReader()
+        {
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM CityData INNER JOIN DataFile ON CityData.DataID = DataFile.DataID", connection);
+
+            connection.Open();
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
+
+            return tempReader;
+
+
+        }
+
         //General query reader for inner joins + associative tables
         public static SqlDataReader GeneralReaderQuery(string sqlQuery)
         {
