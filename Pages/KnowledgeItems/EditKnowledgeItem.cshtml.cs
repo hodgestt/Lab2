@@ -28,7 +28,7 @@ namespace Lab2.Pages.KnowledgeItems
                 KnowledgeItemToUpdate.Subject  = singleKnowledgeItem["Subject"].ToString();
                 KnowledgeItemToUpdate.Category = singleKnowledgeItem["Category"].ToString();
                 KnowledgeItemToUpdate.Information = singleKnowledgeItem["Information"].ToString();
-                KnowledgeItemToUpdate.KnowledgeDateTime = singleKnowledgeItem["KnowledgeDateTime"].ToString();
+                KnowledgeItemToUpdate.KnowledgeDateTime = DateTime.Parse(singleKnowledgeItem["KnowledgeDateTime"].ToString());
                 KnowledgeItemToUpdate.EmployeeID = Int32.Parse(singleKnowledgeItem["EmployeeID"].ToString());
                 
             }

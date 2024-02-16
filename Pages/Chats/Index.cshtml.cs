@@ -16,7 +16,7 @@ namespace Lab2.Pages.Chats
         public int ChatID { get; set; }
 
         
-        public string ChatDateTime { get; set; }
+        public DateTime ChatDateTime { get; set; }
 
         [BindProperty]
         public int EmployeeID { get; set; }
@@ -48,7 +48,7 @@ namespace Lab2.Pages.Chats
                 {
                     ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = TableReader["ChatDateTime"].ToString(),
+                    ChatDateTime = DateTime.Parse(TableReader["ChatDateTime"].ToString()),
                     EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
                 }
             );
@@ -75,7 +75,7 @@ namespace Lab2.Pages.Chats
                 {
                     ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = TableReader["ChatDateTime"].ToString(),
+                    ChatDateTime = DateTime.Parse(TableReader["ChatDateTime"].ToString()),
                     EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
                 }
             );
