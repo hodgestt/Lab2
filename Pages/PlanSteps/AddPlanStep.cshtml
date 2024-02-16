@@ -9,7 +9,7 @@
 
 <br/>
 <form asp-page="AddPlanStep">
-    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" /> @* help? Do we need @Model for the *@
+    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" /> @* Dont need it here technically, but helpful for View and Model communication *@
     <br />
     <input type="text" asp-for="NewPlanStep.StepDescription" placeholder="Description" />
     <span asp-validation-for="NewPlanStep.StepDescription" class="text-danger"></span>
@@ -24,5 +24,5 @@
     <br />
     @* <a asp-page="/PlanSteps/AddPlanStep">Clear</a>
     &nbsp; &nbsp; *@
-    <a asp-page="/Plans/Index">Cancel</a> 
+    <a asp-page="/Plan/Index">Cancel</a> 
 </form>
