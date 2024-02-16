@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Http;
 
 namespace Lab2.Pages.Collaborations
 {
@@ -30,9 +31,6 @@ namespace Lab2.Pages.Collaborations
         public List<DataFile> DataTable { get; set; }
 
         public int ChatID { get; set; }
-
-
-        public string ChatDateTime { get; set; }
 
 
         [BindProperty]
@@ -90,7 +88,7 @@ namespace Lab2.Pages.Collaborations
                     
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = DateTime.Parse(PlanReader["DateCreated"].ToString())
+                    DateCreated = ((DateTime)PlanReader["DateCreated"])
                 }
 
             );
@@ -122,7 +120,7 @@ namespace Lab2.Pages.Collaborations
                 {
                     ChatID = Int32.Parse(chattablereader["ChatID"].ToString()),
                     ChatMessage = chattablereader["ChatMessage"].ToString(),
-                    ChatDateTime = DateTime.Parse(chattablereader["ChatDateTime"].ToString()),
+                    ChatDateTime = ((DateTime)chattablereader["ChatDateTime"]),
                     EmployeeID = Int32.Parse(chattablereader["EmployeeID"].ToString())
                 }
             );
@@ -165,7 +163,7 @@ namespace Lab2.Pages.Collaborations
 
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = DateTime.Parse(PlanReader["DateCreated"].ToString())
+                    DateCreated = ((DateTime)PlanReader["DateCreated"])
                 }
 
             );
@@ -214,7 +212,7 @@ namespace Lab2.Pages.Collaborations
                 {
                     ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
                     ChatMessage = chatstablereader["ChatMessage"].ToString(),
-                    ChatDateTime = DateTime.Parse(chatstablereader["ChatDateTime"].ToString()),
+                    ChatDateTime = ((DateTime)chatstablereader["ChatDateTime"]),
                     EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
                 }
             );
@@ -263,7 +261,7 @@ namespace Lab2.Pages.Collaborations
 
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = DateTime.Parse(PlanReader["DateCreated"].ToString())
+                    DateCreated = ((DateTime)PlanReader["DateCreated"])
                 }
 
             );
@@ -295,7 +293,7 @@ namespace Lab2.Pages.Collaborations
                 {
                     ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
                     ChatMessage = chatstablereader["ChatMessage"].ToString(),
-                    ChatDateTime = DateTime.Parse(chatstablereader["ChatDateTime"].ToString()),
+                    ChatDateTime = ((DateTime)chatstablereader["ChatDateTime"]),
                     EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
                 }
             );

@@ -17,8 +17,8 @@
     <input type="text" asp-for="NewKnowledgeItem.Information" placeholder="Information" />
     <span asp-validation-for="NewKnowledgeItem.Information" class="text-danger"></span>
     <br />
-    <input type="text" asp-for="NewKnowledgeItem.KnowledgeDateTime" placeholder="Date-Time" />
-    <span asp-validation-for="NewKnowledgeItem.KnowledgeDateTime" class="text-danger"></span>
+        <input type="hidden" class="form-control" asp-for="NewKnowledgeItem.KnowledgeDateTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" required />
+        <span class="validaty" />
     <br />
     <br />
     <button type="submit" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Save</button>
