@@ -31,7 +31,7 @@ namespace Lab2.Pages.KnowledgeItems
                     Subject = TableReader["Subject"].ToString(),
                     Category = TableReader["Category"].ToString(),
                     Information = TableReader["Information"].ToString(),
-                    KnowledgeDateTime = TableReader["KnowledgeDateTime"].ToString()
+                    KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
                 }
             );
             }
