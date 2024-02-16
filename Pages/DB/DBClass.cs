@@ -227,7 +227,7 @@ namespace Lab2.Pages.DB
         public static SqlDataReader ChatReader()
         {
             SqlConnection connection = new SqlConnection(Lab2DBConnString);
-            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Chat INNER JOIN Employee ON Chat.EmployeeID = Employee.EmployeeID", connection);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT c.ChatID, c.ChatMessage, c.ChatDateTime, e.UserName FROM Chat c INNER JOIN Employee e ON c.EmployeeID = e.EmployeeID", connection);
 
             connection.Open();
             SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
@@ -384,8 +384,8 @@ namespace Lab2.Pages.DB
 
             // Add parameters with proper data types
             cmdTableRead.Parameters.AddWithValue("@ChatMessage", c.ChatMessage);
-            cmdTableRead.Parameters.AddWithValue("@ChatDateTime", c.ChatDateTime); 
-            cmdTableRead.Parameters.AddWithValue("@EmployeeID", c.EmployeeID);
+            cmdTableRead.Parameters.AddWithValue("@ChatDateTime", c.ChatDateTime);
+            cmdTableRead.Parameters.AddWithValue("@EmployeeID", c.UserName);
 
             cmdTableRead.Connection.Open();
             cmdTableRead.ExecuteNonQuery();

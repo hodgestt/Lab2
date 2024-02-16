@@ -165,7 +165,7 @@
         <tr>
             <th>Chat Message</th>
             <th>Chat DateTime</th>
-            <th>Employee ID</th>
+            <th>Username</th>
         </tr>
     </thead>
     <tbody>
@@ -174,7 +174,7 @@
             <tr>
                 <td>@chat.ChatMessage</td>
                 <td>@chat.ChatDateTime</td>
-                <td>@chat.EmployeeID</td>
+                <td>@chat.UserName</td>
             </tr>
         }
 
@@ -183,8 +183,8 @@
 
 <form method="post">
     <div class="form-group">
-        <label asp-for="NewChats.EmployeeID">Employee ID:</label>
-        <input type="text" class="form-control" asp-for="NewChats.EmployeeID" required>
+        <label asp-for="NewChats.UserName">UserName:</label>
+        <input type="text" class="form-control" asp-for="NewChats.UserName" required>
     </div>
     <div class="form-group">
         <label asp-for="NewChats.ChatMessage">Chat Message:</label>

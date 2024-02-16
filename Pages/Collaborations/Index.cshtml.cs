@@ -32,6 +32,9 @@ namespace Lab2.Pages.Collaborations
 
         public int ChatID { get; set; }
 
+        [BindProperty]
+        public String UserName { get; set; }
+
 
         [BindProperty]
         [Required]
@@ -108,7 +111,7 @@ namespace Lab2.Pages.Collaborations
                     ChatID = Int32.Parse(chattablereader["ChatID"].ToString()),
                     ChatMessage = chattablereader["ChatMessage"].ToString(),
                     ChatDateTime = ((DateTime)chattablereader["ChatDateTime"]),
-                    EmployeeID = Int32.Parse(chattablereader["EmployeeID"].ToString())
+                    UserName = chattablereader["UserName"].ToString()
                 }
             );
             }
@@ -217,7 +220,7 @@ namespace Lab2.Pages.Collaborations
                     ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
                     ChatMessage = chatstablereader["ChatMessage"].ToString(),
                     ChatDateTime = ((DateTime)chatstablereader["ChatDateTime"]),
-                    EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
+                    UserName = chatstablereader["UserName"].ToString()
                 }
             );
             }
@@ -228,6 +231,10 @@ namespace Lab2.Pages.Collaborations
 
         public IActionResult OnPostChatPost()
         {
+            int employeeID = DBClass.Lab2DBConnection(NewChats.UserName);
+
+            // Populate the EmployeeID property of the NewChats object
+            NewChats.EmployeeID = employeeID;
 
             DBClass.InsertChat(NewChats);
 
@@ -298,7 +305,7 @@ namespace Lab2.Pages.Collaborations
                     ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
                     ChatMessage = chatstablereader["ChatMessage"].ToString(),
                     ChatDateTime = ((DateTime)chatstablereader["ChatDateTime"]),
-                    EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
+                    UserName = chatstablereader["UserName"].ToString()
                 }
             );
             }

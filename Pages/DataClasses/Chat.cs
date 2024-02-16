@@ -15,6 +15,8 @@ namespace Lab2.Pages.DataClasses
 
         public int EmployeeID { get; set; }
 
+        public String UserName { get; set; }
+
 
     }
 }

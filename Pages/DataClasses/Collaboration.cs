@@ -16,6 +16,8 @@ namespace Lab2.Pages.DataClasses
 
         public String NotesAndInformation { get; set; }
 
+        public String UserName { get; set; }
+
 
     }
 }
