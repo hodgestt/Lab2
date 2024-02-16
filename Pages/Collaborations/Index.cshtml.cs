@@ -63,7 +63,7 @@ namespace Lab2.Pages.Collaborations
             {
                 CollaborationTable.Add(new Collaboration
                 {
-                    CollabID = Convert.ToInt32(TableReader["CollabID"]),
+                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
                     TeamName = TableReader["TeamName"].ToString(),
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 });
@@ -138,7 +138,7 @@ namespace Lab2.Pages.Collaborations
             {
                 CollaborationTable.Add(new Collaboration
                 {
-                    CollabID = Convert.ToInt32(TableReader["CollabID"]),
+                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
                     TeamName = TableReader["TeamName"].ToString(),
                     NotesAndInformation = TableReader["NotesAndInformation"].ToString()
                 });

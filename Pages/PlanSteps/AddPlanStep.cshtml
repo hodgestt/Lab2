@@ -9,8 +9,8 @@
 
 <br/>
 <form asp-page="AddPlanStep">
+    <input type="hidden" asp-for="@Model.NewPlanStep.StepID" />
     <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" />
-    <br />
     <input type="text" asp-for="@Model.NewPlanStep.StepDescription" placeholder="Description" />
     <span asp-validation-for="@Model.NewPlanStep.StepDescription" class="text-danger"></span>
     <br />
