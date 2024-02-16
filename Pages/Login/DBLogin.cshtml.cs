@@ -1,17 +1,41 @@
 using Lab2.Pages.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+//using Microsoft.AspNetCore.Authentication;
+//using Microsoft.AspNetCore.Authentication.Cookies;
+//using System.Security.Claims;
+//using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
+
+
 
 namespace Lab2.Pages.Login
 {
     public class DBLoginModel : PageModel
     {
-        [BindProperty]
+        //[BindProperty, Display(Name = "UserName")] //ch4 in textbook
+        [BindProperty] 
         public string UserName { get; set; }
+        
+        //public async Task OnPostAsync()
+        //{
+        //    var claims = new List<Claim>
+        //    {
+        //        new Claim(ClaimTypes.NameIdentifier, UserName)
+
+        //    };
+        //    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        //    var principal = new ClaimsPrincipal(identity);
+        //    await HttpContext.SignInAsync(principal);
+        //}
+
+
         [BindProperty]
         public string Password { get; set; }
 
-
+       
         public IActionResult OnGet(String logout)
         {
             if (logout == "true")

@@ -20,6 +20,9 @@
         <input type="hidden" class="form-control" asp-for="NewKnowledgeItem.KnowledgeDateTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" required />
         <span class="validaty" />
     <br />
+    <input type="text" asp-for="NewKnowledgeItem.EmployeeID" placeholder="EmployeeID" />
+    <span asp-validation-for="NewKnowledgeItem.EmployeeID" class="text-danger"></span>
+    <br />
     <br />
     <button type="submit" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Save</button>
     <button asp-page="AddKnowledgeItem" asp-page-handler="PopulateHandler" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" formnovalidate>Populate</button>

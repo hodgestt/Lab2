@@ -51,6 +51,19 @@
                         </li> *@
                     </ul>
                 </div>
+                <div class="align-content-end">
+                    @{
+                        if (Context.Session.GetString("UserName")!=null)
+                        {
+                            <p>@Context.Session.GetString("UserName") logged in</p>
+                        }
+                        else
+                        {
+                            <a style="-webkit-text-fill-color:aliceblue" asp-page="/DBLogin">@Context.Session.GetString("UserName")</a>
+                        }
+                    }
+                    
+                </div>
             </div>
         </nav>
     </header>

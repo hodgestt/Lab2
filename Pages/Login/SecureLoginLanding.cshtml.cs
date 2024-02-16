@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+
 namespace Lab2.Pages.Login
 {
     public class SecureLoginLandingModel : PageModel

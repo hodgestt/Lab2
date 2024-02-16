@@ -6,6 +6,7 @@
 }
 
 <form asp-page="EditEmployees">
+    <br />
     <input type="hidden" asp-for="@Model.EmployeeToUpdate.EmployeeID" />
     <label asp-for="@Model.EmployeeToUpdate.FirstName"></label>
     <input type="text" asp-for="@Model.EmployeeToUpdate.FirstName" />
@@ -34,9 +35,9 @@
     <label asp-for="@Model.EmployeeToUpdate.UserName"></label>
     <input type="text" asp-for="@Model.EmployeeToUpdate.UserName" />
     <br />
-    <label asp-for="@Model.EmployeeToUpdate.Password"></label>
+    @* <label asp-for="@Model.EmployeeToUpdate.Password"></label> *@
     <input type="hidden" asp-for="@Model.EmployeeToUpdate.Password" />
-    <br /><br />
+    
     <input type="submit" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-page="EditEmployees" />
     <a asp-page="Index" class="btn" style=" -webkit-text-fill-color:rebeccapurple";>Cancel</a>
 </form>
