@@ -385,7 +385,7 @@ namespace Lab2.Pages.DB
             // Add parameters with proper data types
             cmdTableRead.Parameters.AddWithValue("@ChatMessage", c.ChatMessage);
             cmdTableRead.Parameters.AddWithValue("@ChatDateTime", c.ChatDateTime);
-            cmdTableRead.Parameters.AddWithValue("@EmployeeID", c.UserName);
+            cmdTableRead.Parameters.AddWithValue("@EmployeeID", c.EmployeeID);
 
             cmdTableRead.Connection.Open();
             cmdTableRead.ExecuteNonQuery();
