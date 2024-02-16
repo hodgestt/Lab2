@@ -25,6 +25,17 @@ namespace Lab2.Pages.DataFiles
 
         public IActionResult OnGet(int DataID)
         {
+            SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
+            DataList = new List<SelectListItem>();
+            while (DataReader.Read())
+            {
+                DataList.Add(new SelectListItem
+                {
+                    Text = DataReader["DataName"].ToString(),
+                    Value = DataReader["DataID"].ToString()
+                });
+            }
+            DBClass.Lab2DBConnection.Close();
 
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
@@ -53,18 +64,7 @@ namespace Lab2.Pages.DataFiles
 
                 return RedirectToPage("/Login/DBLogin");
             }
-
-            SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
-            DataList = new List<SelectListItem>();
-            while (DataReader.Read())
-            {
-                DataList.Add(new SelectListItem
-                {
-                    Text = DataReader["DataName"].ToString(),
-                    Value = DataReader["DataID"].ToString()
-                });
-            }
-            DBClass.Lab2DBConnection.Close();
+            
         }
 
 

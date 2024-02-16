@@ -10,11 +10,11 @@ namespace Lab2.Pages.DataClasses
 
         public String CityName { get; set; }
 
-        public String StateName { get; set; }
+        public String Name { get; set; }
 
-        public int CityPopulation { get; set; }
+        public int Population { get; set; }
 
-        public decimal CityIncomeTax { get; set; }
+        public decimal IncomeTax { get; set; }
 
         public int DataID { get; set; }
     }

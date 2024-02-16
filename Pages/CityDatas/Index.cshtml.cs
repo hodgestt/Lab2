@@ -17,11 +17,11 @@ namespace Lab2.Pages.CityDatas
 
         public string CityName { get; set; }
 
-        public string StateName { get; set; }
+        public string Name { get; set; }
 
-        public int CityPopulation { get; set; }
+        public int Population { get; set; }
 
-        public int CityIncomeTax { get; set; }
+        public int IncomeTax { get; set; }
 
         [BindProperty]
         public int DataID { get; set; }
@@ -47,9 +47,9 @@ namespace Lab2.Pages.CityDatas
                     {
                         CityID = Int32.Parse(TableReader["CityID"].ToString()),
                         CityName = TableReader["CityName"].ToString(),
-                        StateName = TableReader["StateName"].ToString(),
-                        CityPopulation = Int32.Parse(TableReader["CityPopulation"].ToString()),
-                        CityIncomeTax = Int32.Parse(TableReader["CityIncomeTax"].ToString()),
+                        Name = TableReader["Name"].ToString(),
+                        Population = Int32.Parse(TableReader["Population"].ToString()),
+                        IncomeTax = Int32.Parse(TableReader["IncomeTax"].ToString()),
                         DataID = Int32.Parse(TableReader["DataID"].ToString())
                     }
                 );
