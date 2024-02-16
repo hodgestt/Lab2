@@ -7,7 +7,7 @@
 
 <h2>Employee View</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>FirstName</th>
             <th>LastName</th>
@@ -37,7 +37,7 @@
                 <td>@emp.Zip</td>
                 <td>@emp.UserName</td>
                 <td>
-                <a asp-page="EditEmployees" class="btn btn-outline-primary" asp-route-employeeid="@emp.EmployeeID">Edit -></a>
+                        <a asp-page="EditEmployees" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-employeeid="@emp.EmployeeID">Edit -></a>
                 </td>
             </tr>
             }
@@ -46,7 +46,7 @@
     
 </table>
 <br />
-<a asp-page="/Employees/AddEmployee" class="btn btn-outline-success">Create User</a>
+<a asp-page="/Employees/AddEmployee" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Create User</a>
 
 
 
