@@ -9,13 +9,13 @@
 
 <br/>
 <form asp-page="AddPlanStep">
-    <input type="hidden" asp-for="@Model.NewPlanStep.StepID" />
-    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" />
-    <input type="text" asp-for="@Model.NewPlanStep.StepDescription" placeholder="Description" />
-    <span asp-validation-for="@Model.NewPlanStep.StepDescription" class="text-danger"></span>
+    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" /> @* Dont need it here technically, but helpful for View and Model communication *@
     <br />
-    <input type="text" asp-for="@Model.NewPlanStep.Status" placeholder="Status" />
-    <span asp-validation-for="@Model.NewPlanStep.Status" class="text-danger"></span>
+    <input type="text" asp-for="NewPlanStep.StepDescription" placeholder="Description" />
+    <span asp-validation-for="NewPlanStep.StepDescription" class="text-danger"></span>
+    <br />
+    <input type="text" asp-for="NewPlanStep.Status" placeholder="Status" />
+    <span asp-validation-for="NewPlanStep.Status" class="text-danger"></span>
     <br />
     <br />
     <button type="submit" class="btn">Save</button>
@@ -24,5 +24,5 @@
     <br />
     @* <a asp-page="/PlanSteps/AddPlanStep">Clear</a>
     &nbsp; &nbsp; *@
-    <a asp-page="/Plans/Index">Cancel</a> 
+    <a asp-page="/Plan/Index">Cancel</a> 
 </form>

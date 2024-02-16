@@ -32,7 +32,7 @@ namespace Lab2.Pages.PlanSteps{
             {
                 PlanStepsTable.Add(new PlanStep
                 {
-                    StepID = Int32.Parse(TableReader["StepID"].ToString()),
+                    //StepID = Int32.Parse(TableReader["StepID"].ToString()),
                     PlanID = Int32.Parse(TableReader["PlanID"].ToString()),
                     StepDescription = TableReader["StepDescription"].ToString(),
                     Status = TableReader["Status"].ToString()

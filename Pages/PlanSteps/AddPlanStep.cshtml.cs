@@ -15,7 +15,7 @@ namespace Lab2.Pages.PlanSteps
 {
     public class AddPlanStepModel : PageModel
     {
-        [Required]
+        
         [BindProperty]//foreign key
         public int PlanID { get; set; }
 
@@ -23,18 +23,22 @@ namespace Lab2.Pages.PlanSteps
         [Required]
         public PlanStep NewPlanStep { get; set; }
 
+        public AddPlanStepModel()
+        {
+
+            NewPlanStep = new PlanStep();//instantiates the object, car in driveway before you reference. new PlanStep()
+        }
+
 
         public void OnGet(int planid)
         {
-            //might need to read
-
+            
             SqlDataReader reader = DBClass.PlanStepReader(planid);
             while (reader.Read())
             {
-                NewPlanStep.StepID = Int32.Parse(reader["StepID"].ToString());
+
                 NewPlanStep.PlanID = planid;
-                NewPlanStep.StepDescription = reader["StepDescription"].ToString();
-                NewPlanStep.Status = reader["Status"].ToString();
+                
             }
             DBClass.Lab2DBConnection.Close();
         }
@@ -43,7 +47,7 @@ namespace Lab2.Pages.PlanSteps
         {
             if (NewPlanStep.StepDescription == "Test Description")
             {
-                return RedirectToPage("Index");
+                return Page();//originally Page() but how can i return to the add step page which still knew the planid
             }
             if (NewPlanStep.StepDescription != null & NewPlanStep.Status != null)
             {
@@ -51,17 +55,17 @@ namespace Lab2.Pages.PlanSteps
 
                 DBClass.Lab2DBConnection.Close();
 
-                return RedirectToPage("/Plan/Index");
+                return RedirectToPage("/Plan/Index"); //need it to redirect to the previous page with the plan id in memory
             }
             return Page();
         }
 
-        public IActionResult OnPostPopulateHandler()
+        public IActionResult OnPostPopulateHandler() 
         {
             ModelState.Clear();
             NewPlanStep.StepDescription = "Test Description";
             NewPlanStep.Status = "Test Status";
-            return Page(); //will return the plan steps page without anything
+            return Page(); //will return the plan steps page without anything. Loses the understanding of which planid it needs
         }
 
 

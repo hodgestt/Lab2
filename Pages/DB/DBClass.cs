@@ -117,8 +117,7 @@ namespace Lab2.Pages.DB
 
         public static void InsertPlanStep(PlanStep p)
         {
-            string sqlQuery = "INSERT INTO PlanStep(StepID, PlanID, StepDescription,Status) VALUES (";
-            sqlQuery += p.StepID + ",";
+            string sqlQuery = "INSERT INTO PlanStep(PlanID, StepDescription,Status) VALUES (";
             sqlQuery += p.PlanID + ",'";
             sqlQuery += p.StepDescription + "','";
             sqlQuery += p.Status + "')";
@@ -229,6 +228,19 @@ namespace Lab2.Pages.DB
         {
             SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Chat INNER JOIN Employee ON Chat.EmployeeID = Employee.EmployeeID", connection);
+
+            connection.Open();
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
+
+            return tempReader;
+
+
+        }
+
+        public static SqlDataReader CityDataReader()
+        {
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM CityData INNER JOIN DataFile ON CityData.DataID = DataFile.DataID", connection);
 
             connection.Open();
             SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
