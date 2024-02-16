@@ -37,7 +37,6 @@ namespace Lab2.Pages.Plan
             ModelState.Clear();
             NewPlan.PlanName = "Test Plan Name";
             NewPlan.PlanConcept = "Test Concept";
-            NewPlan.DateCreated = "Test Date";
             return Page(); //Page method inherited from Page class
         }
 
