@@ -80,19 +80,6 @@ namespace Lab2.Pages.Collaborations
             }
             DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
-            SqlDataReader PlanReader = DBClass.PlansReader();
-            while (PlanReader.Read())
-            {
-                PlansTable.Add(new Plans
-                {
-                    
-                    PlanName = PlanReader["PlanName"].ToString(),
-                    PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = ((DateTime)PlanReader["DateCreated"])
-                }
-
-            );
-            }
 
             // Close your connection in DBClass
             DBClass.Lab2DBConnection.Close();
@@ -125,6 +112,23 @@ namespace Lab2.Pages.Collaborations
                 }
             );
             }
+            // Close your connection in DBClass
+            DBClass.Lab2DBConnection.Close();
+
+            SqlDataReader PlansReader = DBClass.PlansReader();
+            while (PlansReader.Read())
+            {
+                PlansTable.Add(new Plans
+                {
+                    PlanID = Int32.Parse(PlansReader["PlanID"].ToString()),
+                    PlanName = PlansReader["PlanName"].ToString(),
+                    PlanConcept = PlansReader["PlanConcept"].ToString(),
+                    DateCreated = ((DateTime)PlansReader["DateCreated"])
+                }
+
+            );
+            }
+
             // Close your connection in DBClass
             DBClass.Lab2DBConnection.Close();
         }
