@@ -13,9 +13,13 @@ using System.Xml.Linq;
 
 namespace Lab2.Pages.PlanSteps
 {
+    
     public class AddPlanStepModel : PageModel
     {
-        
+
+        [BindProperty]
+        public string PlanName { get; set; }
+
         [BindProperty]//foreign key
         public int PlanID { get; set; }
 
@@ -30,9 +34,11 @@ namespace Lab2.Pages.PlanSteps
         }
 
 
-        public void OnGet(int planid)
+        public void OnGet(int planid, string planName)
         {
-            
+
+            PlanName = planName;
+
             SqlDataReader reader = DBClass.PlanStepReader(planid);
             while (reader.Read())
             {

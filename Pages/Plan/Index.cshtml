@@ -25,7 +25,7 @@
                 <td>@emp.PlanConcept</td>
                 <td>@emp.DateCreated</td>
                 <td>
-                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@emp.PlanID">View Steps</a>
+                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@emp.PlanID" asp-route-planname="@emp.PlanName">View Steps</a>
                 </td>
                     
             </tr>

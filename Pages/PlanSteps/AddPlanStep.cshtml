@@ -1,11 +1,13 @@
 ﻿@* Jessica Shamloo *@
-@page 
+@page "{PlanName}"
+@using System.Data.SqlClient
+@using Lab2.Pages.DB
 @model Lab2.Pages.PlanSteps.AddPlanStepModel
 @{
     ViewData["Title"] = "AddPlanStep";
 }
 
-<h2>Add a new Plan Step</h2>
+<h2 class="h2">@RouteData.Values["PlanName"]: New Plan Step</h2>
 
 <form asp-page="AddPlanStep">
     <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" /> @* Dont need it here technically, but helpful for View and Model communication *@

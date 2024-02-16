@@ -19,20 +19,24 @@ namespace Lab2.Pages.PlanSteps{
         [BindProperty]
         public int PlanID { get; set; }
 
+        [BindProperty]
+        public string PlanName { get; set; }
+
         public IndexModel()
         {
             PlanStepsTable = new List<PlanStep>();
             
         }
 
-        public void OnGet(int PlanID)
+        public void OnGet(int PlanID, string planName)
         {
+            PlanName = planName;
+
             SqlDataReader TableReader = DBClass.PlanStepReader(PlanID);
             while (TableReader.Read())
             {
                 PlanStepsTable.Add(new PlanStep
                 {
-                    //StepID = Int32.Parse(TableReader["StepID"].ToString()),
                     PlanID = Int32.Parse(TableReader["PlanID"].ToString()),
                     StepDescription = TableReader["StepDescription"].ToString(),
                     Status = TableReader["Status"].ToString()
