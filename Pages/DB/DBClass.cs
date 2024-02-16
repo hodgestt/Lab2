@@ -315,12 +315,13 @@ namespace Lab2.Pages.DB
         //Inserts one new KnowledgeItem Record into the DB
         public static void InsertKnowledgeItem(KnowledgeItem x)
         {
-            String sqlQuery = "INSERT INTO KnowledgeItem(Name,Subject,Category,Information,KnowledgeDateTime) VALUES ('";
+            String sqlQuery = "INSERT INTO KnowledgeItem(Name,Subject,Category,Information,KnowledgeDateTime,EmployeeID) VALUES ('";
             sqlQuery += x.Name + "','";
             sqlQuery += x.Subject + "','";
             sqlQuery += x.Category + "','";
             sqlQuery += x.Information + "','";
-            sqlQuery += x.KnowledgeDateTime + "')";
+            sqlQuery += x.KnowledgeDateTime + "','";
+            sqlQuery += x.EmployeeID + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab2DBConnection;
@@ -336,20 +337,21 @@ namespace Lab2.Pages.DB
         //Inserts one new Plan Record into the DB
         public static void InsertPlan(Plans p)
         {
-            String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated) VALUES ('";
-            sqlQuery += p.PlanName + "','";
-            sqlQuery += p.PlanConcept + "','";
-            sqlQuery += p.DateCreated + "')";
-           
+            String sqlQuery = "INSERT INTO Plans(PlanName,PlanConcept,DateCreated) VALUES (@PlanName, @PlanConcept, @DateCreated)";
 
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab2DBConnection;
             cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
+
+            // Add parameters with proper data types
+            cmdTableRead.Parameters.AddWithValue("@PlanName", p.PlanName);
+            cmdTableRead.Parameters.AddWithValue("@PlanConcept", p.PlanConcept);
+            cmdTableRead.Parameters.AddWithValue("@DateCreated", p.DateCreated);
+
             cmdTableRead.Connection.Open();
-
             cmdTableRead.ExecuteNonQuery();
-
+            cmdTableRead.Connection.Close();
 
         }
 
@@ -374,17 +376,20 @@ namespace Lab2.Pages.DB
         }
         public static void InsertChat(Chat c)
         {
-            String sqlQuery = "INSERT INTO Chat (ChatMessage,ChatDateTime,EmployeeID) VALUES ('";
-            sqlQuery += c.ChatMessage + "','";
-            sqlQuery += c.ChatDateTime + "','";
-            sqlQuery += c.EmployeeID + "')";
+            string sqlQuery = "INSERT INTO Chat (ChatMessage, ChatDateTime, EmployeeID) VALUES (@ChatMessage, @ChatDateTime, @EmployeeID)";
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab2DBConnection;
             cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText = sqlQuery;
-            cmdTableRead.Connection.Open();
 
+            // Add parameters with proper data types
+            cmdTableRead.Parameters.AddWithValue("@ChatMessage", c.ChatMessage);
+            cmdTableRead.Parameters.AddWithValue("@ChatDateTime", c.ChatDateTime); 
+            cmdTableRead.Parameters.AddWithValue("@EmployeeID", c.EmployeeID);
+
+            cmdTableRead.Connection.Open();
             cmdTableRead.ExecuteNonQuery();
+            cmdTableRead.Connection.Close();
 
 
         }

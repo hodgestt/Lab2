@@ -27,7 +27,7 @@ namespace Lab2.Pages.Plan
                     PlanID = Int32.Parse(TableReader["PlanID"].ToString()),
                     PlanName = TableReader["PlanName"].ToString(),
                     PlanConcept = TableReader["PlanConcept"].ToString(),
-                    DateCreated = DateTime.Parse(TableReader["DateCreated"].ToString())
+                    DateCreated = ((DateTime)TableReader["DateCreated"])
                 }
 
             );

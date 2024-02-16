@@ -31,16 +31,16 @@
 <form method="post">
     <div class="form-group">
         <label asp-for="NewChats.EmployeeID">Employee ID:</label>
-        <input type="text" class="form-control" required>
+        <input type="text" class="form-control" asp-for="NewChats.EmployeeID" required>
     </div>
     <div class="form-group">
         <label asp-for="NewChats.ChatMessage">Chat Message:</label>
-        <textarea class="form-control" rows="3" required></textarea>
+        <textarea class="form-control" rows="3" asp-for="NewChats.ChatMessage" required></textarea>
     </div>
     <div class="form-group">
-        <label asp-for="NewChats.ChatDateTime">Chat DateTime:</label>
-        <input type="datetime-local" required/>
+        <input type="hidden" class="form-control" asp-for="NewChats.ChatDateTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" required />
         <span class="validaty"/>
     </div>
-    <button type="submit" class="btn btn-primary">Send Chat</button>
+    <br/>
+    <button type="submit" class="btn" style="background-color: rebeccapurple; -webkit-text-fill-color: white">Send Chat</button>
 </form>

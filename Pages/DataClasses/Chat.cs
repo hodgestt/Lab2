@@ -1,6 +1,7 @@
 ﻿//Nick Patterson
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 
 namespace Lab2.Pages.DataClasses
 {
@@ -13,6 +14,7 @@ namespace Lab2.Pages.DataClasses
         public DateTime ChatDateTime { get; set; }
 
         public int EmployeeID { get; set; }
+
 
     }
 }

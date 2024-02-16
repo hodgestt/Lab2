@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Xml.Linq;
 
 namespace Lab2.Pages.Chats
@@ -16,7 +17,6 @@ namespace Lab2.Pages.Chats
         public int ChatID { get; set; }
 
         
-        public DateTime ChatDateTime { get; set; }
 
         [BindProperty]
         public int EmployeeID { get; set; }
@@ -31,8 +31,6 @@ namespace Lab2.Pages.Chats
         [BindProperty]      
         public List<Chat> NewChat { get; set; }
 
-       
-
         public IndexModel()
         {
             NewChat = new List<Chat>();
@@ -44,14 +42,15 @@ namespace Lab2.Pages.Chats
             SqlDataReader TableReader = DBClass.ChatReader();
             while (TableReader.Read())
             {
+                
                 NewChat.Add(new Chat
                 {
                     ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = DateTime.Parse(TableReader["ChatDateTime"].ToString()),
+                    ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
                     EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
                 }
-            );
+            ) ;
             }
             // Close your connection in DBClass
             DBClass.Lab2DBConnection.Close();
@@ -75,7 +74,7 @@ namespace Lab2.Pages.Chats
                 {
                     ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = DateTime.Parse(TableReader["ChatDateTime"].ToString()),
+                    ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
                     EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
                 }
             );

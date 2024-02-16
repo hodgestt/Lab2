@@ -13,8 +13,8 @@
     <input type="text" asp-for="NewPlan.PlanConcept" placeholder="Concept" />
     <span asp-validation-for="NewPlan.PlanConcept" class="text-danger"></span>
     <br />
-    <input type="text" asp-for="NewPlan.DateCreated" placeholder="Date Created" />
-    <span asp-validation-for="NewPlan.DateCreated" class="text-danger"></span>
+    <input type="hidden" class="form-control" asp-for="NewPlan.DateCreated" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" required />
+    <span class="validaty" />
     <br />
     <br />
     <button type="submit" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Save</button>
