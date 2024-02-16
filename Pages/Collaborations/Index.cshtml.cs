@@ -90,7 +90,7 @@ namespace Lab2.Pages.Collaborations
                     
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = PlanReader["DateCreated"].ToString()
+                    DateCreated = DateTime.Parse(PlanReader["DateCreated"].ToString())
                 }
 
             );
@@ -122,7 +122,7 @@ namespace Lab2.Pages.Collaborations
                 {
                     ChatID = Int32.Parse(chattablereader["ChatID"].ToString()),
                     ChatMessage = chattablereader["ChatMessage"].ToString(),
-                    ChatDateTime = chattablereader["ChatDateTime"].ToString(),
+                    ChatDateTime = DateTime.Parse(chattablereader["ChatDateTime"].ToString()),
                     EmployeeID = Int32.Parse(chattablereader["EmployeeID"].ToString())
                 }
             );
@@ -165,7 +165,7 @@ namespace Lab2.Pages.Collaborations
 
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = PlanReader["DateCreated"].ToString()
+                    DateCreated = DateTime.Parse(PlanReader["DateCreated"].ToString())
                 }
 
             );
@@ -214,7 +214,7 @@ namespace Lab2.Pages.Collaborations
                 {
                     ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
                     ChatMessage = chatstablereader["ChatMessage"].ToString(),
-                    ChatDateTime = chatstablereader["ChatDateTime"].ToString(),
+                    ChatDateTime = DateTime.Parse(chatstablereader["ChatDateTime"].ToString()),
                     EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
                 }
             );
@@ -263,7 +263,7 @@ namespace Lab2.Pages.Collaborations
 
                     PlanName = PlanReader["PlanName"].ToString(),
                     PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = PlanReader["DateCreated"].ToString()
+                    DateCreated = DateTime.Parse(PlanReader["DateCreated"].ToString())
                 }
 
             );
@@ -295,7 +295,7 @@ namespace Lab2.Pages.Collaborations
                 {
                     ChatID = Int32.Parse(chatstablereader["ChatID"].ToString()),
                     ChatMessage = chatstablereader["ChatMessage"].ToString(),
-                    ChatDateTime = chatstablereader["ChatDateTime"].ToString(),
+                    ChatDateTime = DateTime.Parse(chatstablereader["ChatDateTime"].ToString()),
                     EmployeeID = Int32.Parse(chatstablereader["EmployeeID"].ToString())
                 }
             );

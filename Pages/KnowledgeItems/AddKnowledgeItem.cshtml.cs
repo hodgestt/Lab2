@@ -46,7 +46,6 @@ namespace Lab2.Pages.KnowledgeItems
             NewKnowledgeItem.Subject = "Test Subject";
             NewKnowledgeItem.Category = "Test Category";
             NewKnowledgeItem.Information = "Test Information";
-            NewKnowledgeItem.KnowledgeDateTime = "Test KnowledgeDateTime";
             return Page(); //Page method inherited from Page class
         }
 

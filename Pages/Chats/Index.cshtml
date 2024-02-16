@@ -30,16 +30,17 @@
 
 <form method="post">
     <div class="form-group">
-        <label for="EmployeeID">Employee ID:</label>
-        <input type="text" class="form-control" id="EmployeeID" name="NewChats.EmployeeID" required>
+        <label asp-for="NewChats.EmployeeID">Employee ID:</label>
+        <input type="text" class="form-control" required>
     </div>
     <div class="form-group">
-        <label for="ChatMessage">Chat Message:</label>
-        <textarea class="form-control" id="ChatMessage" name="NewChats.ChatMessage" rows="3" required></textarea>
+        <label asp-for="NewChats.ChatMessage">Chat Message:</label>
+        <textarea class="form-control" rows="3" required></textarea>
     </div>
     <div class="form-group">
-        <label for="ChatDateTime">Chat DateTime:</label>
-        <textarea class="form-control" id="ChatDateTime" name="NewChats.ChatDateTime" required></textarea>
+        <label asp-for="NewChats.ChatDateTime">Chat DateTime:</label>
+        <input type="datetime-local" required/>
+        <span class="validaty"/>
     </div>
     <button type="submit" class="btn btn-primary">Send Chat</button>
 </form>
