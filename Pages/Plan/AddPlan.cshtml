@@ -17,12 +17,12 @@
     <span asp-validation-for="NewPlan.DateCreated" class="text-danger"></span>
     <br />
     <br />
-    <button type="submit" class="btn btn-secondary">Save</button>
-    <button asp-page="AddPlan" asp-page-handler="PopulateHandler" class="btn btn-secondary" formnovalidate>Populate</button>
+    <button type="submit" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Save</button>
+    <button asp-page="AddPlan" asp-page-handler="PopulateHandler" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" formnovalidate>Populate</button>
     <br />
     <br />
-    <a asp-page="/Plan/AddPlan">Clear</a>
+    <a asp-page="/Plan/AddPlan" style="-webkit-text-fill-color:rebeccapurple;">Clear</a>
     &nbsp; &nbsp;
-    <a asp-page="/Collaborations/Index">Cancel</a>
+    <a asp-page="/Collaborations/Index" style="-webkit-text-fill-color:rebeccapurple;">Cancel</a>
 
 </form>

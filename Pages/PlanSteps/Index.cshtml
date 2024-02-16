@@ -11,7 +11,7 @@
 <h2 class="h2">Plan Steps</h2>
 
 <table class="table table-bordered table-responsive table-striped table-hover">
-    <thead class="table-dark">
+    <thead >
         <tr>
             <th>Step Description:</th>
             <th>Status:</th>
@@ -26,7 +26,7 @@
                     <td>@p.StepDescription</td>
                     <td>@p.Status</td>
                     <td>
-                    <a asp-page="AddPlanStep" class="btn" asp-route-planid="@p.PlanID">Add Steps</a>
+                        <a asp-page="AddPlanStep" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@p.PlanID">Add Steps</a>
                     </td>
                 </tr>
             }
@@ -38,4 +38,4 @@
 </table>
 <br/>
 
-<a asp-page="/Plan/Index" class="btn btn-link">Return to Plans</a>
+<a asp-page="/Plan/Index" style="-webkit-text-fill-color:rebeccapurple;">Return to Plans</a>

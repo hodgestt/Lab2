@@ -70,7 +70,7 @@
     <select asp-for="EmployeeID" asp-items="Model.EmployeeList">
         <option value="">Choose an Employee</option>
     </select>
-    <button asp-page ="/Collaborations/Index">Submit</button>
+    <button asp-page="/Collaborations/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Submit</button>
 
     </form>
     <br />
@@ -192,5 +192,5 @@
         <textarea class="form-control" id="ChatDateTime" name="NewChats.ChatDateTime" required></textarea>
     </div>
     <br/>
-    <button asp-page="/Collaborations/Index"  asp-page-handler="ChatPost">Send Chat</button>
+    <button asp-page="/Collaborations/Index" asp-page-handler="ChatPost" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Send Chat</button>
 </form>

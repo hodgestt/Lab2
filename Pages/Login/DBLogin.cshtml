@@ -18,7 +18,7 @@
         <p>@HttpContext.Session.GetString("UserName") logged in</p>
         // Log out here
         <form asp-page="DBLogin" asp-page-handler="LogoutHandler">
-            <input type="submit" class="btn btn-danger" value="Logout">
+            <input type="submit" value="Logout" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; display:inline-block;" />
         </form>
 
     }
@@ -35,7 +35,7 @@
             <label>Enter Password:</label>
             <input asp-for="Password" class="form-control" style="-webkit-text-fill-color:rebeccapurple" type="password" />
             <br />
-            <input type="submit" />
+            <input type="submit" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;" />
         </form>
         <br />
 
@@ -50,7 +50,7 @@
             <label>Enter Password:</label>
             <input asp-for="Password" class="form-control" style="-webkit-text-fill-color:rebeccapurple" type="password" />
             <br />
-            <input type="submit"/>
+            <input type="submit" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;" />
         </form>
         <br />
     }

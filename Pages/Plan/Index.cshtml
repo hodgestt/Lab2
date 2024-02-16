@@ -8,7 +8,7 @@
 
 <h2>Plans</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>PlanName</th>
             <th>PlanConcept</th>
@@ -25,7 +25,7 @@
                 <td>@emp.PlanConcept</td>
                 <td>@emp.DateCreated</td>
                 <td>
-                    <a asp-page="/PlanSteps/Index" class="btn btn-primary" asp-route-planid="@emp.PlanID">View Steps</a>
+                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@emp.PlanID">View Steps</a>
                 </td>
                     
             </tr>
@@ -34,6 +34,6 @@
     </tbody>
 </table>
 
-<a asp-page="/Plan/AddPlan" class="btn btn-outline-success">Add a New Plan</a>
+<a asp-page="/Plan/AddPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New Plan</a>
 
 <br/>
