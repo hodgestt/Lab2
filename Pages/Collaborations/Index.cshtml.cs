@@ -245,11 +245,7 @@ namespace Lab2.Pages.Collaborations
 
         public IActionResult OnPostChatPost()
         {
-            int employeeID = DBClass.Lab2DBConnection(NewChats.UserName);
-
-            // Populate the EmployeeID property of the NewChats object
-            NewChats.EmployeeID = employeeID;
-
+            
             DBClass.InsertChat(NewChats);
 
             DBClass.Lab2DBConnection.Close();

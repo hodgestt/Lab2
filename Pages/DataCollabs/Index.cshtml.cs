@@ -1,6 +1,7 @@
 // Nick Patterson "import statements"
 using Lab2.Pages.DataClasses;
 using Lab2.Pages.DB;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
@@ -16,21 +17,35 @@ namespace Lab2.Pages.DataCollabs
             DataCollabsTable = new List<DataCollab>();
         }
 
-        public void OnGet()
+
+        public IActionResult OnGet()
         {
-            SqlDataReader TableReader = DBClass.DataCollabReader();
-            while (TableReader.Read())
+
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                DataCollabsTable.Add(new DataCollab
+                SqlDataReader TableReader = DBClass.DataCollabReader();
+                while (TableReader.Read())
                 {
-                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                    DataID = Int32.Parse(TableReader["DataID"].ToString())
+                    DataCollabsTable.Add(new DataCollab
+                    {
+                        CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                        DataID = Int32.Parse(TableReader["DataID"].ToString())
+                    }
+                );
                 }
-            );
+
+                // Close your connection in DBClass
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
             }
-        
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            else
+            {
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
+
+                return RedirectToPage("/Login/DBLogin");
+            }
         }
     }
 }

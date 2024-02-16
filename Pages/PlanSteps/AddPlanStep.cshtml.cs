@@ -34,20 +34,31 @@ namespace Lab2.Pages.PlanSteps
         }
 
 
-        public void OnGet(int planid, string planName)
+        public IActionResult OnGet(int planid, string planName)
         {
-
-            PlanName = planName;
-
-            SqlDataReader reader = DBClass.PlanStepReader(planid);
-            while (reader.Read())
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
+                PlanName = planName;
 
-                NewPlanStep.PlanID = planid;
-                
+                SqlDataReader reader = DBClass.PlanStepReader(planid);
+                while (reader.Read())
+                {
+
+                    NewPlanStep.PlanID = planid;
+
+                }
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
             }
-            DBClass.Lab2DBConnection.Close();
-        }
+            else
+            {
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
+
+                return RedirectToPage("/Login/DBLogin");
+            }
+}
 
         public IActionResult OnPost()
         {

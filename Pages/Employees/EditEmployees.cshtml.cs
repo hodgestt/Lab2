@@ -20,24 +20,38 @@ namespace Lab2.Pages.Employees
         } 
 
 
-        public void OnGet(int employeeid)
+        public IActionResult OnGet(int employeeid)
         {
-            SqlDataReader singleEmployee = DBClass.SingleEmployeeReader(employeeid);
-            while (singleEmployee.Read())
+
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                EmployeeToUpdate.EmployeeID = employeeid;
-                EmployeeToUpdate.FirstName = singleEmployee["FirstName"].ToString();
-                EmployeeToUpdate.LastName = singleEmployee["LastName"].ToString();
-                EmployeeToUpdate.Email = singleEmployee["Email"].ToString();
-                EmployeeToUpdate.Phone = singleEmployee["Phone"].ToString();
-                EmployeeToUpdate.Street = singleEmployee["Street"].ToString();
-                EmployeeToUpdate.City = singleEmployee["City"].ToString();
-                EmployeeToUpdate.State = singleEmployee["State"].ToString();
-                EmployeeToUpdate.Zip = singleEmployee["Zip"].ToString();
-                EmployeeToUpdate.UserName = singleEmployee["UserName"].ToString();
-                EmployeeToUpdate.Password = singleEmployee["Password"].ToString();
+                SqlDataReader singleEmployee = DBClass.SingleEmployeeReader(employeeid);
+                while (singleEmployee.Read())
+                {
+                    EmployeeToUpdate.EmployeeID = employeeid;
+                    EmployeeToUpdate.FirstName = singleEmployee["FirstName"].ToString();
+                    EmployeeToUpdate.LastName = singleEmployee["LastName"].ToString();
+                    EmployeeToUpdate.Email = singleEmployee["Email"].ToString();
+                    EmployeeToUpdate.Phone = singleEmployee["Phone"].ToString();
+                    EmployeeToUpdate.Street = singleEmployee["Street"].ToString();
+                    EmployeeToUpdate.City = singleEmployee["City"].ToString();
+                    EmployeeToUpdate.State = singleEmployee["State"].ToString();
+                    EmployeeToUpdate.Zip = singleEmployee["Zip"].ToString();
+                    EmployeeToUpdate.UserName = singleEmployee["UserName"].ToString();
+                    EmployeeToUpdate.Password = singleEmployee["Password"].ToString();
+                }
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
+
             }
-            DBClass.Lab2DBConnection.Close();
+            else
+            {
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
+
+                return RedirectToPage("/Login/DBLogin");
+            }
         }
 
         public IActionResult OnPost()

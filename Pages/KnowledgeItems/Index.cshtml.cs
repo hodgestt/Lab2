@@ -19,30 +19,39 @@ namespace Lab2.Pages.KnowledgeItems
             KnowledgeItemsTable = new List<KnowledgeItem>();
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            SqlDataReader TableReader = DBClass.KnowledgeItemReader();
-            while (TableReader.Read())
+
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                KnowledgeItemsTable.Add(new KnowledgeItem
+                SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+                while (TableReader.Read())
                 {
-                    KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
-                    Name = TableReader["Name"].ToString(),
-                    Subject = TableReader["Subject"].ToString(),
-                    Category = TableReader["Category"].ToString(),
-                    Information = TableReader["Information"].ToString(),
-                    KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+                    KnowledgeItemsTable.Add(new KnowledgeItem
+                    {
+                        KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+                        Name = TableReader["Name"].ToString(),
+                        Subject = TableReader["Subject"].ToString(),
+                        Category = TableReader["Category"].ToString(),
+                        Information = TableReader["Information"].ToString(),
+                        KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+                    }
+                );
                 }
-            );
+
+                // Close your connection in DBClass
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
             }
+            else
+            {
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
 
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+                return RedirectToPage("/Login/DBLogin");
+            }
         }
-
-        
-
-        
     }
 }
 

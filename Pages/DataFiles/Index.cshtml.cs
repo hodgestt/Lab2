@@ -23,25 +23,36 @@ namespace Lab2.Pages.DataFiles
             DataTable = new List<DataFile>();
         }
 
-        public void OnGet(int DataID)
+        public IActionResult OnGet(int DataID)
         {
-            SqlDataReader TableReader = DBClass.DataFileReader();
-            while (TableReader.Read())
-            {
-                DataTable.Add(new DataFile
-                {
-                    DataID = Int32.Parse(TableReader["DataID"].ToString()),
-                    DataName = TableReader["DataName"].ToString(),
-                    DataLocation = TableReader["DataLocation"].ToString(),
-                    DataDescription = TableReader["DataDescription"].ToString(),
-                    
-                    
-                }
-            );
-            }
 
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
+            {
+                SqlDataReader TableReader = DBClass.DataFileReader();
+                while (TableReader.Read())
+                {
+                    DataTable.Add(new DataFile
+                    {
+                        DataID = Int32.Parse(TableReader["DataID"].ToString()),
+                        DataName = TableReader["DataName"].ToString(),
+                        DataLocation = TableReader["DataLocation"].ToString(),
+                        DataDescription = TableReader["DataDescription"].ToString(),
+                    }
+                );
+                }
+
+                // Close your connection in DBClass
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
+            }
+            else
+            {
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
+
+                return RedirectToPage("/Login/DBLogin");
+            }
 
             SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
             DataList = new List<SelectListItem>();
@@ -53,8 +64,10 @@ namespace Lab2.Pages.DataFiles
                     Value = DataReader["DataID"].ToString()
                 });
             }
-            DBClass.Lab2DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close();
         }
+
+
         public IActionResult OnPost()
         {
             SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");

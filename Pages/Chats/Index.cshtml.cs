@@ -37,23 +37,36 @@ namespace Lab2.Pages.Chats
 
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            SqlDataReader TableReader = DBClass.ChatReader();
-            while (TableReader.Read())
+
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                
-                NewChat.Add(new Chat
+                SqlDataReader TableReader = DBClass.ChatReader();
+                while (TableReader.Read())
                 {
-                    ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
-                    ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
-                    EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
+
+                    NewChat.Add(new Chat
+                    {
+                        ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
+                        ChatMessage = TableReader["ChatMessage"].ToString(),
+                        ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
+                        EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
+                    }
+                );
                 }
-            ) ;
+                // Close your connection in DBClass
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
             }
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            else
+            {
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
+
+                return RedirectToPage("/Login/DBLogin");
+            }
         }
 
         public IActionResult OnPost()

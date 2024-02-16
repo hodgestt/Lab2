@@ -22,37 +22,49 @@ namespace Lab2.Pages.EmployeeCollabs
 
         public List<SelectListItem> CollabTeams { get; set; }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // Populate the Employee SELECT control
-            SqlDataReader EmployeeCollabReader = DBClass.GeneralReaderQuery("SELECT * FROM Employee");
-
-            Employees = new List<SelectListItem>();
-
-            while (EmployeeCollabReader.Read())
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                Employees.Add(
-                    new SelectListItem(
-                        EmployeeCollabReader["UserName"].ToString(),
-                        EmployeeCollabReader["EmployeeID"].ToString()));
+                // Populate the Employee SELECT control
+                SqlDataReader EmployeeCollabReader = DBClass.GeneralReaderQuery("SELECT * FROM Employee");
+
+                Employees = new List<SelectListItem>();
+
+                while (EmployeeCollabReader.Read())
+                {
+                    Employees.Add(
+                        new SelectListItem(
+                            EmployeeCollabReader["UserName"].ToString(),
+                            EmployeeCollabReader["EmployeeID"].ToString()));
+                }
+
+                DBClass.Lab2DBConnection.Close();
+
+                // Populate the Collaboration SELECT control
+                SqlDataReader CollabReader = DBClass.GeneralReaderQuery("SELECT * FROM Collaboration");
+
+                CollabTeams = new List<SelectListItem>();
+
+                while (CollabReader.Read())
+                {
+                    CollabTeams.Add(
+                        new SelectListItem(
+                            CollabReader["TeamName"].ToString(),
+                            CollabReader["CollabID"].ToString()));
+                }
+
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
             }
-
-            DBClass.Lab2DBConnection.Close();
-
-            // Populate the Collaboration SELECT control
-            SqlDataReader CollabReader = DBClass.GeneralReaderQuery("SELECT * FROM Collaboration");
-
-            CollabTeams = new List<SelectListItem>();
-
-            while (CollabReader.Read())
+            else
             {
-                CollabTeams.Add(
-                    new SelectListItem(
-                        CollabReader["TeamName"].ToString(),
-                        CollabReader["CollabID"].ToString()));
-            }
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
 
-            DBClass.Lab2DBConnection.Close();
+                return RedirectToPage("/Login/DBLogin");
+            }
 
         }
 

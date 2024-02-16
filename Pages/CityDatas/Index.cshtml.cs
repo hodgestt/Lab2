@@ -35,24 +35,37 @@ namespace Lab2.Pages.CityDatas
 
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            SqlDataReader TableReader = DBClass.CityDataReader();
-            while (TableReader.Read())
+
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                NewCityData.Add(new CityData
+                SqlDataReader TableReader = DBClass.CityDataReader();
+                while (TableReader.Read())
                 {
-                    CityID = Int32.Parse(TableReader["CityID"].ToString()),
-                    CityName = TableReader["CityName"].ToString(),
-                    StateName = TableReader["StateName"].ToString(),
-                    CityPopulation = Int32.Parse(TableReader["CityPopulation"].ToString()),
-                    CityIncomeTax = Int32.Parse(TableReader["CityIncomeTax"].ToString()),
-                    DataID = Int32.Parse(TableReader["DataID"].ToString())
+                    NewCityData.Add(new CityData
+                    {
+                        CityID = Int32.Parse(TableReader["CityID"].ToString()),
+                        CityName = TableReader["CityName"].ToString(),
+                        StateName = TableReader["StateName"].ToString(),
+                        CityPopulation = Int32.Parse(TableReader["CityPopulation"].ToString()),
+                        CityIncomeTax = Int32.Parse(TableReader["CityIncomeTax"].ToString()),
+                        DataID = Int32.Parse(TableReader["DataID"].ToString())
+                    }
+                );
                 }
-            );
+                // Close your connection in DBClass
+                DBClass.Lab2DBConnection.Close();
+
+                return Page();
             }
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            else {
+
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
+
+                return Page(); 
+            }
         }
     }
 }
