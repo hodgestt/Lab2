@@ -57,7 +57,41 @@ namespace Lab2.Pages.DB
 
             return tempReader;
         }
-        
+
+        public static SqlDataReader SWOTReader()
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM SWOT;";
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
+
+        public static void InsertSWOT(SWOT s)
+        {
+            string sqlQuery = "INSERT INTO SWOT(Strengths, Weaknesses, Opportunities, Threats, CollabID, KnowledgeId) VALUES ('";
+            sqlQuery += s.Strengths + "','";
+            sqlQuery += s.Weaknesses + "','";
+            sqlQuery += s.Opportunities + "','";
+            sqlQuery += s.Threats + "','";
+            sqlQuery += s.CollabID + "','";
+            sqlQuery += s.KnowledgeId + "')";
+
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
+
+            cmdTableRead.ExecuteNonQuery();
+
+        }
+
         public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
         {
 
