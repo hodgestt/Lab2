@@ -17,10 +17,10 @@ namespace Lab2.Pages.PlanSteps
     public class AddPlanStepModel : PageModel
     {
 
-        [BindProperty]
-        public string PlanName { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public string? PlanName { get; set; }
 
-        [BindProperty]//foreign key
+        [BindProperty(SupportsGet = true)]//foreign key
         public int PlanID { get; set; }
 
         [BindProperty]
@@ -34,17 +34,18 @@ namespace Lab2.Pages.PlanSteps
         }
 
 
-        public IActionResult OnGet(int planid, string planName)
+        public IActionResult OnGet(int planId, string planName)
         {
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
                 PlanName = planName;
+                //NewPlanStep.PlanID = planId;
 
-                SqlDataReader reader = DBClass.PlanStepReader(planid);
+                SqlDataReader reader = DBClass.PlanStepReader(planId);
                 while (reader.Read())
                 {
 
-                    NewPlanStep.PlanID = planid;
+                    NewPlanStep.PlanID = planId;
 
                 }
                 DBClass.Lab2DBConnection.Close();

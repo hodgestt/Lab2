@@ -1,5 +1,5 @@
 ﻿@* Jessica Shamloo *@
-@page "{PlanName}"
+@page "{PlanName}/{PlanID}"
 @using System.Data.SqlClient
 @using Lab2.Pages.DB
 @model Lab2.Pages.PlanSteps.AddPlanStepModel
@@ -10,7 +10,7 @@
 <h2 class="h2">@RouteData.Values["PlanName"]: New Plan Step</h2>
 
 <form asp-page="AddPlanStep">
-    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" /> @* Dont need it here technically, but helpful for View and Model communication *@
+    <input type="hidden" asp-for="@Model.NewPlanStep.PlanID" />
     <br />
     <input type="text" asp-for="NewPlanStep.StepDescription" placeholder="Description" />
     <span asp-validation-for="NewPlanStep.StepDescription" class="text-danger"></span>

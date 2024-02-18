@@ -20,7 +20,7 @@ namespace Lab2.Pages.PlanSteps{
         public int PlanID { get; set; }
 
         [BindProperty]
-        public string PlanName { get; set; }
+        public string? PlanName { get; set; }
 
         public IndexModel()
         {
@@ -28,14 +28,14 @@ namespace Lab2.Pages.PlanSteps{
             
         }
 
-        public IActionResult OnGet(int PlanID, string planName)
+        public IActionResult OnGet(int planId, string planName)
         {
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
 
                 PlanName = planName;
 
-                SqlDataReader TableReader = DBClass.PlanStepReader(PlanID);
+                SqlDataReader TableReader = DBClass.PlanStepReader(planId);
                 while (TableReader.Read())
                 {
                     PlanStepsTable.Add(new PlanStep

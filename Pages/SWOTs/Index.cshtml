@@ -1,0 +1,36 @@
+﻿@* Jessica Shamloo *@
+@page
+@model Lab2.Pages.SWOTs.IndexModel
+@{
+    ViewData["Title"] = "SWOT";
+}
+
+<h2>SWOT Analyses</h2>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Knowledge ID</th> 
+            <th>Strengths</th>
+            <th>Weaknesses</th>
+            <th>Opportunities</th>
+            <th>Threats</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var swot in Model.SWOTTable)
+            {
+                <tr>
+                    <td class="table-active">@swot.KnowledgeId</td> 
+                    <td class="table-success">@swot.Strengths</td>
+                    <td class="table-danger">@swot.Weaknesses</td>
+                    <td class="table-primary">@swot.Opportunities</td>
+                    <td class="table-warning">@swot.Threats</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a asp-page="/SWOTs/AddSWOT" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New SWOT</a>
+<br />
