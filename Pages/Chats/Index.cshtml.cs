@@ -16,13 +16,12 @@ namespace Lab2.Pages.Chats
         
         public int ChatID { get; set; }
 
+        public string UserName { get; set; }
         
 
-        [BindProperty]
-        public int EmployeeID { get; set; }
+        public int? EmployeeId { get; set; }
 
         [BindProperty]
-        [Required]
         public Chat NewChats { get; set; }
 
 
@@ -34,14 +33,14 @@ namespace Lab2.Pages.Chats
         public IndexModel()
         {
             NewChat = new List<Chat>();
-
         }
 
         public IActionResult OnGet()
         {
 
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
-            {
+            { 
+
                 SqlDataReader TableReader = DBClass.ChatReader();
                 while (TableReader.Read())
                 {
@@ -49,9 +48,9 @@ namespace Lab2.Pages.Chats
                     NewChat.Add(new Chat
                     {
                         ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
+                        UserName = TableReader["UserName"].ToString(),
                         ChatMessage = TableReader["ChatMessage"].ToString(),
-                        ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
-                        EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
+                        ChatDateTime = ((DateTime)TableReader["ChatDateTime"])
                     }
                 );
                 }
@@ -71,8 +70,11 @@ namespace Lab2.Pages.Chats
 
         public IActionResult OnPost()
         {
-            
-            
+
+            int? employeeId = HttpContext.Session.GetInt32("EmployeeID");
+
+            NewChats.EmployeeID = employeeId;
+
 
             DBClass.InsertChat(NewChats);
 
