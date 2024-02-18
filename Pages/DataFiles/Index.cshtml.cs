@@ -82,7 +82,25 @@ namespace Lab2.Pages.DataFiles
             }
             DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
-            return RedirectToPage("/CityDatas/Index");
+            int selectedDataID = DataID;
+            string redirectUrl;
+
+            switch (selectedDataID)
+            {
+                case 1:
+                    redirectUrl = "/SWOTs/Index";
+                    break;
+                case 2:
+                    redirectUrl = "/CityDatas/Index";
+                    break;
+                case 3:
+                    redirectUrl = "/Collaborations/Index";
+                    break;
+                default:
+                    redirectUrl = "/DataFiles/Index";
+                    break;
+            }
+            return RedirectToPage(redirectUrl);
         }
         }
 }

@@ -13,7 +13,7 @@ namespace Lab2.Pages.DataClasses
         
         public DateTime ChatDateTime { get; set; }
 
-        public int EmployeeID { get; set; }
+        public int? EmployeeID { get; set; }
 
         public String UserName { get; set; }
 
