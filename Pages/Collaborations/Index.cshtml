@@ -1,27 +1,16 @@
 ﻿@* Jessica Shamloo, Thomas Hodges & Nick Patterson *@
-@page
+@page "{CollabID:int}/{TeamName}"
 @using System.Data.SqlClient
 @using Lab2.Pages.DB
 @using Microsoft.AspNetCore.Http
 @model Lab2.Pages.Collaborations.IndexModel
 @{
-    ViewData["Title"] = "Collaborations";
+    ViewData["Title"] = "Collaboration";
 }
 
-<h2 class="h2">Collaboration Spaces</h2>
+<h2 class="h2">@RouteData.Values["TeamName"] Collaboration Space</h2>
 
-<Br/>
-
-<h4 class="h4">Description</h4>
-@{
-    foreach (var emp in Model.CollaborationTable)
-    {
-        <tr>
-            <td>@emp.NotesAndInformation</td>
-        </tr>
-        <br/>
-    }
-}
+<br/>
 
 <h4 class="h4">Collaborators</h4>
 

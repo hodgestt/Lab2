@@ -62,18 +62,18 @@ namespace Lab2.Pages.Collaborations
 
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                SqlDataReader TableReader = DBClass.CollabReader();
+                //SqlDataReader TableReader = DBClass.CollabReader();
 
-                while (TableReader.Read())
-                {
-                    CollaborationTable.Add(new Collaboration
-                    {
-                        CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                        TeamName = TableReader["TeamName"].ToString(),
-                        NotesAndInformation = TableReader["NotesAndInformation"].ToString()
-                    });
-                }
-                DBClass.Lab2DBConnection.Close(); // Close the reader after use
+                //while (TableReader.Read())
+                //{
+                //    CollaborationTable.Add(new Collaboration
+                //    {
+                //        CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                //        TeamName = TableReader["TeamName"].ToString(),
+                //        NotesAndInformation = TableReader["NotesAndInformation"].ToString()
+                //    });
+                //}
+                //DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
                 SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
                 EmployeeList = new List<SelectListItem>();

@@ -1,0 +1,53 @@
+﻿@page
+@model Lab2.Pages.Hub.HubModel
+@{
+    ViewData["Title"] = "Hub";
+}
+
+<head>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            text-align: center;
+            display: inline
+        }
+
+        div {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+
+
+<h2> Select a Collaboration Space</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Collaboration</th>
+            <th>Description</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var emp in Model.CollaborationTable)
+            {
+                <tr>
+                    <td>@emp.TeamName</td>
+                    <td>@emp.NotesAndInformation</td>
+                    <td>
+                        <a asp-page="/Collaborations/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;" asp-route-collabid="@emp.CollabID" asp-route-teamname="@emp.TeamName">Collab Space</a>
+                    </td>
+                </tr>
+                <br />
+            }
+        }
+    </tbody>
+</table>
+
