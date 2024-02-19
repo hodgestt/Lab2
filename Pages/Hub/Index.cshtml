@@ -42,7 +42,7 @@
                     <td>@emp.TeamName</td>
                     <td>@emp.NotesAndInformation</td>
                     <td>
-                        <a asp-page="/Collaborations/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;" asp-route-collabid="@emp.CollabID" asp-route-teamname="@emp.TeamName">Collab Space</a>
+                        <a asp-page="/Collaborations/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;" asp-route-collabid="@emp.CollabID" asp-route-teamname="@emp.TeamName">Enter</a>
                     </td>
                 </tr>
                 <br />
@@ -52,4 +52,4 @@
 </table>
 <br />
 <br />
-<button asp-page-handler="/Hub/Index" class="btn" style="background-color: rebeccapurple; -webkit-text-fill-color: white">Add Collab Space</button>
+<a asp-page="/Hub/NewSpace" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Create New Space</a>

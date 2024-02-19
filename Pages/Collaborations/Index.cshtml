@@ -68,6 +68,7 @@
                 <th>Information</th>
                 <th>KnowledgeDateTime </th>
                 <th> </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -82,15 +83,14 @@
                         <td>@name.KnowledgeDateTime</td>
                         <td>
                             <a asp-page="/KnowledgeItems/EditKnowledgeItem" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-knowledgeid="@name.KnowledgeId">Edit -></a>
+                            <a asp-page="/SWOTs/AddSWOT" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-knowledgeid="@name.KnowledgeId">Add Data to SWOT Item</a>
                         </td>
                     </tr>
                 }
             }
         </tbody>
     </table>
-
     <a asp-page="/KnowledgeItems/AddKnowledgeItem" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New Knowledge Item</a>
-    <a asp-page="/SWOTs/AddSWOT" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Add Data to SWOT Item</a>
     <br />
     <a asp-page="/SWOTs/Index" style="-webkit-text-fill-color:rebeccapurple;">View SWOT Items</a>
 }
@@ -206,15 +206,6 @@
                 </tr>
             }
         }
-
-        @* @foreach (var chat in Model.NewChat)
-        {
-            <tr>
-                <td>@chat.UserName</td>
-                <td>@chat.ChatMessage</td>
-                <td>@chat.ChatDateTime</td>
-            </tr>
-        } *@
 
     </tbody>
 </table>
