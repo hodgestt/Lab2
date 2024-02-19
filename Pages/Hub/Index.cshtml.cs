@@ -34,11 +34,7 @@ namespace Lab2.Pages.Hub
                 }
                 DBClass.Lab2DBConnection.Close(); // Close the reader after use
                 
-                string CollabReader = "Select CollabID From Collaboration where CollabID = '" + CollabID + "'";
-
-                CollabID = DBClass.GetCollabID(CollabReader);
-
-                HttpContext.Session.SetInt32("CollabID", CollabID);
+                
 
                 DBClass.Lab2DBConnection.Close();
 

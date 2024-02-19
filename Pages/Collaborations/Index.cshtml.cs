@@ -24,6 +24,8 @@ namespace Lab2.Pages.Collaborations
 
         public int KnowledgeNamesCount { get; set; }
 
+        public int KnowledgeId { get; set; }
+
         public List<KnowledgeItem> KnowledgeItemsTable { get; set; }
 
         [BindProperty]
@@ -231,7 +233,7 @@ namespace Lab2.Pages.Collaborations
             
 
 
-            SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
+            SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID, KnowledgeId);
             KnowledgeNamesCount = 0;
             while (knowledgeItemReader.Read())
             {
@@ -361,7 +363,7 @@ namespace Lab2.Pages.Collaborations
 
             DBClass.Lab2DBConnection.Close();
 
-            SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
+            SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID, KnowledgeId);
              
             KnowledgeNamesCount = 0;
             while (knowledgeItemReader.Read())
