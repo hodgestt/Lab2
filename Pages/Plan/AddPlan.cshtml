@@ -1,12 +1,12 @@
 ﻿@*Thomas Hodges*@
-@page 
+@page "{CollabID:int}"
 @model Lab2.Pages.Plan.AddPlanModel
 @{
     ViewData["Title"] = "AddPlan";
 }
 
 <form asp-page="AddPlan">
-    @* <input type="hidden" asp-for="@Model.NewPlan.CollabID" /> *@
+    <input type="hidden" asp-for="@Model.NewPlan.CollabID" />
     <input type="text" asp-for="NewPlan.PlanName" placeholder="Plan Name" />
     <span asp-validation-for="NewPlan.PlanName" class="text-danger"></span>
     <br />

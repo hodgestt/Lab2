@@ -14,13 +14,14 @@ namespace Lab2.Pages.Plan
         public Plans NewPlan { get; set; }
 
         [BindProperty]
-        public int? CollabID { get; set; }
+        public int CollabID { get; set; }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int collabid)
         {
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
                 //NewPlan.CollabID = collabid;
+                CollabID = collabid;
                 return Page();
             }
             else 
@@ -35,6 +36,9 @@ namespace Lab2.Pages.Plan
 
         public IActionResult OnPost()
         {
+
+            
+
             if (NewPlan.PlanName == "Test Plan Name")
             {
                 return RedirectToPage("/Hub/Index");

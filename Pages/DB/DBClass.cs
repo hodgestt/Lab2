@@ -91,6 +91,38 @@ namespace Lab2.Pages.DB
             cmdTableRead.ExecuteNonQuery();
 
         }
+        public static SqlDataReader EditSingleSWOT(int SWOTID)
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+            cmdTableRead.CommandText = "SELECT * FROM SWOT WHERE SWOTID = " + SWOTID;
+            cmdTableRead.Connection.Open();
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+
+            return tempReader;
+        }
+
+        public static void UpdateSWOT(SWOT s)
+        {
+            String sqlQuery = "UPDATE SWOT SET ";
+            sqlQuery += "Strengths='" + s.Strengths + "',";
+            sqlQuery += "Weaknesses='" + s.Weaknesses + "',";
+            sqlQuery += "Opportunities='" + s.Opportunities + "',";
+            sqlQuery += "Threats='" + s.Threats + "',";
+            sqlQuery += "KnowledgeId=" + s.KnowledgeId + " WHERE KnowledgeId=" + s.KnowledgeId + "AND SWOTID =" + s.SWOTID + ";";
+
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Lab2DBConnection;
+            cmd.Connection.ConnectionString = Lab2DBConnString;
+            cmd.CommandText = sqlQuery;
+            cmd.Connection.Open();
+
+            cmd.ExecuteNonQuery();
+        }
+
 
         public static void InsertSpace(Collaboration s)
         {
@@ -291,27 +323,13 @@ namespace Lab2.Pages.DB
         }
 
 
-        public static SqlDataReader PlansReader() //delete eventually if the plansreader below starts to work
-        {
-            SqlCommand cmdTableRead = new SqlCommand();
-            cmdTableRead.Connection = Lab2DBConnection;
-            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
-            cmdTableRead.CommandText =
-                "SELECT * FROM Plans;";
-
-            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
-
-            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
-            return tempReader;
-        }
-
-        //public static SqlDataReader PlansReader(int collabid) NOT WORKING
+        //public static SqlDataReader PlansReader() //delete eventually if the plansreader below starts to work
         //{
         //    SqlCommand cmdTableRead = new SqlCommand();
         //    cmdTableRead.Connection = Lab2DBConnection;
         //    cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
         //    cmdTableRead.CommandText =
-        //        "SELECT * FROM Plans WHERE CollabID=" +collabid.CollabID;
+        //        "SELECT * FROM Plans;";
 
         //    cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 
@@ -319,9 +337,23 @@ namespace Lab2.Pages.DB
         //    return tempReader;
         //}
 
+        public static SqlDataReader PlansReader(int collabid) 
+        {
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+            cmdTableRead.CommandText =
+                "SELECT * FROM Plans WHERE CollabID=" + collabid;
+
+            cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+            return tempReader;
+        }
 
 
-        public static SqlDataReader CollabReader()
+
+    public static SqlDataReader CollabReader()
         {
             SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM Collaboration", connection);
