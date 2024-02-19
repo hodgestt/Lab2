@@ -135,6 +135,32 @@ namespace Lab2.Pages.DB
             return reader;
         }
 
+        public static SqlDataReader SingleCollabReader(int CollabID)
+        {
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Collaboration WHERE CollabID = @CollabID", connection);
+            cmd.Parameters.AddWithValue("@CollabID", CollabID);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            return reader;
+        }
+
+        public static void UpdateSpace(Collaboration s)
+        {
+            String sqlQuery = "UPDATE Collaboration SET ";
+            sqlQuery += "TeamName='" + s.TeamName + "',";
+            sqlQuery += "NotesAndInformation='" + s.NotesAndInformation + "' WHERE CollabID =" + s.CollabID + ";" ;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Lab2DBConnection;
+            cmd.Connection.ConnectionString = Lab2DBConnString;
+            cmd.CommandText = sqlQuery;
+            cmd.Connection.Open();
+
+            cmd.ExecuteNonQuery();
+        }
 
         public static void UpdateKnowledgeItem(KnowledgeItem k)
         {

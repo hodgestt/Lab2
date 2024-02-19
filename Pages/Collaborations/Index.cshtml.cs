@@ -51,7 +51,6 @@ namespace Lab2.Pages.Collaborations
         [Required]
         public Chat NewChats { get; set; }
 
-
         public string ChatMessage { get; set; }
 
         [BindProperty]
@@ -186,7 +185,6 @@ namespace Lab2.Pages.Collaborations
             SqlDataReader chatreader = DBClass.ChatReader();
             while (chatreader.Read())
             {
-
                 NewChat.Add(new Chat
                 {
                     ChatID = Int32.Parse(chatreader["ChatID"].ToString()),
@@ -196,17 +194,11 @@ namespace Lab2.Pages.Collaborations
                 }
             );
             }
-
-
             return Page();
-
-        }
+}
 
         public IActionResult OnPostChatPost()
         {
-
-            
-            
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
             while (EmployeeReader.Read())

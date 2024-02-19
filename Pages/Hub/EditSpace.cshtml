@@ -1,0 +1,20 @@
+﻿@page
+@model Lab2.Pages.Hub.EditSpaceModel
+@{
+    ViewData["Title"] = "Edit Space";
+}
+
+<form asp-page="EditSpace">
+    <br />
+    <input type="hidden" asp-for="@Model.SpaceToUpdate.CollabID" />
+    <label asp-for="@Model.SpaceToUpdate.TeamName"></label>
+    <input type="text" asp-for="@Model.SpaceToUpdate.TeamName" />
+    <br />
+    <label asp-for="@Model.SpaceToUpdate.NotesAndInformation"></label>
+    <input type="text" asp-for="@Model.SpaceToUpdate.NotesAndInformation" />
+    <br />
+    
+    <input type="submit" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-page="EditSpace" />
+    <a asp-page="Index" class="btn" style=" -webkit-text-fill-color:rebeccapurple" ;>Cancel</a>
+</form>
+
