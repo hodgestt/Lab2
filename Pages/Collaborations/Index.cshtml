@@ -173,20 +173,38 @@
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
-            <th>From</th>
+            <th>From </th>
             <th>Chat Message</th>
             <th>Chat DateTime</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var chat in Model.NewChat)
+        @{
+            sqlQuery = @"SELECT Employee.Username, Chat.ChatMessage, Chat.ChatDateTime
+        FROM Chat INNER JOIN EmployeeCollab ON Chat.EmployeeID=EmployeeCollab.EmployeeID
+        INNER JOIN Employee ON Employee.EmployeeID=Chat.EmployeeID
+        INNER JOIN Collaboration ON EmployeeCollab.CollabID=Collaboration.CollabID WHERE Collaboration.CollabID=";
+            sqlQuery += @RouteData.Values["CollabID"];
+
+            SqlDataReader ChatReader = DBClass.GeneralReaderQuery(sqlQuery);
+            while (ChatReader.Read())
+            {
+                <tr>
+                    <td>@ChatReader["DataName"]</td>
+                    <td>@ChatReader["DataLocation"]</td>
+                    <td>@ChatReader["DataDescription"]</td>
+                </tr>
+            }
+        }
+
+        @* @foreach (var chat in Model.NewChat)
         {
             <tr>
                 <td>@chat.UserName</td>
                 <td>@chat.ChatMessage</td>
                 <td>@chat.ChatDateTime</td>
             </tr>
-        }
+        } *@
 
     </tbody>
 </table>
