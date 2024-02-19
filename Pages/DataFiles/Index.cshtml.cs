@@ -88,13 +88,10 @@ namespace Lab2.Pages.DataFiles
             switch (selectedDataID)
             {
                 case 1:
-                    redirectUrl = "/SWOTs/Index";
+                    redirectUrl = "/GroceryDatas/Index";
                     break;
                 case 2:
                     redirectUrl = "/CityDatas/Index";
-                    break;
-                case 3:
-                    redirectUrl = "/Collaborations/Index";
                     break;
                 default:
                     redirectUrl = "/DataFiles/Index";
