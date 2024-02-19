@@ -34,7 +34,7 @@
 
 <form method="post">
     <div class="form-group">
-        <input type="hidden" class="form-control" asp-for="NewChats.EmployeeID" value="@RouteData.Values["EmployeeID"]" required />
+        <input type="hidden" class="form-control" asp-for="NewChats.EmployeeID" value="@HttpContext.Session.GetInt32("EmployeeID")" required />
         <span class="validity" />
     </div>
     <div class="form-group">

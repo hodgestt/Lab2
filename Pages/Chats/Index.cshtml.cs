@@ -25,7 +25,7 @@ namespace Lab2.Pages.Chats
         public Chat NewChats { get; set; }
 
 
-        public string ChatMessage { get; set; }
+        public string? ChatMessage { get; set; }
         
         [BindProperty]      
         public List<Chat> NewChat { get; set; }
@@ -42,6 +42,7 @@ namespace Lab2.Pages.Chats
             { 
 
                 SqlDataReader TableReader = DBClass.ChatReader();
+                
                 while (TableReader.Read())
                 {
 
@@ -54,8 +55,12 @@ namespace Lab2.Pages.Chats
                     }
                 );
                 }
+
+                
                 // Close your connection in DBClass
                 DBClass.Lab2DBConnection.Close();
+
+                
 
                 return Page();
             }
@@ -71,13 +76,14 @@ namespace Lab2.Pages.Chats
         public IActionResult OnPost()
         {
 
-            //int employeeId = Int32.Parse(HttpContext.Session.GetInt32("EmployeeID").ToString());
+            int employeeId = (int)HttpContext.Session.GetInt32("EmployeeID");
 
-            //NewChats.EmployeeID = employeeId;
+            NewChats.EmployeeID = employeeId;
 
 
             DBClass.InsertChat(NewChats);
 
+            NewChats.ChatMessage = string.Empty;
 
             DBClass.Lab2DBConnection.Close();
 
@@ -90,10 +96,14 @@ namespace Lab2.Pages.Chats
                     ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
                     ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
-                    EmployeeID = Int32.Parse(TableReader["EmployeeID"].ToString())
+                    UserName = TableReader["UserName"].ToString(),
+                    EmployeeID = employeeId
                 }
             );
             }
+
+            TableReader.Close();
+            
             return Page();
         }
     }

@@ -43,11 +43,23 @@ namespace Lab2.Pages.Login
         {
             string loginQuery = "SELECT COUNT(*) FROM Employee where UserName = '";
             loginQuery += UserName + "' and Password='" + Password + "'";
+            
 
             if (DBClass.LoginQuery(loginQuery) > 0)
             {
                 HttpContext.Session.SetString("UserName", UserName);
-                HttpContext.Session.SetInt32("EmployeeID", EmployeeID); //new 
+
+                DBClass.Lab2DBConnection.Close();
+
+
+                string EmployeeQuery = "Select EmployeeID From Employee where UserName = '" + UserName + "'";
+
+                EmployeeID = DBClass.GetEmployeeID(EmployeeQuery);
+
+                HttpContext.Session.SetInt32("EmployeeID", EmployeeID);
+
+
+
 
                 DBClass.Lab2DBConnection.Close();
 
