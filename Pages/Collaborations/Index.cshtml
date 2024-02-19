@@ -181,19 +181,16 @@
     </thead>
     <tbody>
         @{
-            sqlQuery = @"SELECT Employee.Username, Chat.ChatMessage, Chat.ChatDateTime
-        FROM Chat INNER JOIN EmployeeCollab ON Chat.EmployeeID=EmployeeCollab.EmployeeID
-        INNER JOIN Employee ON Employee.EmployeeID=Chat.EmployeeID
-        INNER JOIN Collaboration ON EmployeeCollab.CollabID=Collaboration.CollabID WHERE Collaboration.CollabID=";
-            sqlQuery += @RouteData.Values["CollabID"];
-
+        sqlQuery = @"SELECT Employee.Username, Chat.ChatMessage, Chat.ChatDateTime
+        FROM Chat INNER JOIN Employee ON Employee.EmployeeID=Chat.EmployeeID";
+        
             SqlDataReader ChatReader = DBClass.GeneralReaderQuery(sqlQuery);
             while (ChatReader.Read())
             {
                 <tr>
-                    <td>@ChatReader["DataName"]</td>
-                    <td>@ChatReader["DataLocation"]</td>
-                    <td>@ChatReader["DataDescription"]</td>
+                    <td>@ChatReader["Username"]</td>
+                    <td>@ChatReader["ChatMessage"]</td>
+                    <td>@ChatReader["ChatDateTime"]</td>
                 </tr>
             }
         }

@@ -75,12 +75,11 @@ namespace Lab2.Pages.DB
 
         public static void InsertSWOT(SWOT s)
         {
-            string sqlQuery = "INSERT INTO SWOT(Strengths, Weaknesses, Opportunities, Threats, CollabID, KnowledgeId) VALUES ('";
+            string sqlQuery = "INSERT INTO SWOT(Strengths, Weaknesses, Opportunities, Threats, KnowledgeId) VALUES ('";
             sqlQuery += s.Strengths + "','";
             sqlQuery += s.Weaknesses + "','";
             sqlQuery += s.Opportunities + "','";
             sqlQuery += s.Threats + "','";
-            sqlQuery += s.CollabID + "','";
             sqlQuery += s.KnowledgeId + "')";
 
             SqlCommand cmdTableRead = new SqlCommand();

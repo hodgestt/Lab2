@@ -23,7 +23,7 @@ namespace Lab2.Pages.SWOTs
             {
                 return RedirectToPage("Index");
             }
-            if (NewSWOT.Strengths != null & NewSWOT.Weaknesses != null & NewSWOT.Opportunities != null & NewSWOT.Threats != null & NewSWOT.CollabID != null & NewSWOT.KnowledgeId != null)
+            if (NewSWOT.Strengths != null & NewSWOT.Weaknesses != null & NewSWOT.Opportunities != null & NewSWOT.Threats != null & NewSWOT.KnowledgeId != null)
             {
                 DBClass.InsertSWOT(NewSWOT);
                 DBClass.Lab2DBConnection.Close();
@@ -40,7 +40,6 @@ namespace Lab2.Pages.SWOTs
             NewSWOT.Weaknesses = "Test Weaknesses";
             NewSWOT.Opportunities = "Test Opportunities";
             NewSWOT.Threats = "Test Threats";
-            NewSWOT.CollabID = 0;
             return Page(); //Page method inherited from Page class
         }
     }

@@ -8,7 +8,6 @@
         public String Opportunities { get; set; }
         public String Threats { get; set; }
         public String Name { get; set; }
-        public int CollabID { get; set; }
         public int KnowledgeId { get; set; }
 
     }

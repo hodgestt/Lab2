@@ -78,23 +78,23 @@ namespace Lab2.Pages.Collaborations
             {
                 
 
-                SqlDataReader TableReader = DBClass.KnowledgeItemReader();
-                while (TableReader.Read())
-                {
-                    KnowledgeItemsTable.Add(new KnowledgeItem
-                    {
-                        KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
-                        Name = TableReader["Name"].ToString(),
-                        Subject = TableReader["Subject"].ToString(),
-                        Category = TableReader["Category"].ToString(),
-                        Information = TableReader["Information"].ToString(),
-                        KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
-                    }
-                );
-                }
+                //SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+                //while (TableReader.Read())
+                //{
+                //    KnowledgeItemsTable.Add(new KnowledgeItem
+                //    {
+                //        KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+                //        Name = TableReader["Name"].ToString(),
+                //        Subject = TableReader["Subject"].ToString(),
+                //        Category = TableReader["Category"].ToString(),
+                //        Information = TableReader["Information"].ToString(),
+                //        KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+                //    }
+                //);
+                //}
 
-                // Close your connection in DBClass
-                DBClass.Lab2DBConnection.Close();
+                //// Close your connection in DBClass
+                //DBClass.Lab2DBConnection.Close();
 
 
                 SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
@@ -110,35 +110,35 @@ namespace Lab2.Pages.Collaborations
                 DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
 
-                SqlDataReader dataReader = DBClass.DataFileReader();
-                while (dataReader.Read())
-                {
-                    DataTable.Add(new DataFile
-                    {
-                        DataID = Int32.Parse(dataReader["DataID"].ToString()),
-                        DataName = dataReader["DataName"].ToString(),
-                        DataLocation = dataReader["DataLocation"].ToString(),
-                        DataDescription = dataReader["DataDescription"].ToString(),
-                    });
-                }
-                DBClass.Lab2DBConnection.Close();
+                //SqlDataReader dataReader = DBClass.DataFileReader();
+                //while (dataReader.Read())
+                //{
+                //    DataTable.Add(new DataFile
+                //    {
+                //        DataID = Int32.Parse(dataReader["DataID"].ToString()),
+                //        DataName = dataReader["DataName"].ToString(),
+                //        DataLocation = dataReader["DataLocation"].ToString(),
+                //        DataDescription = dataReader["DataDescription"].ToString(),
+                //    });
+                //}
+                //DBClass.Lab2DBConnection.Close();
 
 
-                SqlDataReader PlansReader = DBClass.PlansReader(); //change to plansreader(CollabID)
-                while (PlansReader.Read())
-                {
-                    PlansTable.Add(new Plans
-                    {
-                        PlanID = Int32.Parse(PlansReader["PlanID"].ToString()),
-                        PlanName = PlansReader["PlanName"].ToString(),
-                        PlanConcept = PlansReader["PlanConcept"].ToString(),
-                        DateCreated = ((DateTime)PlansReader["DateCreated"])
-                    });
-                }
-                DBClass.Lab2DBConnection.Close();
+                //SqlDataReader PlansReader = DBClass.PlansReader(); //change to plansreader(CollabID)
+                //while (PlansReader.Read())
+                //{
+                //    PlansTable.Add(new Plans
+                //    {
+                //        PlanID = Int32.Parse(PlansReader["PlanID"].ToString()),
+                //        PlanName = PlansReader["PlanName"].ToString(),
+                //        PlanConcept = PlansReader["PlanConcept"].ToString(),
+                //        DateCreated = ((DateTime)PlansReader["DateCreated"])
+                //    });
+                //}
+                //DBClass.Lab2DBConnection.Close();
 
 
-                SqlDataReader chatreader = DBClass.ChatReader();
+                SqlDataReader chatreader = DBClass.ChatReader(); //goal is to remove
 
                 while (chatreader.Read())
                 {
@@ -169,23 +169,23 @@ namespace Lab2.Pages.Collaborations
 
         public IActionResult OnPost()
         {
-            SqlDataReader TableReader = DBClass.KnowledgeItemReader();
-            while (TableReader.Read())
-            {
-                KnowledgeItemsTable.Add(new KnowledgeItem
-                {
-                    KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
-                    Name = TableReader["Name"].ToString(),
-                    Subject = TableReader["Subject"].ToString(),
-                    Category = TableReader["Category"].ToString(),
-                    Information = TableReader["Information"].ToString(),
-                    KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
-                }
-            );
-            }
+            //SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+            //while (TableReader.Read())
+            //{
+            //    KnowledgeItemsTable.Add(new KnowledgeItem
+            //    {
+            //        KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+            //        Name = TableReader["Name"].ToString(),
+            //        Subject = TableReader["Subject"].ToString(),
+            //        Category = TableReader["Category"].ToString(),
+            //        Information = TableReader["Information"].ToString(),
+            //        KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+            //    }
+            //);
+            //}
 
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            //// Close your connection in DBClass
+            //DBClass.Lab2DBConnection.Close();
 
 
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
@@ -200,40 +200,38 @@ namespace Lab2.Pages.Collaborations
             }
             DBClass.Lab2DBConnection.Close(); 
 
-            SqlDataReader PlanReader = DBClass.PlansReader(); //repeated code from above
-            while (PlanReader.Read())
-            {
-                PlansTable.Add(new Plans
-                {
+            //SqlDataReader PlanReader = DBClass.PlansReader(); //repeated code from above
+            //while (PlanReader.Read())
+            //{
+            //    PlansTable.Add(new Plans
+            //    {
 
-                    PlanName = PlanReader["PlanName"].ToString(),
-                    PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = ((DateTime)PlanReader["DateCreated"])
-                }
+            //        PlanName = PlanReader["PlanName"].ToString(),
+            //        PlanConcept = PlanReader["PlanConcept"].ToString(),
+            //        DateCreated = ((DateTime)PlanReader["DateCreated"])
+            //    }
 
-            );
-            }
-            DBClass.Lab2DBConnection.Close();
+            //);
+            //}
+            //DBClass.Lab2DBConnection.Close();
 
-            SqlDataReader dataReader = DBClass.DataFileReader(); //repeated code from above
-            while (dataReader.Read())
-            {
-                DataTable.Add(new DataFile
-                {
-                    DataID = Int32.Parse(dataReader["DataID"].ToString()),
-                    DataName = dataReader["DataName"].ToString(),
-                    DataLocation = dataReader["DataLocation"].ToString(),
-                    DataDescription = dataReader["DataDescription"].ToString(),
+            //SqlDataReader dataReader = DBClass.DataFileReader(); //repeated code from above
+            //while (dataReader.Read())
+            //{
+            //    DataTable.Add(new DataFile
+            //    {
+            //        DataID = Int32.Parse(dataReader["DataID"].ToString()),
+            //        DataName = dataReader["DataName"].ToString(),
+            //        DataLocation = dataReader["DataLocation"].ToString(),
+            //        DataDescription = dataReader["DataDescription"].ToString(),
 
 
-                }
-            );
-            }
-            DBClass.Lab2DBConnection.Close();
+            //    }
+            //);
+            //}
+            //DBClass.Lab2DBConnection.Close();
 
             
-
-
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID, KnowledgeId);
             KnowledgeNamesCount = 0;
             while (knowledgeItemReader.Read())
@@ -241,7 +239,7 @@ namespace Lab2.Pages.Collaborations
                 
                 KnowledgeNames.Add(new KnowledgeItem
                 {
-                    //KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+                    KnowledgeId = Int32.Parse(knowledgeItemReader["KnowledgeId"].ToString()),
                     Name = knowledgeItemReader["Name"].ToString(),
                     Subject = knowledgeItemReader["Subject"].ToString(),
                     Category = knowledgeItemReader["Category"].ToString(),
@@ -278,23 +276,23 @@ namespace Lab2.Pages.Collaborations
         public IActionResult OnPostChatPost()
         {
 
-            SqlDataReader TableReader = DBClass.KnowledgeItemReader();
-            while (TableReader.Read())
-            {
-                KnowledgeItemsTable.Add(new KnowledgeItem
-                {
-                    KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
-                    Name = TableReader["Name"].ToString(),
-                    Subject = TableReader["Subject"].ToString(),
-                    Category = TableReader["Category"].ToString(),
-                    Information = TableReader["Information"].ToString(),
-                    KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
-                }
-            );
-            }
+            //SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+            //while (TableReader.Read())
+            //{
+            //    KnowledgeItemsTable.Add(new KnowledgeItem
+            //    {
+            //        KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+            //        Name = TableReader["Name"].ToString(),
+            //        Subject = TableReader["Subject"].ToString(),
+            //        Category = TableReader["Category"].ToString(),
+            //        Information = TableReader["Information"].ToString(),
+            //        KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+            //    }
+            //);
+            //}
 
             // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            //DBClass.Lab2DBConnection.Close();
             
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
@@ -308,38 +306,38 @@ namespace Lab2.Pages.Collaborations
             }
             DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
-            SqlDataReader PlanReader = DBClass.PlansReader();
-            while (PlanReader.Read())
-            {
-                PlansTable.Add(new Plans
-                {
+            //SqlDataReader PlanReader = DBClass.PlansReader();
+            //while (PlanReader.Read())
+            //{
+            //    PlansTable.Add(new Plans
+            //    {
 
-                    PlanName = PlanReader["PlanName"].ToString(),
-                    PlanConcept = PlanReader["PlanConcept"].ToString(),
-                    DateCreated = ((DateTime)PlanReader["DateCreated"])
-                }
+            //        PlanName = PlanReader["PlanName"].ToString(),
+            //        PlanConcept = PlanReader["PlanConcept"].ToString(),
+            //        DateCreated = ((DateTime)PlanReader["DateCreated"])
+            //    }
 
-            );
-            }
+            //);
+            //}
 
-            // Close your connection in DBClass
-            DBClass.Lab2DBConnection.Close();
+            //// Close your connection in DBClass
+            //DBClass.Lab2DBConnection.Close();
 
-            SqlDataReader dataReader = DBClass.DataFileReader();
-            while (dataReader.Read())
-            {
-                DataTable.Add(new DataFile
-                {
-                    DataID = Int32.Parse(dataReader["DataID"].ToString()),
-                    DataName = dataReader["DataName"].ToString(),
-                    DataLocation = dataReader["DataLocation"].ToString(),
-                    DataDescription = dataReader["DataDescription"].ToString(),
+            //SqlDataReader dataReader = DBClass.DataFileReader();
+            //while (dataReader.Read())
+            //{
+            //    DataTable.Add(new DataFile
+            //    {
+            //        DataID = Int32.Parse(dataReader["DataID"].ToString()),
+            //        DataName = dataReader["DataName"].ToString(),
+            //        DataLocation = dataReader["DataLocation"].ToString(),
+            //        DataDescription = dataReader["DataDescription"].ToString(),
 
 
-                }
-            );
-            }
-            DBClass.Lab2DBConnection.Close();
+            //    }
+            //);
+            //}
+            //DBClass.Lab2DBConnection.Close();
 
             int employeeId = (int)HttpContext.Session.GetInt32("EmployeeID");
             NewChats.EmployeeID = employeeId;

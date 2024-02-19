@@ -17,10 +17,7 @@ namespace Lab2.Pages.SWOTs
         [BindProperty]
         public int KnowledgeId { get; set; }
 
-        [BindProperty]
-        public int CollabID { get; set; }
-
-
+        
         public IndexModel()
         {
             SWOTTable = new List<SWOT>();
@@ -40,8 +37,7 @@ namespace Lab2.Pages.SWOTs
                     Weaknesses = SWOTReader["Weaknesses"].ToString(),
                     Opportunities = SWOTReader["Opportunities"].ToString(),
                     Threats = SWOTReader["Threats"].ToString(),
-                    CollabID = Int32.Parse(SWOTReader["COllabID"].ToString()),
-                    KnowledgeId = Int32.Parse(SWOTReader["COllabID"].ToString())
+                    KnowledgeId = Int32.Parse(SWOTReader["KnowledgeId"].ToString())
                 }
                 );
             }
