@@ -490,7 +490,15 @@ namespace Lab2.Pages.DB
 
             return rowCount;
         }
-
+        
+        public static int GetEmployeeID(string query)
+        {
+            SqlCommand cmd = new SqlCommand(query, Lab2DBConnection);
+            Lab2DBConnection.Open();
+            int employeeID = (int)cmd.ExecuteScalar();
+            Lab2DBConnection.Close();
+            return employeeID;
+        }
 
 
     }

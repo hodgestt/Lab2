@@ -6,8 +6,6 @@ namespace Lab2.Pages.Login
 {
     public class SecureLoginLandingModel : PageModel
     {
-        [BindProperty]
-        public int EmployeeID { get; set; } //need ezell, or remove
 
         public IActionResult OnGet()
         {
@@ -17,7 +15,7 @@ namespace Lab2.Pages.Login
                     + HttpContext.Session.GetString("UserName")
                     + " successful!";
 
-                EmployeeID = (int)HttpContext.Session.GetInt32("EmployeeID"); //need ezell
+                
                
                 return Page();
             }
