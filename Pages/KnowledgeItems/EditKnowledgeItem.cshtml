@@ -21,11 +21,10 @@
     <label asp-for="@Model.KnowledgeItemToUpdate.Information"></label>
     <input type="text" asp-for="@Model.KnowledgeItemToUpdate.Information" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
     <br />
-    <label asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
+    <input type="hidden" class="form-control" asp-for="@Model.KnowledgeItemToUpdate.KnowledgeDateTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" required />
+    <span class="validity" />
     <br />
-    <label asp-for="@Model.KnowledgeItemToUpdate.EmployeeID"></label>
-    <input type="text" asp-for="@Model.KnowledgeItemToUpdate.EmployeeID" style=" background:white; -webkit-text-fill-color:rebeccapurple;"/>
+    <input type="hidden" asp-for="@Model.KnowledgeItemToUpdate.EmployeeID" style=" background:white; -webkit-text-fill-color:rebeccapurple;"/>
     <br />
     <input type="submit" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-page="EditKnowledgeItem" />
     <a asp-page="Index" style=" -webkit-text-fill-color:rebeccapurple; ">Cancel</a>

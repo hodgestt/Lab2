@@ -55,7 +55,7 @@
     </form>
     <br />
 
-@if (Model.KnowledgeNames != null)
+@if (Model.KnowledgeNamesCount > 0)
 {
     <h5 class="h5">Knowledge Item Names for Selected Employee:</h5>
     
@@ -96,10 +96,9 @@
 }
 <br/>
 <br />
-
 <h2>Plans</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead >
+    <thead>
         <tr>
             <th>PlanName</th>
             <th>PlanConcept</th>
@@ -108,8 +107,27 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            foreach (var emp in Model.PlansTable)
+            {
+                <tr>
+                    <td>@emp.PlanName</td>
+                    <td>@emp.PlanConcept</td>
+                    <td>@emp.DateCreated</td>
+                    <td>
+                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@emp.PlanID" asp-route-planname="@emp.PlanName">View Steps</a>
+                    </td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Plan/AddPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New Plan</a>
+
         @* @{
-        string plansqlQuery = @"SELECT Plans.PlanName, Plans.PlanConcept, Plans.DateCreated, Plans.PlanID
+        string plansqlQuery = @"SELECT Plans.PlanName, Plans.PlanConcept, Plans.DateCreated, Plans.PlanID, Collaboration.CollabID
         from Plans INNER JOIN Collaboration ON Collaboration.CollabID = Plans.CollabID
         WHERE Collaboration.CollabID=";
         plansqlQuery += @RouteData.Values["CollabID"];
@@ -128,27 +146,7 @@
             }
             DBClass.Lab2DBConnection.Close();
         } *@
-        @{
-            foreach (var emp in Model.PlansTable)
-            {
-                <tr>
-              
-                    <td>@emp.PlanName</td>
-                    <td>@emp.PlanConcept</td>
-                    <td>@emp.DateCreated</td>
-                    <td>
-                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@emp.PlanID" asp-route-planname="@emp.PlanName">View Steps</a>
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
-
-<a asp-page="/Plan/AddPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Add a New Plan</a>
-
-<br />
-<br/>
+        
 
 
 <br/>

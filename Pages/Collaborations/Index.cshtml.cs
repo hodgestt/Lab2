@@ -22,6 +22,8 @@ namespace Lab2.Pages.Collaborations
         [BindProperty]
         public List<KnowledgeItem> KnowledgeNames { get; set; }
 
+        public int KnowledgeNamesCount { get; set; }
+
         public List<KnowledgeItem> KnowledgeItemsTable { get; set; }
 
         [BindProperty]
@@ -49,6 +51,11 @@ namespace Lab2.Pages.Collaborations
 
         [BindProperty]
         public List<Chat> NewChat { get; set; }
+
+        public List<SelectListItem> DataList { get; set; } = new();
+
+        [BindProperty]
+        public int DataID { get; set; }
 
         public IndexModel()
         {
@@ -225,8 +232,10 @@ namespace Lab2.Pages.Collaborations
 
 
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
+            KnowledgeNamesCount = 0;
             while (knowledgeItemReader.Read())
             {
+                
                 KnowledgeNames.Add(new KnowledgeItem
                 {
                     Name = knowledgeItemReader["Name"].ToString(),
@@ -236,6 +245,7 @@ namespace Lab2.Pages.Collaborations
                     KnowledgeDateTime = ((DateTime)knowledgeItemReader["KnowledgeDateTime"])
                 }
                 );
+                KnowledgeNamesCount++;
                 
             }
 
@@ -332,7 +342,7 @@ namespace Lab2.Pages.Collaborations
             NewChats.EmployeeID = employeeId;
 
             DBClass.InsertChat(NewChats);
-            NewChats.ChatMessage = string.Empty;
+            
             DBClass.Lab2DBConnection.Close();
 
             SqlDataReader chatreader = DBClass.ChatReader();
@@ -341,7 +351,7 @@ namespace Lab2.Pages.Collaborations
                 NewChat.Add(new Chat
                 {
                     ChatID = Int32.Parse(chatreader["ChatID"].ToString()),
-                    ChatMessage = TableReader["ChatMessage"].ToString(),
+                    ChatMessage = chatreader["ChatMessage"].ToString(),
                     ChatDateTime = ((DateTime)chatreader["ChatDateTime"]),
                     UserName = chatreader["UserName"].ToString(),
                     EmployeeID = employeeId
@@ -352,13 +362,21 @@ namespace Lab2.Pages.Collaborations
             DBClass.Lab2DBConnection.Close();
 
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
+             
+            KnowledgeNamesCount = 0;
             while (knowledgeItemReader.Read())
             {
+
                 KnowledgeNames.Add(new KnowledgeItem
                 {
-                    Name = knowledgeItemReader["Name"].ToString()
+                    Name = knowledgeItemReader["Name"].ToString(),
+                    Subject = knowledgeItemReader["Subject"].ToString(),
+                    Category = knowledgeItemReader["Category"].ToString(),
+                    Information = knowledgeItemReader["Information"].ToString(),
+                    KnowledgeDateTime = ((DateTime)knowledgeItemReader["KnowledgeDateTime"])
                 }
                 );
+                KnowledgeNamesCount++;
 
             }
 
