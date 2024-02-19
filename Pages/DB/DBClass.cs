@@ -64,7 +64,8 @@ namespace Lab2.Pages.DB
             cmdTableRead.Connection = Lab2DBConnection;
             cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
             cmdTableRead.CommandText =
-                "SELECT * FROM SWOT;";
+                "SELECT s.*, k.Name FROM SWOT s INNER JOIN KnowledgeItem k ON s.KnowledgeId = k.KnowledgeId";
+            //SELECT c.ChatID, c.ChatMessage, c.ChatDateTime, e.UserName FROM Chat c INNER JOIN Employee e ON c.EmployeeID = e.EmployeeID", connection);
 
             cmdTableRead.Connection.Open(); // Open connection here, close in Model!
 
