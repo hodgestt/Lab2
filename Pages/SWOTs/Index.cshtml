@@ -27,6 +27,9 @@
                     <td class="table-danger">@swot.Weaknesses</td>
                     <td class="table-primary">@swot.Opportunities</td>
                     <td class="table-warning">@swot.Threats</td>
+                    <td>
+                        <a asp-page="/SWOTs/EditSWOT" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-swotid="@swot.SWOTID">Edit</a>
+                    </td>
                 </tr>
             }
         }

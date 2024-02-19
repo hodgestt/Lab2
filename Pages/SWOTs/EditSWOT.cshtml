@@ -1,0 +1,26 @@
+﻿@page
+@model Lab2.Pages.SWOTs.EditSWOTModel
+@{
+    ViewData["Title"] = "Edit SWOT";
+}
+
+<form asp-page="EditSWOT">
+    <br />
+    <input type="hidden" asp-for="@Model.SWOTToUpdate.SWOTID" />
+    <label asp-for="@Model.SWOTToUpdate.Strengths"></label>
+    <input type="text" asp-for="@Model.SWOTToUpdate.Strengths" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
+    <br />
+    <label asp-for="@Model.SWOTToUpdate.Weaknesses"></label>
+    <input type="text" asp-for="@Model.SWOTToUpdate.Weaknesses" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
+    <br />
+    <label asp-for="@Model.SWOTToUpdate.Opportunities"></label>
+    <input type="text" asp-for="@Model.SWOTToUpdate.Opportunities" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
+    <br />
+    <label asp-for="@Model.SWOTToUpdate.Threats"></label>
+    <input type="text" asp-for="@Model.SWOTToUpdate.Threats" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
+    <br />
+    <input type="hidden" asp-for="@Model.SWOTToUpdate.KnowledgeId" style=" background:white; -webkit-text-fill-color:rebeccapurple;" />
+    <br />
+    <input type="submit" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-page="EditSWOT" />
+    <a asp-page="Index" style=" -webkit-text-fill-color:rebeccapurple; ">Cancel</a>
+</form>
