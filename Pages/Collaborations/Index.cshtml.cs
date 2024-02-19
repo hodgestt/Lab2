@@ -26,6 +26,9 @@ namespace Lab2.Pages.Collaborations
 
         public int KnowledgeId { get; set; }
 
+        public int DataCount { get; set; }
+        public List<DataFile> DataFileNames { get; set; }
+
         public List<KnowledgeItem> KnowledgeItemsTable { get; set; }
 
         [BindProperty]
@@ -155,6 +158,18 @@ namespace Lab2.Pages.Collaborations
 
                 DBClass.Lab2DBConnection.Close();
 
+                SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
+                DataList = new List<SelectListItem>();
+                while (DataReader.Read())
+                {
+                    DataList.Add(new SelectListItem
+                    {
+                        Text = DataReader["DataName"].ToString(),
+                        Value = DataReader["DataID"].ToString()
+                    });
+                }
+                DBClass.Lab2DBConnection.Close(); // Close the reader after use
+
 
                 return Page();
             }
@@ -252,8 +267,20 @@ namespace Lab2.Pages.Collaborations
             }
 
             DBClass.Lab2DBConnection.Close();
-            
-            
+
+            SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
+            DataList = new List<SelectListItem>();
+            while (DataReader.Read())
+            {
+                DataList.Add(new SelectListItem
+                {
+                    Text = DataReader["DataName"].ToString(),
+                    Value = DataReader["DataID"].ToString()
+                });
+            }
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
+
+
             SqlDataReader chatreader = DBClass.ChatReader();
             while (chatreader.Read())
             {
@@ -383,7 +410,53 @@ namespace Lab2.Pages.Collaborations
 
             DBClass.Lab2DBConnection.Close();
 
+            SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
+            DataList = new List<SelectListItem>();
+            while (DataReader.Read())
+            {
+                DataList.Add(new SelectListItem
+                {
+                    Text = DataReader["DataName"].ToString(),
+                    Value = DataReader["DataID"].ToString()
+                });
+            }
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
+
+
             return Page();
         }
+
+        public IActionResult OnPostDataPost()
+        {
+            SqlDataReader DataReader = DBClass.GeneralReaderQuery("SELECT DataID, DataName FROM DataFile");
+            DataList = new List<SelectListItem>();
+            while (DataReader.Read())
+            {
+                DataList.Add(new SelectListItem
+                {
+                    Text = DataReader["DataName"].ToString(),
+                    Value = DataReader["DataID"].ToString()
+                });
+            }
+            DBClass.Lab2DBConnection.Close(); // Close the reader after use
+
+            int selectedDataID = DataID;
+            string redirectUrl;
+
+            switch (selectedDataID)
+            {
+                case 1:
+                    redirectUrl = "/GroceryDatas/Index";
+                    break;
+                case 2:
+                    redirectUrl = "/CityDatas/Index";
+                    break;
+                default:
+                    redirectUrl = "/DataFiles/Index";
+                    break;
+            }
+            return RedirectToPage(redirectUrl);
+        }
+
     }
 }

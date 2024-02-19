@@ -106,6 +106,20 @@ namespace Lab2.Pages.DB
             return reader;
         }
 
+        public static SqlDataReader SingleDataReader(int DataID)
+        {
+
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM DataFile WHERE DataID = @DataID", connection);
+            cmd.Parameters.AddWithValue("@DataID", DataID);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            return reader;
+        }
+
+
         public static void UpdateKnowledgeItem(KnowledgeItem k)
         {
             String sqlQuery = "UPDATE KnowledgeItem SET ";

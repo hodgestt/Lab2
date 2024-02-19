@@ -134,39 +134,52 @@
 
 <br/>
 <br/>
+<form method="post">
+    <H2>Choose DataFile to View :</H2>
+    <br />
+    <select asp-for="DataID" asp-items="Model.DataList">
+        <option value="">Choose a Data File</option>
+    </select>
+    <button asp-page-handler="DataPost" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Submit</button>
 
-<h2>Data Files</h2>
-<table class="table table-bordered table-responsive table-hover">
-    <thead >
-        <tr>
-            
-            <th>DataName</th>
-            <th>DataLocation</th>
-            <th>DataDescription</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-        sqlQuery = @"SELECT DataFile.DataName, DataFile.DataLocation, DataFile.DataDescription, Collaboration.CollabID
+</form>
+<br />
+
+@if (Model.DataCount > 0)
+{
+
+    <h2>Data Files</h2>
+    <table class="table table-bordered table-responsive table-hover">
+        <thead >
+            <tr>
+
+                <th>DataName</th>
+                <th>DataLocation</th>
+                <th>DataDescription</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                sqlQuery = @"SELECT DataFile.DataName, DataFile.DataLocation, DataFile.DataDescription, Collaboration.CollabID
         from DataFile INNER JOIN DataCollab ON DataCollab.DataID = DataFile.DataID
         INNER JOIN Collaboration ON Collaboration.CollabID = DataCollab.CollabID
         WHERE Collaboration.CollabID=";
-        sqlQuery += @RouteData.Values["CollabID"];
+                sqlQuery += @RouteData.Values["CollabID"];
 
-            SqlDataReader DataFileReader = DBClass.GeneralReaderQuery(sqlQuery);
-            while (DataFileReader.Read())
-            {
-                <tr>
-                    <td>@DataFileReader["DataName"]</td>
-                    <td>@DataFileReader["DataLocation"]</td>
-                    <td>@DataFileReader["DataDescription"]</td>
-                </tr>
+                SqlDataReader DataFileReader = DBClass.GeneralReaderQuery(sqlQuery);
+                while (DataFileReader.Read())
+                {
+                    <tr>
+                        <td>@DataFileReader["DataName"]</td>
+                        <td>@DataFileReader["DataLocation"]</td>
+                        <td>@DataFileReader["DataDescription"]</td>
+                    </tr>
+                }
             }
-         }
-    </tbody>
+        </tbody>
 </table>
 <a asp-page="/DataFiles/AddDataFile" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Add a New Data File</a>
-
+}
 </br>
 </br>
 
