@@ -93,12 +93,13 @@ namespace Lab2.Pages.DB
 
         }
 
-        public static SqlDataReader SingleKnowledgeReader(int EmployeeID)
+        public static SqlDataReader SingleKnowledgeReader(int EmployeeID, int KnowledgeId)
         {
 
             SqlConnection connection = new SqlConnection(Lab2DBConnString);
             SqlCommand cmd = new SqlCommand("SELECT * FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
             cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+            cmd.Parameters.AddWithValue("@KnowledgeId", KnowledgeId);
 
             connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -114,7 +115,7 @@ namespace Lab2.Pages.DB
             sqlQuery += "Category='" + k.Category + "',";
             sqlQuery += "Information='" + k.Information + "',";
             sqlQuery += "KnowledgeDateTime='" + k.KnowledgeDateTime + "',";
-            sqlQuery += "EmployeeID=" + k.EmployeeID + " WHERE EmployeeID=" + k.EmployeeID; ;
+            sqlQuery += "EmployeeID=" + k.EmployeeID + " WHERE EmployeeID=" + k.EmployeeID + "AND KnowledgeId =" + k.KnowledgeId + ";" ;
             
             
             SqlCommand cmd = new SqlCommand();
