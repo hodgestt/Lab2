@@ -302,6 +302,19 @@ namespace Lab2.Pages.DB
 
         }
 
+        public static SqlDataReader GroceryDataReader()
+        {
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
+            SqlCommand cmdTableRead = new SqlCommand("SELECT * FROM GroceryData INNER JOIN DataFile ON GroceryData.DataID = DataFile.DataID", connection);
+
+            connection.Open();
+            SqlDataReader tempReader = cmdTableRead.ExecuteReader(CommandBehavior.CloseConnection);
+
+            return tempReader;
+
+
+        }
+
         //General query reader for inner joins + associative tables
         public static SqlDataReader GeneralReaderQuery(string sqlQuery)
         {
