@@ -20,6 +20,9 @@ namespace Lab2.Pages.PlanSteps{
         public int PlanID { get; set; }
 
         [BindProperty]
+        public int StepID { get; set; }
+
+        [BindProperty]
         public string? PlanName { get; set; }
 
         public IndexModel()
@@ -34,6 +37,7 @@ namespace Lab2.Pages.PlanSteps{
             {
 
                 PlanName = planName;
+                PlanID = planId;
 
                 SqlDataReader TableReader = DBClass.PlanStepReader(planId);
                 while (TableReader.Read())

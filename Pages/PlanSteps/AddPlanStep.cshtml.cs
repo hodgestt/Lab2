@@ -39,16 +39,17 @@ namespace Lab2.Pages.PlanSteps
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
                 PlanName = planName;
-                //NewPlanStep.PlanID = planId;
+                //PlanID = planId;
+                NewPlanStep.PlanID = planId;
 
-                SqlDataReader reader = DBClass.PlanStepReader(planId);
-                while (reader.Read())
-                {
+                //SqlDataReader reader = DBClass.PlanStepReader(planId);
+                //while (reader.Read())
+                //{
 
-                    NewPlanStep.PlanID = planId;
+                //    NewPlanStep.PlanID = planId;
 
-                }
-                DBClass.Lab2DBConnection.Close();
+                //}
+                //DBClass.Lab2DBConnection.Close();
 
                 return Page();
             }
