@@ -115,7 +115,7 @@ namespace Lab2.Pages.DB
             sqlQuery += "Category='" + k.Category + "',";
             sqlQuery += "Information='" + k.Information + "',";
             sqlQuery += "KnowledgeDateTime='" + k.KnowledgeDateTime + "',";
-            sqlQuery += "EmployeeID=" + k.EmployeeID + " WHERE EmployeeID=" + k.EmployeeID + "AND KnowledgeId =" + k.KnowledgeId +";";
+            sqlQuery += "EmployeeID=" + k.EmployeeID + " WHERE EmployeeID=" + k.EmployeeID + "AND KnowledgeId =" + k.KnowledgeId + ";" ;
             
             
             SqlCommand cmd = new SqlCommand();
@@ -513,7 +513,8 @@ namespace Lab2.Pages.DB
             Lab2DBConnection.Close();
             return employeeID;
         }
-
+        
+        
 
     }
 }
