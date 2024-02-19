@@ -75,6 +75,7 @@ namespace Lab2.Pages.Collaborations
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
                 
+
                 SqlDataReader TableReader = DBClass.KnowledgeItemReader();
                 while (TableReader.Read())
                 {
