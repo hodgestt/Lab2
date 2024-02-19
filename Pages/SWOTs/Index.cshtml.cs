@@ -34,7 +34,7 @@ namespace Lab2.Pages.SWOTs
             {
                 SWOTTable.Add(new SWOT
                 {
-
+                    Name = SWOTReader["Name"].ToString(),
                     SWOTID = Int32.Parse(SWOTReader["SWOTID"].ToString()),
                     Strengths = SWOTReader["Strengths"].ToString(),
                     Weaknesses = SWOTReader["Weaknesses"].ToString(),
