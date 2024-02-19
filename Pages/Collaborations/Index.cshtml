@@ -157,20 +157,20 @@
 
 <h2>Chats</h2>
 <table class="table table-bordered table-responsive table-hover">
-    <thead >
+    <thead>
         <tr>
+            <th>From</th>
             <th>Chat Message</th>
             <th>Chat DateTime</th>
-            <th>Username</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var chat in Model.NewChat)
         {
             <tr>
+                <td>@chat.UserName</td>
                 <td>@chat.ChatMessage</td>
                 <td>@chat.ChatDateTime</td>
-                <td>@chat.UserName</td>
             </tr>
         }
 
@@ -179,8 +179,8 @@
 
 <form method="post">
     <div class="form-group">
-        <label asp-for="NewChats.UserName">UserName:</label>
-        <input type="text" class="form-control" asp-for="NewChats.UserName" required>
+        <input type="hidden" class="form-control" asp-for="NewChats.EmployeeID" value="@HttpContext.Session.GetInt32("EmployeeID")" required />
+        <span class="validity" />
     </div>
     <div class="form-group">
         <label asp-for="NewChats.ChatMessage">Chat Message:</label>
@@ -188,7 +188,7 @@
     </div>
     <div class="form-group">
         <input type="hidden" class="form-control" asp-for="NewChats.ChatDateTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" required />
-        <span class="validaty" />
+        <span class="validity" />
     </div>
     <br />
     <button asp-page-handler="ChatPost" class="btn" style="background-color: rebeccapurple; -webkit-text-fill-color: white">Send Chat</button>

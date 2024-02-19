@@ -77,16 +77,11 @@ namespace Lab2.Pages.Chats
         {
 
             int employeeId = (int)HttpContext.Session.GetInt32("EmployeeID");
-
             NewChats.EmployeeID = employeeId;
 
-
             DBClass.InsertChat(NewChats);
-
             NewChats.ChatMessage = string.Empty;
-
             DBClass.Lab2DBConnection.Close();
-
 
             SqlDataReader TableReader = DBClass.ChatReader();
             while (TableReader.Read())
