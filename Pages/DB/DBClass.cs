@@ -92,6 +92,22 @@ namespace Lab2.Pages.DB
 
         }
 
+        public static void InsertSpace(Collaboration s)
+        {
+            string sqlQuery = "INSERT INTO Collaboration(TeamName, NotesAndInformation) VALUES ('";
+            sqlQuery += s.TeamName + "','";
+            sqlQuery += s.NotesAndInformation + "')";
+            
+            SqlCommand cmdTableRead = new SqlCommand();
+            cmdTableRead.Connection = Lab2DBConnection;
+            cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+            cmdTableRead.CommandText = sqlQuery;
+            cmdTableRead.Connection.Open();
+
+            cmdTableRead.ExecuteNonQuery();
+
+        }
+
         public static SqlDataReader SingleKnowledgeReader(int EmployeeID, int KnowledgeId)
         {
 
