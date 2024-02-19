@@ -8,7 +8,9 @@ namespace Lab2.Pages.Hub
 {
     public class HubModel : PageModel
     {
-        public int CollabID { get; set; }
+        public string TeamName { get; set; }
+
+        public int CollabID { get; set; }    
 
         public List<Collaboration> CollaborationTable { get; set; }
 
@@ -34,13 +36,6 @@ namespace Lab2.Pages.Hub
                 }
                 DBClass.Lab2DBConnection.Close(); // Close the reader after use
                 
-                string CollabReader = "Select CollabID From Collaboration where CollabID = '" + CollabID + "'";
-
-                CollabID = DBClass.GetCollabID(CollabReader);
-
-                HttpContext.Session.SetInt32("CollabID", CollabID);
-
-                DBClass.Lab2DBConnection.Close();
 
                 return Page();
             }
