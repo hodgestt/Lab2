@@ -6,6 +6,9 @@ namespace Lab2.Pages.Login
 {
     public class SecureLoginLandingModel : PageModel
     {
+        [BindProperty]
+        public int EmployeeID { get; set; }
+
         public IActionResult OnGet()
         {
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
@@ -14,6 +17,8 @@ namespace Lab2.Pages.Login
                     + HttpContext.Session.GetString("UserName")
                     + " successful!";
 
+                EmployeeID = (int)HttpContext.Session.GetInt32("EmployeeID");
+               
                 return Page();
             }
             else

@@ -19,7 +19,7 @@ namespace Lab2.Pages.Chats
         public string UserName { get; set; }
         
 
-        public int? EmployeeId { get; set; }
+        public int EmployeeID { get; set; }
 
         [BindProperty]
         public Chat NewChats { get; set; }
@@ -71,9 +71,9 @@ namespace Lab2.Pages.Chats
         public IActionResult OnPost()
         {
 
-            int? employeeId = HttpContext.Session.GetInt32("EmployeeID");
+            //int employeeId = Int32.Parse(HttpContext.Session.GetInt32("EmployeeID").ToString());
 
-            NewChats.EmployeeID = employeeId;
+            //NewChats.EmployeeID = employeeId;
 
 
             DBClass.InsertChat(NewChats);

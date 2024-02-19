@@ -15,21 +15,12 @@ namespace Lab2.Pages.Login
 {
     public class DBLoginModel : PageModel
     {
-        //[BindProperty, Display(Name = "UserName")] //ch4 in textbook
+        
         [BindProperty] 
         public string UserName { get; set; }
-        
-        //public async Task OnPostAsync()
-        //{
-        //    var claims = new List<Claim>
-        //    {
-        //        new Claim(ClaimTypes.NameIdentifier, UserName)
 
-        //    };
-        //    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //    var principal = new ClaimsPrincipal(identity);
-        //    await HttpContext.SignInAsync(principal);
-        //}
+        [BindProperty]
+        public int EmployeeID { get; set; } //new 
 
 
         [BindProperty]
@@ -56,6 +47,8 @@ namespace Lab2.Pages.Login
             if (DBClass.LoginQuery(loginQuery) > 0)
             {
                 HttpContext.Session.SetString("UserName", UserName);
+                HttpContext.Session.SetInt32("EmployeeID", EmployeeID); //new 
+
                 DBClass.Lab2DBConnection.Close();
 
                 return RedirectToPage("SecureLoginLanding");
