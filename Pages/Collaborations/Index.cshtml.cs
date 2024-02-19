@@ -239,6 +239,7 @@ namespace Lab2.Pages.Collaborations
                 
                 KnowledgeNames.Add(new KnowledgeItem
                 {
+                    //KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
                     Name = knowledgeItemReader["Name"].ToString(),
                     Subject = knowledgeItemReader["Subject"].ToString(),
                     Category = knowledgeItemReader["Category"].ToString(),
@@ -254,7 +255,6 @@ namespace Lab2.Pages.Collaborations
             
             
             SqlDataReader chatreader = DBClass.ChatReader();
-
             while (chatreader.Read())
             {
 
