@@ -32,6 +32,8 @@ namespace Lab2.Pages.Collaborations
 
         public int ChatID { get; set; }
 
+        public int CollabID { get; set; }
+
         [BindProperty]
         public String UserName { get; set; }
 
@@ -62,19 +64,7 @@ namespace Lab2.Pages.Collaborations
 
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                //SqlDataReader TableReader = DBClass.CollabReader();
-
-                //while (TableReader.Read())
-                //{
-                //    CollaborationTable.Add(new Collaboration
-                //    {
-                //        CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                //        TeamName = TableReader["TeamName"].ToString(),
-                //        NotesAndInformation = TableReader["NotesAndInformation"].ToString()
-                //    });
-                //}
-                //DBClass.Lab2DBConnection.Close(); // Close the reader after use
-
+               
                 SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
                 EmployeeList = new List<SelectListItem>();
                 while (EmployeeReader.Read())
@@ -88,9 +78,6 @@ namespace Lab2.Pages.Collaborations
                 DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
 
-                // Close your connection in DBClass
-                DBClass.Lab2DBConnection.Close();
-
                 SqlDataReader dataReader = DBClass.DataFileReader();
                 while (dataReader.Read())
                 {
@@ -100,12 +87,24 @@ namespace Lab2.Pages.Collaborations
                         DataName = dataReader["DataName"].ToString(),
                         DataLocation = dataReader["DataLocation"].ToString(),
                         DataDescription = dataReader["DataDescription"].ToString(),
-
-
-                    }
-                );
+                    });
                 }
                 DBClass.Lab2DBConnection.Close();
+
+
+                SqlDataReader PlansReader = DBClass.PlansReader(); //change to plansreader(CollabID)
+                while (PlansReader.Read())
+                {
+                    PlansTable.Add(new Plans
+                    {
+                        PlanID = Int32.Parse(PlansReader["PlanID"].ToString()),
+                        PlanName = PlansReader["PlanName"].ToString(),
+                        PlanConcept = PlansReader["PlanConcept"].ToString(),
+                        DateCreated = ((DateTime)PlansReader["DateCreated"])
+                    });
+                }
+                DBClass.Lab2DBConnection.Close();
+
 
                 SqlDataReader chattablereader = DBClass.ChatReader();
                 while (chattablereader.Read())
@@ -116,28 +115,11 @@ namespace Lab2.Pages.Collaborations
                         ChatMessage = chattablereader["ChatMessage"].ToString(),
                         ChatDateTime = ((DateTime)chattablereader["ChatDateTime"]),
                         UserName = chattablereader["UserName"].ToString()
-                    }
-                );
+                    });
                 }
                 // Close your connection in DBClass
                 DBClass.Lab2DBConnection.Close();
 
-                SqlDataReader PlansReader = DBClass.PlansReader();
-                while (PlansReader.Read())
-                {
-                    PlansTable.Add(new Plans
-                    {
-                        PlanID = Int32.Parse(PlansReader["PlanID"].ToString()),
-                        PlanName = PlansReader["PlanName"].ToString(),
-                        PlanConcept = PlansReader["PlanConcept"].ToString(),
-                        DateCreated = ((DateTime)PlansReader["DateCreated"])
-                    }
-
-                );
-                }
-
-                // Close your connection in DBClass
-                DBClass.Lab2DBConnection.Close();
 
                 return Page();
             }
@@ -152,18 +134,6 @@ namespace Lab2.Pages.Collaborations
 
         public IActionResult OnPost()
         {
-            SqlDataReader TableReader = DBClass.CollabReader();
-            while (TableReader.Read())
-            {
-                CollaborationTable.Add(new Collaboration
-                {
-                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                    TeamName = TableReader["TeamName"].ToString(),
-                    NotesAndInformation = TableReader["NotesAndInformation"].ToString()
-                });
-            }
-            DBClass.Lab2DBConnection.Close(); // Close the reader after use
-
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
             while (EmployeeReader.Read())
@@ -174,9 +144,9 @@ namespace Lab2.Pages.Collaborations
                     Value = EmployeeReader["EmployeeID"].ToString()
                 });
             }
-            DBClass.Lab2DBConnection.Close(); // Close the reader after use
+            DBClass.Lab2DBConnection.Close(); 
 
-            SqlDataReader PlanReader = DBClass.PlansReader();
+            SqlDataReader PlanReader = DBClass.PlansReader(); //repeated code from above
             while (PlanReader.Read())
             {
                 PlansTable.Add(new Plans
@@ -189,11 +159,9 @@ namespace Lab2.Pages.Collaborations
 
             );
             }
-
-            // Close your connection in DBClass
             DBClass.Lab2DBConnection.Close();
 
-            SqlDataReader dataReader = DBClass.DataFileReader();
+            SqlDataReader dataReader = DBClass.DataFileReader(); //repeated code from above
             while (dataReader.Read())
             {
                 DataTable.Add(new DataFile
@@ -248,18 +216,6 @@ namespace Lab2.Pages.Collaborations
             
             DBClass.InsertChat(NewChats);
 
-            DBClass.Lab2DBConnection.Close();
-
-            SqlDataReader TableReader = DBClass.CollabReader();
-            while (TableReader.Read())
-            {
-                CollaborationTable.Add(new Collaboration
-                {
-                    CollabID = Convert.ToInt32(TableReader["CollabID"]),
-                    TeamName = TableReader["TeamName"].ToString(),
-                    NotesAndInformation = TableReader["NotesAndInformation"].ToString()
-                });
-            }
             DBClass.Lab2DBConnection.Close(); // Close the reader after use
 
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
@@ -308,7 +264,7 @@ namespace Lab2.Pages.Collaborations
             DBClass.Lab2DBConnection.Close();
             
             SqlDataReader chatstablereader = DBClass.ChatReader();
-            while (TableReader.Read())
+            while (chatstablereader.Read())
             {
                 NewChat.Add(new Chat
                 {
@@ -335,7 +291,7 @@ namespace Lab2.Pages.Collaborations
 
             DBClass.Lab2DBConnection.Close();
 
-            return RedirectToPage("/Collaborations/Index");
+            return RedirectToPage("/Hub");
         }
     }
 }

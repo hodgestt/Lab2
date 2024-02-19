@@ -9,33 +9,25 @@
 }
 
 <h2 class="h2">@RouteData.Values["TeamName"] Collaboration Space</h2>
-
+<br />
 <br/>
-
 <h4 class="h4">Collaborators</h4>
-
 <table class="table table-bordered table-responsive table-hover">
     <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            
         </tr>
 
     </thead>
     <tbody>
         @{
-            // @ Symbol for a verbatim / multi-line string
-            string sqlQuery = @"select Collaboration.TeamName, Employee.FirstName, Employee.LastName
-        from Collaboration
-        INNER JOIN EmployeeCollab
-        on EmployeeCollab.CollabID = Collaboration.CollabID
-        INNER JOIN Employee
-        on Employee.EmployeeID = EmployeeCollab.EmployeeID;
-        ";
-
+        string sqlQuery = @"SELECT Collaboration.TeamName, Employee.FirstName, Employee.LastName
+        from Collaboration INNER JOIN EmployeeCollab on EmployeeCollab.CollabID = Collaboration.CollabID
+        INNER JOIN Employee on Employee.EmployeeID = EmployeeCollab.EmployeeID WHERE Collaboration.CollabID=";
+        sqlQuery += @RouteData.Values["CollabID"];
+        
             SqlDataReader EmployeeCollabReader = DBClass.GeneralReaderQuery(sqlQuery);
-
             while (EmployeeCollabReader.Read())
             {
                 <tr>
@@ -43,16 +35,14 @@
                     <td>@EmployeeCollabReader["LastName"]</td>
                 </tr>
             }
-
             DBClass.Lab2DBConnection.Close();
-
         }
     </tbody>
 </table>
+<a asp-page="/EmployeeCollabs/NewEmployeeCollab" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a Team Member</a>
 
+<br />
 <br/>
-
-
     <h4 class="h4">Knowledge Library:</h4>
     <form asp-action="Collaborations" >
     <p>Choose Employee to View Their Knowledge Items:</p>
@@ -65,8 +55,6 @@
     </form>
     <br />
 
-    
-
 @if (Model.KnowledgeNames != null)
 {
     <h5 class="h5">Knowledge Item Names for Selected Employee:</h5>
@@ -77,9 +65,8 @@
         }
     </p>
 }
-
 <br/>
-
+<br />
 
 <h2>Plans</h2>
 <table class="table table-bordered table-responsive table-hover">
@@ -92,6 +79,26 @@
         </tr>
     </thead>
     <tbody>
+        @* @{
+        string plansqlQuery = @"SELECT Plans.PlanName, Plans.PlanConcept, Plans.DateCreated, Plans.PlanID
+        from Plans INNER JOIN Collaboration ON Collaboration.CollabID = Plans.CollabID
+        WHERE Collaboration.CollabID=";
+        plansqlQuery += @RouteData.Values["CollabID"];
+        
+            SqlDataReader PlanReader = DBClass.GeneralReaderQuery(plansqlQuery);
+            while (PlanReader.Read())
+            {
+                <tr>
+                    <td>@PlanReader["PlanName"]</td>
+                    <td>@PlanReader["PlanConcept"]</td>
+                    <td>@PlanReader["DateCreated"]</td>
+                    <td>
+                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@PlanReader.PlanID" asp-route-planname="@PlanReader.PlanName">View Steps</a>
+                    </td>
+                </tr>
+            }
+            DBClass.Lab2DBConnection.Close();
+        } *@
         @{
             foreach (var emp in Model.PlansTable)
             {

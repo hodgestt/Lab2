@@ -32,12 +32,12 @@ namespace Lab2.Pages.Plan
         {
             if (NewPlan.PlanName == "Test Plan Name")
             {
-                return RedirectToPage("/Collaborations/Index");
+                return RedirectToPage("/Hub/Index");
             }
             if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null) { 
                 DBClass.InsertPlan(NewPlan);
                 DBClass.Lab2DBConnection.Close();
-                return RedirectToPage("/Collaborations/Index");
+                return RedirectToPage("/Hub/Index");
             }
             return Page();
 

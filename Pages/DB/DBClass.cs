@@ -179,6 +179,7 @@ namespace Lab2.Pages.DB
             return tempReader;
         }
 
+
         public static SqlDataReader DataCollabReader()
         {
             SqlCommand cmdTableRead = new SqlCommand();
@@ -233,7 +234,7 @@ namespace Lab2.Pages.DB
         }
 
 
-        public static SqlDataReader PlansReader()
+        public static SqlDataReader PlansReader() //delete eventually if the plansreader below starts to work
         {
             SqlCommand cmdTableRead = new SqlCommand();
             cmdTableRead.Connection = Lab2DBConnection;
@@ -246,6 +247,22 @@ namespace Lab2.Pages.DB
             SqlDataReader tempReader = cmdTableRead.ExecuteReader();
             return tempReader;
         }
+
+        //public static SqlDataReader PlansReader(int collabid) NOT WORKING
+        //{
+        //    SqlCommand cmdTableRead = new SqlCommand();
+        //    cmdTableRead.Connection = Lab2DBConnection;
+        //    cmdTableRead.Connection.ConnectionString = Lab2DBConnString;
+        //    cmdTableRead.CommandText =
+        //        "SELECT * FROM Plans WHERE CollabID=" +collabid.CollabID;
+
+        //    cmdTableRead.Connection.Open(); // Open connection here, close in Model!
+
+        //    SqlDataReader tempReader = cmdTableRead.ExecuteReader();
+        //    return tempReader;
+        //}
+
+
 
         public static SqlDataReader CollabReader()
         {

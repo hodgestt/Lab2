@@ -17,23 +17,39 @@ namespace Lab2.Pages.Hub
             CollaborationTable = new List<Collaboration>();
         }
 
-            public void OnGet()
+        public IActionResult OnGet(int planId, string planName)
         {
-
-            SqlDataReader TableReader = DBClass.CollabReader();
-
-            while (TableReader.Read())
+            if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-                CollaborationTable.Add(new Collaboration
+                SqlDataReader TableReader = DBClass.CollabReader();
+
+                while (TableReader.Read())
                 {
-                    CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
-                    TeamName = TableReader["TeamName"].ToString(),
-                    NotesAndInformation = TableReader["NotesAndInformation"].ToString()
-                });
+                    CollaborationTable.Add(new Collaboration
+                    {
+                        CollabID = Int32.Parse(TableReader["CollabID"].ToString()),
+                        TeamName = TableReader["TeamName"].ToString(),
+                        NotesAndInformation = TableReader["NotesAndInformation"].ToString()
+                    });
+                }
+                DBClass.Lab2DBConnection.Close(); // Close the reader after use
+
+                return Page();
             }
-            DBClass.Lab2DBConnection.Close(); // Close the reader after use
+            else
+            {
 
+                //creates a String with key of "LoginError" and a vlue of "You must login to access that page"
+                HttpContext.Session.SetString("LoginError", "You must login to access that page!");
 
+                return RedirectToPage("/Login/DBLogin");
+
+            }
         }
     }
 }
+
+
+        
+   
+

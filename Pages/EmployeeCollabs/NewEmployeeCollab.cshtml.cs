@@ -77,7 +77,7 @@ namespace Lab2.Pages.EmployeeCollabs
 
             DBClass.Lab2DBConnection.Close();
 
-            return Page();
+            return RedirectToPage("/Hub/Index");
         }
     }
 }
