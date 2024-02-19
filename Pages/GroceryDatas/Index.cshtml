@@ -1,0 +1,31 @@
+﻿@*Nick Patterson*@
+@page
+@using System.Data.SqlClient
+@using Lab2.Pages.DB
+@model Lab2.Pages.GroceryDatas.IndexModel
+@{
+    ViewData["Title"] = "GroceryDatas";
+}
+<h2>GroceryDatas</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Expiration Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var grocerydata in Model.NewGroceryData)
+        {
+            <tr>
+                <td>@grocerydata.Item</td>
+                <td>@grocerydata.Price</td>
+                <td>@grocerydata.ExpirationDate</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<a asp-page="/DataFiles/Index" style="-webkit-text-fill-color:rebeccapurple;">Return to Data Files</a>

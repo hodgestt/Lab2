@@ -34,13 +34,13 @@ namespace Lab2.Pages.DataFiles
         public IActionResult OnPost()
         {
             if (NewDataFile.DataName == "Test Data Name"){
-                return RedirectToPage("/Collaborations/Index");
+                return RedirectToPage("/DataFiles/Index");
             }
             if (NewDataFile.DataName != null & NewDataFile.DataLocation != null & NewDataFile.DataDescription != null)
             {
                 DBClass.InsertDataFile(NewDataFile);
                 DBClass.Lab2DBConnection.Close();
-                return RedirectToPage("/Collaborations/Index");
+                return RedirectToPage("/DataFiles/Index");
             }
             return Page();
 
