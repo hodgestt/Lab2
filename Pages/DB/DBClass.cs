@@ -97,7 +97,7 @@ namespace Lab2.Pages.DB
         {
 
             SqlConnection connection = new SqlConnection(Lab2DBConnString);
-            SqlCommand cmd = new SqlCommand("SELECT Name FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM KnowledgeItem WHERE EmployeeID = @EmployeeID", connection);
             cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
 
             connection.Open();

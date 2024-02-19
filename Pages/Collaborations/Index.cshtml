@@ -58,12 +58,41 @@
 @if (Model.KnowledgeNames != null)
 {
     <h5 class="h5">Knowledge Item Names for Selected Employee:</h5>
-    <p>
-        @foreach (var name in Model.KnowledgeNames)
-        {
-            <li>@name.Name</li>
-        }
-    </p>
+    
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Category</th>
+                <th>Information</th>
+                <th>KnowledgeDateTime </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var name in Model.KnowledgeNames)
+                {
+                    <tr>
+                        <td>@name.Name</td>
+                        <td>@name.Subject</td>
+                        <td>@name.Category</td>
+                        <td>@name.Information</td>
+                        <td>@name.KnowledgeDateTime</td>
+                        <td>
+                            <a asp-page="EditKnowledgeItem" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-knowledgeid="@name.KnowledgeId">Edit -></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <a asp-page="/KnowledgeItems/AddKnowledgeItem" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New Knowledge Item</a>
+    <a asp-page="/SWOTs/AddSWOT" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;">Add Data to SWOT Item</a>
+    <br />
+    <a asp-page="/SWOTs/Index" style="-webkit-text-fill-color:rebeccapurple;">View SWOT Items</a>
 }
 <br/>
 <br />

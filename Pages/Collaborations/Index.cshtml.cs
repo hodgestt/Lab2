@@ -22,6 +22,8 @@ namespace Lab2.Pages.Collaborations
         [BindProperty]
         public List<KnowledgeItem> KnowledgeNames { get; set; }
 
+        public List<KnowledgeItem> KnowledgeItemsTable { get; set; }
+
         [BindProperty]
         public KnowledgeItem KnowledgeItemView { get; set; }
 
@@ -57,14 +59,34 @@ namespace Lab2.Pages.Collaborations
             PlansTable = new List<Plans>();
             DataTable = new List<DataFile>();
             NewChat = new List<Chat>();
-        }
+            KnowledgeItemsTable =new List<KnowledgeItem>();
+    }
 
         public IActionResult OnGet(int EmployeeID)
         {
 
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
-               
+                
+                SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+                while (TableReader.Read())
+                {
+                    KnowledgeItemsTable.Add(new KnowledgeItem
+                    {
+                        KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+                        Name = TableReader["Name"].ToString(),
+                        Subject = TableReader["Subject"].ToString(),
+                        Category = TableReader["Category"].ToString(),
+                        Information = TableReader["Information"].ToString(),
+                        KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+                    }
+                );
+                }
+
+                // Close your connection in DBClass
+                DBClass.Lab2DBConnection.Close();
+
+
                 SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
                 EmployeeList = new List<SelectListItem>();
                 while (EmployeeReader.Read())
@@ -106,17 +128,17 @@ namespace Lab2.Pages.Collaborations
                 DBClass.Lab2DBConnection.Close();
 
 
-                SqlDataReader TableReader = DBClass.ChatReader();
+                SqlDataReader chatreader = DBClass.ChatReader();
 
-                while (TableReader.Read())
+                while (chatreader.Read())
                 {
 
                     NewChat.Add(new Chat
                     {
-                        ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
-                        UserName = TableReader["UserName"].ToString(),
-                        ChatMessage = TableReader["ChatMessage"].ToString(),
-                        ChatDateTime = ((DateTime)TableReader["ChatDateTime"])
+                        ChatID = Int32.Parse(chatreader["ChatID"].ToString()),
+                        UserName = chatreader["UserName"].ToString(),
+                        ChatMessage = chatreader["ChatMessage"].ToString(),
+                        ChatDateTime = ((DateTime)chatreader["ChatDateTime"])
                     }
                 );
                 }
@@ -137,6 +159,25 @@ namespace Lab2.Pages.Collaborations
 
         public IActionResult OnPost()
         {
+            SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+            while (TableReader.Read())
+            {
+                KnowledgeItemsTable.Add(new KnowledgeItem
+                {
+                    KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+                    Name = TableReader["Name"].ToString(),
+                    Subject = TableReader["Subject"].ToString(),
+                    Category = TableReader["Category"].ToString(),
+                    Information = TableReader["Information"].ToString(),
+                    KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+                }
+            );
+            }
+
+            // Close your connection in DBClass
+            DBClass.Lab2DBConnection.Close();
+
+
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
             while (EmployeeReader.Read())
@@ -183,14 +224,16 @@ namespace Lab2.Pages.Collaborations
             
 
 
-            DBClass.Lab2DBConnection.Close();
-
             SqlDataReader knowledgeItemReader = DBClass.SingleKnowledgeReader(EmployeeID);
             while (knowledgeItemReader.Read())
             {
                 KnowledgeNames.Add(new KnowledgeItem
                 {
-                    Name = knowledgeItemReader["Name"].ToString()
+                    Name = knowledgeItemReader["Name"].ToString(),
+                    Subject = knowledgeItemReader["Subject"].ToString(),
+                    Category = knowledgeItemReader["Category"].ToString(),
+                    Information = knowledgeItemReader["Information"].ToString(),
+                    KnowledgeDateTime = ((DateTime)knowledgeItemReader["KnowledgeDateTime"])
                 }
                 );
                 
@@ -199,17 +242,17 @@ namespace Lab2.Pages.Collaborations
             DBClass.Lab2DBConnection.Close();
             
             
-            SqlDataReader TableReader = DBClass.ChatReader();
+            SqlDataReader chatreader = DBClass.ChatReader();
 
-            while (TableReader.Read())
+            while (chatreader.Read())
             {
 
                 NewChat.Add(new Chat
                 {
-                    ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
-                    UserName = TableReader["UserName"].ToString(),
-                    ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = ((DateTime)TableReader["ChatDateTime"])
+                    ChatID = Int32.Parse(chatreader["ChatID"].ToString()),
+                    UserName = chatreader["UserName"].ToString(),
+                    ChatMessage = chatreader["ChatMessage"].ToString(),
+                    ChatDateTime = ((DateTime)chatreader["ChatDateTime"])
                 }
             );
             }
@@ -221,8 +264,25 @@ namespace Lab2.Pages.Collaborations
 
         public IActionResult OnPostChatPost()
         {
-            
 
+            SqlDataReader TableReader = DBClass.KnowledgeItemReader();
+            while (TableReader.Read())
+            {
+                KnowledgeItemsTable.Add(new KnowledgeItem
+                {
+                    KnowledgeId = Int32.Parse(TableReader["KnowledgeId"].ToString()),
+                    Name = TableReader["Name"].ToString(),
+                    Subject = TableReader["Subject"].ToString(),
+                    Category = TableReader["Category"].ToString(),
+                    Information = TableReader["Information"].ToString(),
+                    KnowledgeDateTime = ((DateTime)TableReader["KnowledgeDateTime"])
+                }
+            );
+            }
+
+            // Close your connection in DBClass
+            DBClass.Lab2DBConnection.Close();
+            
             SqlDataReader EmployeeReader = DBClass.GeneralReaderQuery("SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS Name FROM Employee");
             EmployeeList = new List<SelectListItem>();
             while (EmployeeReader.Read())
@@ -275,15 +335,15 @@ namespace Lab2.Pages.Collaborations
             NewChats.ChatMessage = string.Empty;
             DBClass.Lab2DBConnection.Close();
 
-            SqlDataReader TableReader = DBClass.ChatReader();
-            while (TableReader.Read())
+            SqlDataReader chatreader = DBClass.ChatReader();
+            while (chatreader.Read())
             {
                 NewChat.Add(new Chat
                 {
-                    ChatID = Int32.Parse(TableReader["ChatID"].ToString()),
+                    ChatID = Int32.Parse(chatreader["ChatID"].ToString()),
                     ChatMessage = TableReader["ChatMessage"].ToString(),
-                    ChatDateTime = ((DateTime)TableReader["ChatDateTime"]),
-                    UserName = TableReader["UserName"].ToString(),
+                    ChatDateTime = ((DateTime)chatreader["ChatDateTime"]),
+                    UserName = chatreader["UserName"].ToString(),
                     EmployeeID = employeeId
                 }
             );
