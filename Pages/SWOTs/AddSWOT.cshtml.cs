@@ -12,9 +12,19 @@ namespace Lab2.Pages.SWOTs
         [Required]
         public SWOT NewSWOT { get; set; }
 
+        [BindProperty]
+        public int KnowledgeId { get; set; }
 
-        public void OnGet()
+        public AddSWOTModel()
         {
+            NewSWOT = new SWOT();
+        }
+
+
+        public void OnGet(int knowledgeid)
+        {
+
+            NewSWOT.KnowledgeId = knowledgeid;
         }
 
         public IActionResult OnPost()

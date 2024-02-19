@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{KnowledgeId:int}"
 @* Jessica Shamloo *@
 @model Lab2.Pages.SWOTs.AddSWOTModel
 @{
@@ -18,7 +18,7 @@
     <input type="text" asp-for="NewSWOT.Threats" placeholder="Threats" />
     <span asp-validation-for="NewSWOT.Threats" class="text-danger"></span>
     <br />
-    <input type="text" asp-for="NewSWOT.KnowledgeId" placeholder="KnowledgeId" />
+    <input type="hidden" asp-for="@Model.NewSWOT.KnowledgeId" placeholder="KnowledgeId" />
     <span asp-validation-for="NewSWOT.KnowledgeId" class="text-danger"></span>
     <br />
     <br />

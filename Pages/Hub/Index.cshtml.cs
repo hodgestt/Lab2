@@ -8,9 +8,7 @@ namespace Lab2.Pages.Hub
 {
     public class HubModel : PageModel
     {
-        public string TeamName { get; set; }
-
-        public int CollabID { get; set; }    
+        public int CollabID { get; set; }
 
         public List<Collaboration> CollaborationTable { get; set; }
 
@@ -36,6 +34,9 @@ namespace Lab2.Pages.Hub
                 }
                 DBClass.Lab2DBConnection.Close(); // Close the reader after use
                 
+                
+
+                DBClass.Lab2DBConnection.Close();
 
                 return Page();
             }
