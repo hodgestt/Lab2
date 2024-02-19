@@ -81,7 +81,7 @@
                         <td>@name.Information</td>
                         <td>@name.KnowledgeDateTime</td>
                         <td>
-                            <a asp-page="EditKnowledgeItem" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-knowledgeid="@name.KnowledgeId">Edit -></a>
+                            <a asp-page="/KnowledgeItems/EditKnowledgeItem" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-knowledgeid="@name.KnowledgeId">Edit -></a>
                         </td>
                     </tr>
                 }
@@ -108,31 +108,12 @@
     </thead>
     <tbody>
         @{
-            foreach (var emp in Model.PlansTable)
-            {
-                <tr>
-                    <td>@emp.PlanName</td>
-                    <td>@emp.PlanConcept</td>
-                    <td>@emp.DateCreated</td>
-                    <td>
-                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@emp.PlanID" asp-route-planname="@emp.PlanName">View Steps</a>
-                    </td>
-
-                </tr>
-            }
-        }
-    </tbody>
-</table>
-
-<a asp-page="/Plan/AddPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Add a New Plan</a>
-
-        @* @{
-        string plansqlQuery = @"SELECT Plans.PlanName, Plans.PlanConcept, Plans.DateCreated, Plans.PlanID, Collaboration.CollabID
-        from Plans INNER JOIN Collaboration ON Collaboration.CollabID = Plans.CollabID
+            sqlQuery = @"SELECT Plans.PlanName, Plans.PlanConcept, Plans.DateCreated, Plans.PlanID, Collaboration.CollabID
+        from Plans INNER JOIN Collaboration ON Collaboration.CollabID = Plans.CollabID 
         WHERE Collaboration.CollabID=";
-        plansqlQuery += @RouteData.Values["CollabID"];
-        
-            SqlDataReader PlanReader = DBClass.GeneralReaderQuery(plansqlQuery);
+            sqlQuery += @RouteData.Values["CollabID"];
+
+            SqlDataReader PlanReader = DBClass.GeneralReaderQuery(sqlQuery);
             while (PlanReader.Read())
             {
                 <tr>
@@ -140,14 +121,15 @@
                     <td>@PlanReader["PlanConcept"]</td>
                     <td>@PlanReader["DateCreated"]</td>
                     <td>
-                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@PlanReader.PlanID" asp-route-planname="@PlanReader.PlanName">View Steps</a>
+                        <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@PlanReader["PlanID"]" asp-route-planname="@PlanReader["PlanName"]">View Steps</a>
                     </td>
                 </tr>
             }
             DBClass.Lab2DBConnection.Close();
-        } *@
-        
-
+        }
+    </tbody>
+</table>
+<a asp-page="/Plan/AddPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;">Add Plan</a>
 
 <br/>
 <br/>
@@ -164,21 +146,26 @@
     </thead>
     <tbody>
         @{
-            foreach (var dta in Model.DataTable)
+        sqlQuery = @"SELECT DataFile.DataName, DataFile.DataLocation, DataFile.DataDescription, Collaboration.CollabID
+        from DataFile INNER JOIN DataCollab ON DataCollab.DataID = DataFile.DataID
+        INNER JOIN Collaboration ON Collaboration.CollabID = DataCollab.CollabID
+        WHERE Collaboration.CollabID=";
+        sqlQuery += @RouteData.Values["CollabID"];
+
+            SqlDataReader DataFileReader = DBClass.GeneralReaderQuery(sqlQuery);
+            while (DataFileReader.Read())
             {
                 <tr>
-                    
-                    <td>@dta.DataName</td>
-                    <td>@dta.DataLocation</td>
-                    <td>@dta.DataDescription</td>
+                    <td>@DataFileReader["DataName"]</td>
+                    <td>@DataFileReader["DataLocation"]</td>
+                    <td>@DataFileReader["DataDescription"]</td>
                 </tr>
             }
-        }
+         }
     </tbody>
 </table>
 <a asp-page="/DataFiles/AddDataFile" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white; padding:5px 15px; box-shadow; display:inline-block;">Add a New Data File</a>
 
-</br>
 </br>
 </br>
 

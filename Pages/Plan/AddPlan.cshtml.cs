@@ -13,10 +13,14 @@ namespace Lab2.Pages.Plan
         [Required]
         public Plans NewPlan { get; set; }
 
+        [BindProperty]
+        public int? CollabID { get; set; }
+
         public IActionResult OnGet()
         {
             if (HttpContext.Session.GetString("UserName") != null) //by now, the UserName parameter and its value has already been validated
             {
+                //NewPlan.CollabID = collabid;
                 return Page();
             }
             else 
@@ -26,6 +30,7 @@ namespace Lab2.Pages.Plan
 
                 return RedirectToPage("/Login/DBLogin");
             }
+            
         }
 
         public IActionResult OnPost()
@@ -34,7 +39,8 @@ namespace Lab2.Pages.Plan
             {
                 return RedirectToPage("/Hub/Index");
             }
-            if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null) { 
+            if (NewPlan.PlanName != null & NewPlan.PlanConcept != null & NewPlan.DateCreated != null) {
+                
                 DBClass.InsertPlan(NewPlan);
                 DBClass.Lab2DBConnection.Close();
                 return RedirectToPage("/Hub/Index");
