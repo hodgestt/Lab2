@@ -122,6 +122,7 @@
                     <td>@PlanReader["DateCreated"]</td>
                     <td>
                         <a asp-page="/PlanSteps/Index" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@PlanReader["PlanID"]" asp-route-planname="@PlanReader["PlanName"]">View Steps</a>
+                        <a asp-page="/Plan/EditPlan" class="btn" style="background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-route-planid="@PlanReader["PlanID"]">Edit Plan</a>
                     </td>
                 </tr>
             }

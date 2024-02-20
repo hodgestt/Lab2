@@ -1,0 +1,25 @@
+﻿@page
+@model Lab2.Pages.Plan.EditPlanModel
+@{
+    ViewData["Title"] = "Edit Plan";
+}
+
+<form asp-page="EditPlan">
+    <br />
+    <input type="hidden" asp-for="@Model.PlanToUpdate.PlanID" />
+    <label asp-for="@Model.PlanToUpdate.PlanName"></label>
+    <input type="text" asp-for="@Model.PlanToUpdate.PlanName" />
+    <br />
+    <label asp-for="@Model.PlanToUpdate.PlanConcept"></label>
+    <input type="text" asp-for="@Model.PlanToUpdate.PlanConcept" />
+    <br />
+    <label asp-for="@Model.PlanToUpdate.DateCreated"></label>
+    <input type="text" asp-for="@Model.PlanToUpdate.DateCreated" />
+    <br />
+    <label asp-for="@Model.PlanToUpdate.CollabID"></label>
+    <input type="hidden" asp-for="@Model.PlanToUpdate.CollabID" /> @*foreign key*@
+    <br />
+    <input type="submit" class="btn" style=" background-color:rebeccapurple; -webkit-text-fill-color:white;" asp-page="EditPlan" />
+    <a asp-page="/Hub/Index" class="btn" style=" -webkit-text-fill-color:rebeccapurple" ;>Cancel</a>
+</form>
+

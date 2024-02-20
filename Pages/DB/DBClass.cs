@@ -167,6 +167,18 @@ namespace Lab2.Pages.DB
             return reader;
         }
 
+        public static SqlDataReader SinglePlanReader(int PlanID)
+        {
+            SqlConnection connection = new SqlConnection(Lab2DBConnString);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Plans WHERE PlanID = @PlanID", connection);
+            cmd.Parameters.AddWithValue("@PlanID", PlanID);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            return reader;
+        }
+
         public static SqlDataReader SingleCollabReader(int CollabID)
         {
             SqlConnection connection = new SqlConnection(Lab2DBConnString);
@@ -185,6 +197,23 @@ namespace Lab2.Pages.DB
             sqlQuery += "TeamName='" + s.TeamName + "',";
             sqlQuery += "NotesAndInformation='" + s.NotesAndInformation + "' WHERE CollabID =" + s.CollabID + ";" ;
 
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = Lab2DBConnection;
+            cmd.Connection.ConnectionString = Lab2DBConnString;
+            cmd.CommandText = sqlQuery;
+            cmd.Connection.Open();
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void UpdatePlan(Plans p)
+        {
+            String sqlQuery = "UPDATE Plans SET ";
+            sqlQuery += "PlanName='" + p.PlanName + "',";
+            sqlQuery += "PlanConcept='" + p.PlanConcept + "',";
+            sqlQuery += "DateCreated=" + p.DateCreated + ",";
+            sqlQuery += "CollabID=" + p.CollabID + "WHERE PlanID=" + p.PlanID + ";";
+            
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = Lab2DBConnection;
             cmd.Connection.ConnectionString = Lab2DBConnString;
